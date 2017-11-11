@@ -1,21 +1,21 @@
 <!-- Todo move card-elevation-z4 -->
 <md-sidenav-container class="layout-container" [ngClass]='card-elevation-z4'>
 
-  <div class="layout" fxLayout="column" [class.beta]="true" [class.boxed]="false">
+  <div class="layout" fxLayout="column" [class.alpha]="true" [class.boxed]="false">
 
       <md-sidenav-container fxFlex>
 
-        <md-sidenav class="sidenav-container" (open)="openSidenav()" (close)="closeSidenav()" [opened]="true" [align]="start"
-          [mode]="side" [disableClose]="true" [appSidenavCollapse]="true">
+        <md-sidenav class="sidenav-container" (open)="openSidenav()" (close)="closeSidenav()" [opened]="sidenavOpen" [align]="sidenavAlign"
+          [mode]="sidenavMode" [disableClose]="sidenavDisableClose" [appSidenavCollapse]="sidenavCollapsed">
 
-          <app-sidenav [collapsed]="true" (toggledSidenavCollapse)="toggleSidenavCollapse()"></app-sidenav>
+          <app-sidenav [collapsed]="sidenavCollapsed" (toggledSidenavCollapse)="toggleSidenavCollapse()"></app-sidenav>
 
         </md-sidenav>
 
         <div class="toolbar-container" fxLayout="column">
           
-          <app-toolbar [sidenavCollapsed]="true"
-            (toggledSidenav)="toggleSidenav()" (toggledQuickpanel)="toggleQuickpanel()">
+          <app-toolbar [sidenavCollapsed]="sidenavCollapsed"
+            (toggledSidenav)="toggleSidenav()">
           </app-toolbar>
 
 
@@ -25,10 +25,6 @@
         </div>
       </md-sidenav-container>
 
-  </div>
-
-  <div id="settings" class="options-toggle mat-elevation-z4" md-ripple (click)="toggleSettings()" fxLayout="row" fxLayoutAlign="center center">
-    <md-icon>settings</md-icon>
   </div>
 
 </md-sidenav-container>

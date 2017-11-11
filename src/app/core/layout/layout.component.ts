@@ -17,6 +17,12 @@ export class LayoutComponent implements AfterViewInit, OnDestroy {
 
   scrollbar: Scrollbar;
 
+  sidenavOpen = true;
+  sidenavCollapsed = true;
+  sidenavAlign = 'start';
+  sidenavMode = 'side';
+  sidenavDisableClose = true;
+
   @ViewChild('scrollContainer')
   scrollContainer: ScrollbarComponent;
 
@@ -33,26 +39,19 @@ export class LayoutComponent implements AfterViewInit, OnDestroy {
   }
 
   openSidenav() {
-
+    this.sidenavOpen = true;
   }
 
   closeSidenav() {
-
+    this.sidenavOpen = false;
   }
 
   toggleSidenav() {
-
+    this.sidenavOpen = !this.sidenavOpen;
   }
 
   toggleSidenavCollapse() {
-
-  }
-
-  setSidenavMode(mode: string) {
-
-  }
-
-  setSidenavDisableClose(value: boolean) {
+    this.sidenavCollapsed = !this.sidenavCollapsed;
 
   }
 

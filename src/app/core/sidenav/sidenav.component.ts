@@ -12,12 +12,15 @@ export class SidenavComponent implements OnInit {
   @Input('collapsed') collapsed: boolean;
   @Output('toggledSidenavCollapse') toggledSidenavCollapse = new EventEmitter();
 
-  sidenavItems$: Observable<SidenavItem[]>;
-  currentlyOpen$: Observable<SidenavItem[]>;
+  sidenavItems: SidenavItem[];
+  currentlyOpen: SidenavItem[];
 
   constructor() { }
 
   ngOnInit() {
+    this.sidenavItems = [new SidenavItem({ name: 'Fabrice'})];
+    this.currentlyOpen = [new SidenavItem({ name: 'Fabrice'})];
+    console.log(this.sidenavItems);
     // this.sidenavItems$ = this.store.select(fromRoot.getSidenavItems);
     // this.currentlyOpen$ = this.store.select(fromRoot.getSidenavCurrentlyOpen);
   }
