@@ -8,7 +8,7 @@ import { Observable } from 'rxjs/Observable';
   styleUrls: ['./sidenav.component.scss']
 })
 export class SidenavComponent implements OnInit {
-
+ 
   @Input('collapsed') collapsed: boolean;
   @Output('toggledSidenavCollapse') toggledSidenavCollapse = new EventEmitter();
 
@@ -18,15 +18,49 @@ export class SidenavComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    this.sidenavItems = [new SidenavItem({ name: 'Fabrice'})];
+    this.sidenavItems = sideNavItems;
     this.currentlyOpen = [new SidenavItem({ name: 'Fabrice'})];
-    console.log(this.sidenavItems);
-    // this.sidenavItems$ = this.store.select(fromRoot.getSidenavItems);
-    // this.currentlyOpen$ = this.store.select(fromRoot.getSidenavCurrentlyOpen);
   }
 
   toggleSidenavCollapse() {
     this.toggledSidenavCollapse.emit();
   }
-
 }
+
+const sideNavItems = [
+  new SidenavItem({
+    name: 'Employees',
+    route: '/tables/simple-table',
+    icon: 'person',
+    subItems: [ ],
+    position: 1
+  }),
+  new SidenavItem({
+    name: 'Groups',
+    route: '/tables/table-pagination',
+    icon: 'group',
+    subItems: [ ],
+    position: 1
+  }),
+  new SidenavItem({
+    name: 'Trainings',
+    route: '/tables/simple-table',
+    icon: 'web',
+    subItems: [ ],
+    position: 1
+  }),
+  new SidenavItem({
+    name: 'Projects',
+    route: '/tables/simple-table',
+    icon: 'web',
+    subItems: [ ],
+    position: 1
+  }),
+  new SidenavItem({
+    name: 'Capabilities',
+    route: '/tables/simple-table',
+    icon: 'web',
+    subItems: [ ],
+    position: 1
+  })
+];

@@ -9,6 +9,8 @@ import { ToolbarComponent } from './toolbar/toolbar.component';
 import { SidenavItemComponent } from './sidenav/sidenav-item/sidenav-item.component';
 import { MdButtonModule, MdIconModule, MdRippleModule, MdSidenavModule } from '@angular/material';
 import { SidenavCollapseDirective } from './sidenav/sidenav-collapse.directive';
+import { ToolbarUserMenuComponent } from './toolbar/toolbar-user-menu/toolbar-user-menu.component';
+import { ClickOutsideDirective } from './utils/click-outside.directive';
 
 @NgModule({
   imports: [
@@ -26,7 +28,9 @@ import { SidenavCollapseDirective } from './sidenav/sidenav-collapse.directive';
     ToolbarComponent,
     SidenavItemComponent,
     ScrollbarComponent,
-    SidenavCollapseDirective],
+    SidenavCollapseDirective,
+    ClickOutsideDirective,
+    ToolbarUserMenuComponent],
     exports: [
       LayoutComponent]
 })
