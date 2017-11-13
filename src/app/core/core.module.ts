@@ -1,3 +1,4 @@
+import { EmployeeComponent } from './../employees/employee/employee.component';
 import { RouterModule } from '@angular/router';
 import { ScrollbarComponent } from './scrollbar/scrollbar.component';
 import { NgModule } from '@angular/core';
@@ -15,7 +16,10 @@ import { ClickOutsideDirective } from './utils/click-outside.directive';
 @NgModule({
   imports: [
     CommonModule,
-    RouterModule.forRoot([{ path: '', component: LayoutComponent}]),
+    RouterModule.forRoot([
+      { path: '', component: LayoutComponent},
+      { path: 'employee', component: EmployeeComponent}
+    ]),
     FlexLayoutModule,
     MdButtonModule,
     MdIconModule,
