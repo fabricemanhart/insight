@@ -12,13 +12,16 @@ import { MdButtonModule, MdIconModule, MdRippleModule, MdSidenavModule } from '@
 import { SidenavCollapseDirective } from './sidenav/sidenav-collapse.directive';
 import { ToolbarUserMenuComponent } from './toolbar/toolbar-user-menu/toolbar-user-menu.component';
 import { ClickOutsideDirective } from './utils/click-outside.directive';
+import { EmployeesComponent } from '../employees/employees.component';
+import { PageHeaderComponent } from './page-header/page-header.component';
 
 @NgModule({
   imports: [
     CommonModule,
     RouterModule.forRoot([
       { path: '', component: LayoutComponent},
-      { path: 'employee', component: EmployeeComponent}
+      { path: 'employee', component: EmployeeComponent},
+      { path: 'employees', component: EmployeesComponent}
     ]),
     FlexLayoutModule,
     MdButtonModule,
@@ -34,8 +37,10 @@ import { ClickOutsideDirective } from './utils/click-outside.directive';
     ScrollbarComponent,
     SidenavCollapseDirective,
     ClickOutsideDirective,
-    ToolbarUserMenuComponent],
+    ToolbarUserMenuComponent,
+    PageHeaderComponent],
     exports: [
-      LayoutComponent]
+      LayoutComponent,
+      PageHeaderComponent]
 })
 export class CoreModule { }

@@ -30,7 +30,7 @@ export class SidenavComponent implements OnInit {
 const sideNavItems = [
   new SidenavItem({
     name: 'Employees',
-    route: '/tables/simple-table',
+    route: '/employees',
     icon: 'person',
     subItems: [ ],
     position: 1
