@@ -4,7 +4,16 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { EmployeeComponent } from './employee/employee.component';
 import { EmployeeDetailsComponent } from './employee/employee-details/employee-details.component';
-import { MdButtonModule, MdChipsModule, MdIconModule, MdTabsModule, MdCheckboxModule, MdCardModule } from '@angular/material';
+import {
+  MdButtonModule,
+  MdChipsModule,
+  MdInputModule,
+  MdIconModule,
+  MdTabsModule,
+  MdCheckboxModule,
+  MdCardModule,
+  MdSelectModule
+} from '@angular/material';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { EmployeesComponent } from './employees.component';
 import { PageHeaderComponent } from '../core/page-header/page-header.component';
@@ -21,7 +30,9 @@ import { CoreModule } from '../core/core.module';
     MdIconModule,
     MdTabsModule,
     MdCheckboxModule,
-    MdCardModule
+    MdCardModule,
+    MdSelectModule,
+    MdInputModule
   ],
   declarations: [
     EmployeesComponent,
@@ -29,4 +40,4 @@ import { CoreModule } from '../core/core.module';
     EmployeeDetailsComponent
   ]
 })
-export class EmployeesModule { }
+export class EmployeesModule {}

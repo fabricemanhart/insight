@@ -1,56 +1,113 @@
 <div class="simple-table">
-  
+
     <!-- <app-page-header [height]="'158px'" background="url(/assets/pattern-3.png)"></app-page-header> -->
-  
+
     <div class="container">
-  
-      <!-- <vr-breadcrumbs [currentPage]="'Simple Table'" [names]="['Tables']" [header]="'primary'"></vr-breadcrumbs> -->
-  
-      <div fxLayout="column" fxLayout.gt-md="row" fxLayoutGap="16px" fxLayoutAlign="start start">
-        <div class="sticky" #sticky>
-          <md-card fxFlex.gt-md="300px">
-            <md-card-title>Filters</md-card-title>
-            <md-card-content fxLayout="column">
-              <p>Try the checkboxes and see what happens.</p>
-              <md-checkbox [(ngModel)]="tableHover">
-                .table-hover
-              </md-checkbox>
-              <md-checkbox [(ngModel)]="tableStriped">
-                .table-striped
-              </md-checkbox>
-              <md-checkbox [(ngModel)]="tableCondensed">
-                .table-condensed
-              </md-checkbox>
-              <md-checkbox [(ngModel)]="tableBordered">
-                .table-bordered
-              </md-checkbox>
-            </md-card-content>
-          </md-card>
+
+        <!-- <vr-breadcrumbs [currentPage]="'Simple Table'" [names]="['Tables']" [header]="'primary'"></vr-breadcrumbs> -->
+
+        <div
+            fxLayout="column"
+            fxLayout.gt-md="row"
+            fxLayoutGap="16px"
+            fxLayoutAlign="start start"
+        >
+            <div
+                class="sticky"
+                #sticky
+            >
+                <md-card fxFlex.gt-md="300px">
+                    <md-card-title>Filters</md-card-title>
+                    <md-card-content fxLayout="column">
+
+                        <md-input-container>
+                            <input
+                                mdInput
+                                [(ngModel)]="nameSearchParmeter"
+                                (ngModelChange)="onSearchParemeterChange()"
+                                placeholder="Name"
+                                type="text"
+                            >
+                        </md-input-container>
+                        {{ jobProfileSearchParameter }}
+                        <md-select
+                            [(ngModel)]="jobProfileSearchParameter"
+                            (ngModelChange)="onSearchParemeterChange()"
+                            placeholder="Job Profile"
+                            multiple
+                        >
+                            <md-option
+                                *ngFor="let profile of jobProfiles$ | async"
+                                [value]="profile.Id"
+                            >
+                                {{ profile.Name }}
+                            </md-option>
+                        </md-select>
+
+                        <md-select
+                            placeholder="Capability"
+                            multiple
+                        >
+                            <md-option
+                                *ngFor="let name of capabilities$ | async"
+                                value="name"
+                            >
+                                {{ name }}
+                            </md-option>
+                        </md-select>
+
+                        <md-select
+                            placeholder="Office"
+                            multiple
+                        >
+                            <md-option
+                                *ngFor="let name of offices$ | async"
+                                value="name"
+                            >
+                                {{ name }}
+                            </md-option>
+                        </md-select>
+
+                    </md-card-content>
+                </md-card>
+            </div>
+
+            <div
+                fxFlex
+                class="mat-elevation-z2"
+            >
+                <table class="table table-hover table-striped table-condensed table-bordered">
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th>Name</th>
+                            <th>Title</th>
+                            <th>Location</th>
+                            <th>Avalability</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let employee of employees">
+                            <td class="avatar-cell">
+                                <img
+                                    class="avatar"
+                                    src="http://localhost:41588/img/Employees/{{employee.Code}}.jpg"
+                                >
+                            </td>
+                            <td>{{ employee.FullName }}</td>
+                            <td>{{ employee.Title }}</td>
+                            <td>
+                                {{ employee.Location }}
+                                <br>
+                                {{employee.PrivateAddressZip}} {{employee.PrivateAddressCity}}
+                            </td>
+                            <td>
+                                <img src="http://localhost:41588/api/v1/employees/{{employee.Code}}/utilization/line">
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
-  
-        <div fxFlex class="mat-elevation-z2">
-          <table class="table" [class.table-hover]="tableHover" [class.table-striped]="tableStriped" [class.table-condensed]="tableCondensed" [class.table-bordered]="tableBordered">
-            <thead>
-            <tr>
-              <th></th>
-              <th>Name</th>
-              <th>Title</th>
-              <th>Location</th>
-              <th>Avalability</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr *ngFor="let employee of employees">
-              <td class="avatar-cell"><img class="avatar" src="http://localhost:41588/img/Employees/{{employee.Code}}.jpg"></td>
-              <td>{{ employee.FullName }}</td>
-              <td>{{ employee.Title }}</td>
-              <td>{{ employee.Location }}<br />{{employee.PrivateAddressZip}} {{employee.PrivateAddressCity}}</td>
-              <td><img width="150" src="http://localhost:41588/api/v1/employees/{{employee.Code}}/utilization/line" /></td>
-            </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
     </div>
-  </div>
-  
+</div>

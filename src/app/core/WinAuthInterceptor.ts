@@ -6,12 +6,11 @@ import {
   HttpEvent
 } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
- 
- 
+
 @Injectable()
-export class WinAuthInterceptor implements HttpInterceptor{
-  constructor(){}
- 
+export class WinAuthInterceptor implements HttpInterceptor {
+  constructor() {  }
+
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     req = req.clone({
       withCredentials: true
