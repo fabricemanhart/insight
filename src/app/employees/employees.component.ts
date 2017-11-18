@@ -1,3 +1,4 @@
+import { Location } from '@angular/common';
 import { Subscription } from 'rxjs/Subscription';
 import { Subject } from 'rxjs/Rx';
 import { Params } from '@angular/router';
@@ -18,22 +19,28 @@ import 'rxjs/add/operator/map';
 export class EmployeesComponent implements OnInit, OnDestroy, AfterViewInit {
   @ViewChild('sticky') sticky: ElementRef;
 
+  params: HttpParams;
   nameSearchParmeter: string;
   jobProfileSearchParameter: string;
+  capabilitySearchParameter: string;
+  officeSearchParameter: string;
 
   employees: Employee[];
   jobProfiles$: Observable<Array<JobProfile>>;
-  capabilities$: Observable<Array<string>>;
-  offices$: Observable<Array<string>>;
+  capabilities$: Observable<Array<Capability>>;
+  offices$: Observable<Array<Office>>;
   searchParametersChanged = new Subject<HttpParams>();
   subscription: Subscription;
 
-  constructor(private httpClient: HttpClient) {
+  constructor(private httpClient: HttpClient, private location: Location) {
     this.subscription = this.searchParametersChanged
       .debounceTime(500)
       .distinctUntilChanged()
       .switchMap(params => this.getEmployees(params))
-      .subscribe(response => (this.employees = response.slice(0, 10)));
+      .subscribe(response => {
+        this.employees = response.slice(0, 10);
+        this.location.replaceState('employees', this.params.toString());
+      });
   }
 
   ngOnInit() {
@@ -48,19 +55,20 @@ export class EmployeesComponent implements OnInit, OnDestroy, AfterViewInit {
 
     this.capabilities$ = this.httpClient
       .get<Array<Capability>>('http://localhost:41588/api/v1/capabilities')
-      .map(p => p.filter(x => x.Name).map(x => x.Name));
+      .map(p => p.filter(x => x.Name));
 
     this.offices$ = this.httpClient
       .get<Array<Office>>('http://localhost:41588/api/v1/offices')
-      .map(p => p.filter(x => x.Name).map(x => x.Name));
+      .map(p => p.filter(x => x.Name));
   }
 
   onSearchParemeterChange() {
-    let params = new HttpParams();
-    params = this.nameSearchParmeter ? params.set('name', this.nameSearchParmeter) : params;
-    params = this.jobProfileSearchParameter ? params.set('jobProfiles', this.jobProfileSearchParameter) : params;
-
-    this.searchParametersChanged.next(params);
+    this.params = new HttpParams();
+    this.params = this.nameSearchParmeter ? this.params.set('name', this.nameSearchParmeter) : this.params;
+    this.params = this.jobProfileSearchParameter ? this.params.set('jobProfiles', this.jobProfileSearchParameter) : this.params;
+    this.params = this.capabilitySearchParameter ? this.params.set('assets', this.capabilitySearchParameter) : this.params;
+    this.params = this.officeSearchParameter ? this.params.set('offices', this.officeSearchParameter) : this.params;
+    this.searchParametersChanged.next(this.params);
   }
 
   getEmployees(params?: HttpParams) {

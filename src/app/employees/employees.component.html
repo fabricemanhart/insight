@@ -29,7 +29,7 @@
                                 type="text"
                             >
                         </md-input-container>
-                        {{ jobProfileSearchParameter }}
+
                         <md-select
                             [(ngModel)]="jobProfileSearchParameter"
                             (ngModelChange)="onSearchParemeterChange()"
@@ -45,26 +45,30 @@
                         </md-select>
 
                         <md-select
+                            [(ngModel)]="capabilitySearchParameter"
+                            (ngModelChange)="onSearchParemeterChange()"
                             placeholder="Capability"
                             multiple
                         >
                             <md-option
-                                *ngFor="let name of capabilities$ | async"
-                                value="name"
+                                *ngFor="let capability of capabilities$ | async"
+                                [value]="capability.Id"
                             >
-                                {{ name }}
+                                {{ capability.Name }}
                             </md-option>
                         </md-select>
 
                         <md-select
+                            [(ngModel)]="officeSearchParameter"
+                            (ngModelChange)="onSearchParemeterChange()"
                             placeholder="Office"
                             multiple
                         >
                             <md-option
-                                *ngFor="let name of offices$ | async"
-                                value="name"
+                                *ngFor="let office of offices$ | async"
+                                [value]="office.Id"
                             >
-                                {{ name }}
+                                {{ office.Name }}
                             </md-option>
                         </md-select>
 
