@@ -9,7 +9,7 @@
       <div fxLayout="column" fxLayout.gt-md="row" fxLayoutGap="16px" fxLayoutAlign="start start">
         <div class="sticky" #sticky>
           <md-card fxFlex.gt-md="300px">
-            <md-card-title>Simple Table</md-card-title>
+            <md-card-title>Filters</md-card-title>
             <md-card-content fxLayout="column">
               <p>Try the checkboxes and see what happens.</p>
               <md-checkbox [(ngModel)]="tableHover">
@@ -34,20 +34,18 @@
             <tr>
               <th></th>
               <th>Name</th>
-              <th>Company</th>
-              <th>E-Mail</th>
-              <th>Phone</th>
-              <th>Balance</th>
+              <th>Title</th>
+              <th>Location</th>
+              <th>Avalability</th>
             </tr>
             </thead>
             <tbody>
-            <tr *ngFor="let row of rows">
-              <td class="avatar-cell"><img class="avatar" [src]="row.picture"></td>
-              <td>{{ row.name.first }} {{ row.name.last }}</td>
-              <td>{{ row.company }}</td>
-              <td>{{ row.email }}</td>
-              <td>{{ row.phone }}</td>
-              <td>{{ row.balance }}</td>
+            <tr *ngFor="let employee of employees">
+              <td class="avatar-cell"><img class="avatar" src="http://localhost:41588/img/Employees/{{employee.Code}}.jpg"></td>
+              <td>{{ employee.FullName }}</td>
+              <td>{{ employee.Title }}</td>
+              <td>{{ employee.Location }}<br />{{employee.PrivateAddressZip}} {{employee.PrivateAddressCity}}</td>
+              <td><img width="150" src="http://localhost:41588/api/v1/employees/{{employee.Code}}/utilization/line" /></td>
             </tr>
             </tbody>
           </table>

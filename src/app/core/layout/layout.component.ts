@@ -26,9 +26,6 @@ export class LayoutComponent implements AfterViewInit, OnDestroy {
   @ViewChild('scrollContainer')
   scrollContainer: ScrollbarComponent;
 
-  private _mediaSubscription: Subscription;
-  private _routerEventsSubscription: Subscription;
-
   constructor(
     private router: Router,
     private cd: ChangeDetectorRef
@@ -65,7 +62,5 @@ export class LayoutComponent implements AfterViewInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    this._mediaSubscription.unsubscribe();
-    this._routerEventsSubscription.unsubscribe();
   }
 }

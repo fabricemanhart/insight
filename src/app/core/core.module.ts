@@ -1,3 +1,4 @@
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { EmployeeComponent } from './../employees/employee/employee.component';
 import { RouterModule } from '@angular/router';
 import { ScrollbarComponent } from './scrollbar/scrollbar.component';
@@ -14,6 +15,7 @@ import { ToolbarUserMenuComponent } from './toolbar/toolbar-user-menu/toolbar-us
 import { ClickOutsideDirective } from './utils/click-outside.directive';
 import { EmployeesComponent } from '../employees/employees.component';
 import { PageHeaderComponent } from './page-header/page-header.component';
+import { WinAuthInterceptor } from './WinAuthInterceptor';
 
 @NgModule({
   imports: [
@@ -41,6 +43,14 @@ import { PageHeaderComponent } from './page-header/page-header.component';
     PageHeaderComponent],
     exports: [
       LayoutComponent,
-      PageHeaderComponent]
+      PageHeaderComponent
+    ],
+    providers: [
+      {
+        provide: HTTP_INTERCEPTORS,
+        useClass: WinAuthInterceptor,
+        multi: true
+      },
+    ]
 })
 export class CoreModule { }
