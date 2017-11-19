@@ -18,6 +18,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { EmployeesComponent } from './employees.component';
 import { PageHeaderComponent } from '../core/page-header/page-header.component';
 import { CoreModule } from '../core/core.module';
+import { EmployeesFilterComponent } from './employees-filter/employees-filter.component';
 
 @NgModule({
   imports: [
@@ -37,7 +38,8 @@ import { CoreModule } from '../core/core.module';
   declarations: [
     EmployeesComponent,
     EmployeeComponent,
-    EmployeeDetailsComponent
+    EmployeeDetailsComponent,
+    EmployeesFilterComponent
   ]
 })
 export class EmployeesModule {}

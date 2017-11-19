@@ -1,0 +1,58 @@
+<md-card fxFlex.gt-md="300px">
+    <md-card-title>Filters</md-card-title>
+    <md-card-content fxLayout="column">
+
+        <md-input-container>
+            <input
+                mdInput
+                [(ngModel)]="filterParams.name"
+                (ngModelChange)="onSearchParemeterChange()"
+                placeholder="Name"
+                type="text"
+            >
+        </md-input-container>
+
+        <md-select
+            [(ngModel)]="filterParams.jobProfiles"
+            (ngModelChange)="onSearchParemeterChange()"
+            placeholder="Job Profile"
+            multiple
+        >
+            <md-option
+                *ngFor="let profile of jobProfiles$ | async"
+                [value]="profile.Id"
+            >
+                {{ profile.Name }}
+            </md-option>
+        </md-select>
+
+        <md-select
+            [(ngModel)]="filterParams.capabilities"
+            (ngModelChange)="onSearchParemeterChange()"
+            placeholder="Capability"
+            multiple
+        >
+            <md-option
+                *ngFor="let capability of capabilities$ | async"
+                [value]="capability.Id"
+            >
+                {{ capability.Name }}
+            </md-option>
+        </md-select>
+
+        <md-select
+            [(ngModel)]="filterParams.offices"
+            (ngModelChange)="onSearchParemeterChange()"
+            placeholder="Office"
+            multiple
+        >
+            <md-option
+                *ngFor="let office of offices$ | async"
+                [value]="office.Id"
+            >
+                {{ office.Name }}
+            </md-option>
+        </md-select>
+
+    </md-card-content>
+</md-card>
