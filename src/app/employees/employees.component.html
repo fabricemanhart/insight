@@ -23,7 +23,7 @@
                         <md-input-container>
                             <input
                                 mdInput
-                                [(ngModel)]="nameSearchParmeter"
+                                [(ngModel)]="filterParams.name"
                                 (ngModelChange)="onSearchParemeterChange()"
                                 placeholder="Name"
                                 type="text"
@@ -31,7 +31,7 @@
                         </md-input-container>
 
                         <md-select
-                            [(ngModel)]="jobProfileSearchParameter"
+                            [(ngModel)]="filterParams.jobProfiles"
                             (ngModelChange)="onSearchParemeterChange()"
                             placeholder="Job Profile"
                             multiple
@@ -45,7 +45,7 @@
                         </md-select>
 
                         <md-select
-                            [(ngModel)]="capabilitySearchParameter"
+                            [(ngModel)]="filterParams.capabilities"
                             (ngModelChange)="onSearchParemeterChange()"
                             placeholder="Capability"
                             multiple
@@ -59,7 +59,7 @@
                         </md-select>
 
                         <md-select
-                            [(ngModel)]="officeSearchParameter"
+                            [(ngModel)]="filterParams.offices"
                             (ngModelChange)="onSearchParemeterChange()"
                             placeholder="Office"
                             multiple
