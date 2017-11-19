@@ -36,7 +36,7 @@ export class FilterParameters {
 
   get QueryParamsForAngularRouter() {
     return {
-      name: this.name.length > 0 ? this.name : undefined,
+      name: this.name && this.name.length > 0 ? this.name : undefined,
       jobProfiles: this.jobProfiles.length > 0 ? this.jobProfiles : undefined,
       assets: this.capabilities.length > 0 ? this.capabilities : undefined,
       offices: this.offices.length > 0 ? this.offices : undefined

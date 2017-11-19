@@ -1,3 +1,4 @@
+import { DataService } from './services/data.service';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { EmployeeComponent } from './../employees/employee/employee.component';
 import { RouterModule } from '@angular/router';
@@ -51,6 +52,7 @@ import { WinAuthInterceptor } from './WinAuthInterceptor';
         useClass: WinAuthInterceptor,
         multi: true
       },
+      DataService
     ]
 })
 export class CoreModule { }

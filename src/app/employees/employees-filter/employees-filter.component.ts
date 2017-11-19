@@ -1,13 +1,22 @@
 import 'rxjs/add/operator/debounceTime';
 
-import { HttpClient } from '@angular/common/http';
-import { Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  Input,
+  OnDestroy,
+  OnInit,
+  Output
+} from '@angular/core';
 import { ParamMap } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
 import { Subject } from 'rxjs/Subject';
 import { Subscription } from 'rxjs/Subscription';
 
-import { FilterParameters } from './../../core/models/filterParameters';
+import { FilterParameters } from './../../core/models/filter-parameters';
+import { CapabilityService } from './../services/capability.service';
+import { JobProfileService } from './../services/job-profile.service';
+import { OfficeService } from './../services/office.service';
 
 @Component({
   selector: 'app-employees-filter',
@@ -27,7 +36,11 @@ export class EmployeesFilterComponent implements OnInit, OnDestroy {
   capabilities$: Observable<Array<Capability>>;
   offices$: Observable<Array<Office>>;
 
-  constructor(private httpClient: HttpClient) {}
+  constructor(
+    private jobProfileService: JobProfileService,
+    private capabilityService: CapabilityService,
+    private officeService: OfficeService
+  ) {}
 
   ngOnInit() {
     this.filterParams = new FilterParameters(this.routerParams as ParamMap);
@@ -38,18 +51,16 @@ export class EmployeesFilterComponent implements OnInit, OnDestroy {
         return this.onFilterChanged.emit(filterParams);
       });
 
-    this.jobProfiles$ = this.httpClient
-      .get<Array<JobProfile>>(
-        'http://localhost:41588/api/v1/employees/jobprofiles'
-      )
+    this.jobProfiles$ = this.jobProfileService
+      .getAll<Array<JobProfile>>()
       .map(p => p.filter(x => x.Name));
 
-    this.capabilities$ = this.httpClient
-      .get<Array<Capability>>('http://localhost:41588/api/v1/capabilities')
+    this.capabilities$ = this.capabilityService
+      .getAll<Array<Capability>>()
       .map(p => p.filter(x => x.Name));
 
-    this.offices$ = this.httpClient
-      .get<Array<Office>>('http://localhost:41588/api/v1/offices')
+    this.offices$ = this.officeService
+      .getAll<Array<Office>>()
       .map(p => p.filter(x => x.Name));
 
     this.initialLoadOfEmployeeList();
