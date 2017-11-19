@@ -1,23 +1,23 @@
 <div *ngIf="item.routeIsFunction(); then function else route"></div>
 
 <ng-template #function>
-  <a class="sidenav-item" [class.open]="isOpen(item)" md-ripple
+  <a class="sidenav-item" [class.open]="isOpen(item)" matRipple
      (click)="item.route"
      fxLayout="row" fxLayoutAlign="start center">
 
     <span class="name">{{ item.name }}</span>
     <span fxFlex></span>
-    <md-icon class="icon" *ngIf="item.icon">{{ item.icon }}</md-icon>
+    <mat-icon class="icon" *ngIf="item.icon">{{ item.icon }}</mat-icon>
   </a>
 </ng-template>
 
 <ng-template #route>
-  <a class="sidenav-item" [class.open]="isOpen(item)" md-ripple
+  <a class="sidenav-item" [class.open]="isOpen(item)" matRipple
      [routerLink]="item.route" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"
      fxLayout="row" fxLayoutAlign="start center">
 
     <span class="name">{{ item.name }}</span>
     <span fxFlex></span>
-    <md-icon class="icon" *ngIf="item.icon">{{ item.icon }}</md-icon>
+    <mat-icon class="icon" *ngIf="item.icon">{{ item.icon }}</mat-icon>
   </a>
 </ng-template>

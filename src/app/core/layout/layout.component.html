@@ -1,16 +1,16 @@
 <!-- Todo move card-elevation-z4 -->
-<md-sidenav-container class="layout-container" [ngClass]='card-elevation-z4'>
+<mat-sidenav-container class="layout-container" [ngClass]='card-elevation-z4'>
 
   <div class="layout" fxLayout="column" [class.alpha]="true" [class.boxed]="false">
 
-      <md-sidenav-container fxFlex>
+      <mat-sidenav-container fxFlex>
 
-        <md-sidenav class="sidenav-container" (open)="openSidenav()" (close)="closeSidenav()" [opened]="sidenavOpen" [align]="sidenavAlign"
+        <mat-sidenav class="sidenav-container" (open)="openSidenav()" (close)="closeSidenav()" [opened]="sidenavOpen" [align]="sidenavAlign"
           [mode]="sidenavMode" [disableClose]="sidenavDisableClose" [appSidenavCollapse]="sidenavCollapsed">
 
           <app-sidenav [collapsed]="sidenavCollapsed" (toggledSidenavCollapse)="toggleSidenavCollapse()"></app-sidenav>
 
-        </md-sidenav>
+        </mat-sidenav>
 
         <div class="toolbar-container" fxLayout="column">
           
@@ -23,8 +23,8 @@
             <router-outlet (activate)="onActivate()"></router-outlet>
           </app-scrollbar>
         </div>
-      </md-sidenav-container>
+      </mat-sidenav-container>
 
   </div>
 
-</md-sidenav-container>
+</mat-sidenav-container>

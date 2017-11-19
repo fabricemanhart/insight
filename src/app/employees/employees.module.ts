@@ -6,14 +6,14 @@ import { NgModule } from '@angular/core';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { FormsModule } from '@angular/forms';
 import {
-    MdButtonModule,
-    MdCardModule,
-    MdCheckboxModule,
-    MdChipsModule,
-    MdIconModule,
-    MdInputModule,
-    MdSelectModule,
-    MdTabsModule,
+    MatButtonModule,
+    MatCardModule,
+    MatCheckboxModule,
+    MatChipsModule,
+    MatIconModule,
+    MatInputModule,
+    MatSelectModule,
+    MatTabsModule,
 } from '@angular/material';
 
 import { CoreModule } from '../core/core.module';
@@ -29,14 +29,14 @@ import { EmployeeService } from './services/employee.service';
     CoreModule,
     FormsModule,
     FlexLayoutModule,
-    MdButtonModule,
-    MdChipsModule,
-    MdIconModule,
-    MdTabsModule,
-    MdCheckboxModule,
-    MdCardModule,
-    MdSelectModule,
-    MdInputModule
+    MatButtonModule,
+    MatChipsModule,
+    MatIconModule,
+    MatTabsModule,
+    MatCheckboxModule,
+    MatCardModule,
+    MatSelectModule,
+    MatInputModule
   ],
   declarations: [
     EmployeesComponent,
