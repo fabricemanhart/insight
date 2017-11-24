@@ -1,3 +1,4 @@
+import { Option } from './../../core/models/option';
 import 'rxjs/add/operator/debounceTime';
 
 import {
@@ -32,7 +33,7 @@ export class EmployeesFilterComponent implements OnInit, OnDestroy {
   filterParams: FilterParameters;
   subscription: Subscription;
 
-  jobProfiles$: Observable<Array<JobProfile>>;
+  jobProfileOptions: Array<Option>;
   capabilities$: Observable<Array<Capability>>;
   offices$: Observable<Array<Office>>;
 
@@ -51,9 +52,11 @@ export class EmployeesFilterComponent implements OnInit, OnDestroy {
         return this.onFilterChanged.emit(filterParams);
       });
 
-    this.jobProfiles$ = this.jobProfileService
+    this.jobProfileService
       .getAll<Array<JobProfile>>()
-      .map(p => p.filter(x => x.Name));
+      .map(p => p.filter(x => x.Name))
+      .map(p => p.map(x => new Option(x.Id, x.Name)))
+      .subscribe(o => this.jobProfileOptions = o);
 
     this.capabilities$ = this.capabilityService
       .getAll<Array<Capability>>()

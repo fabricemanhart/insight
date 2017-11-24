@@ -2,8 +2,9 @@
     <mat-card-title>Filters</mat-card-title>
     <mat-card-content fxLayout="column">
 
-      <app-autocomplete-with-chips></app-autocomplete-with-chips>
+      <app-autocomplete-with-chips *ngIf="jobProfileOptions" [options]="jobProfileOptions"></app-autocomplete-with-chips>
 
+<!--
         <mat-form-field>
             <input
                 matInput
@@ -54,7 +55,7 @@
             >
                 {{ office.Name }}
             </mat-option>
-        </mat-select>
+        </mat-select> -->
 
     </mat-card-content>
 </mat-card>
