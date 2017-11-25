@@ -1,21 +1,19 @@
-import { EmployeeService } from './services/employee.service';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/switchMap';
 import 'rxjs/add/operator/take';
 
 import { HttpClient, HttpParams } from '@angular/common/http';
-import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { ActivatedRoute, ParamMap, Router } from '@angular/router';
-import Scrollbar from 'smooth-scrollbar';
+import { Component, ElementRef, ViewChild } from '@angular/core';
+import { ParamMap, Router } from '@angular/router';
 
-import { FilterParameters } from './../core/models/filter-parameters';
+import { EmployeeService } from './services/employee.service';
 
 @Component({
   selector: 'app-employees',
   templateUrl: './employees.component.html',
   styleUrls: ['./employees.component.scss']
 })
-export class EmployeesComponent implements OnInit {
+export class EmployeesComponent {
   @ViewChild('sticky') sticky: ElementRef;
 
   routerParams: ParamMap;
@@ -24,23 +22,20 @@ export class EmployeesComponent implements OnInit {
   constructor(
     private employeeService: EmployeeService,
     private httpClient: HttpClient,
-    private router: Router,
-    private route: ActivatedRoute
+    private router: Router
   ) {}
 
-  ngOnInit() {
-    this.route.queryParamMap.subscribe(params => {
-      this.routerParams = params;
+
+  onRouterParamsChanged(params: any) {
+    this.router.navigate(['/employees'], {
+      queryParams: params
     });
   }
 
-  onFilterChanged(params: FilterParameters) {
-    this.router.navigate(['/employees'], {
-      queryParams: params.QueryParamsForAngularRouter
-    });
-    return this.employeeService.getAll<Array<Employee>>(params.HttpParamsForHttpClient)
-    .subscribe(response => (this.employees = response)
-    );
+  onQueryParamsChanged(params: HttpParams) {
+    this.employeeService
+      .getAll<Array<Employee>>(params)
+      .subscribe(response => (this.employees = response));
   }
 
   // ngAfterViewInit() {

@@ -1,11 +1,12 @@
-import { Option } from './../models/option';
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { FormControl } from '@angular/forms';
-import { MatChipInputEvent } from '@angular/material';
-import { Observable } from 'rxjs/Observable';
-import 'rxjs/add/operator/startWith';
 import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/startWith';
 
+import { Component, Input, OnInit } from '@angular/core';
+import { FormControl } from '@angular/forms';
+import { Observable } from 'rxjs/Observable';
+
+import { JobProfileFilter } from '../../employees/employees-filter/job-profile-filter';
+import { Option } from './../models/option';
 
 @Component({
   selector: 'app-autocomplete-with-chips',
@@ -13,33 +14,28 @@ import 'rxjs/add/operator/map';
   styleUrls: ['./autocomplete-with-chips.component.scss']
 })
 export class AutocompleteWithChipsComponent implements OnInit {
-  visible = true;
-  selectable = true;
-  removable = true;
-  addOnBlur = true;
-
-  myControl: FormControl = new FormControl();
+  control: FormControl = new FormControl();
   filteredOptions$: Observable<Array<Option>>;
-  selectedOptions: Array<Option> = [];
 
-  @Input('options') options: Array<Option>;
-
-  @Output('selectionChange')
-  selectionChange = new EventEmitter<Array<Option>>();
+  @Input('filter') filter: JobProfileFilter;
 
   ngOnInit() {
-    this.filteredOptions$ = this.myControl.valueChanges
-    .startWith(null)
-    .map(option => option && typeof option === 'object' ? option.name : option)
-    .map(name => name ? this.filter(name) : this.options.slice());
+    this.filteredOptions$ = this.control.valueChanges
+      .startWith(null)
+      .map(
+        option => (option && typeof option === 'object' ? option.name : option)
+      )
+      .map(
+        name => (name ? this.filterDropdown(name) : this.filter.options.slice())
+      );
   }
 
-  filter(val: string): Option[] {
-    if (!this.options) {
+  filterDropdown(val: string): Option[] {
+    if (!this.filter.options) {
       return [];
     }
 
-    return this.options.filter(
+    return this.filter.options.filter(
       option => option.name.toLowerCase().indexOf(val.toLowerCase()) === 0
     );
   }
@@ -49,21 +45,17 @@ export class AutocompleteWithChipsComponent implements OnInit {
   }
 
   onSelectionChanged(option: Option) {
-
-    console.log(option);
-    console.log(this.selectedOptions);
-    
-    if (this.selectedOptions.indexOf(option) !== -1) {
+    if (this.filter.selectedOptions.indexOf(option) !== -1) {
       return;
     }
 
-    this.selectedOptions.push(option);
-    this.selectionChange.next(this.selectedOptions);
+    this.filter.selectedOptions.push(option);
+    this.filter.next();
   }
 
   onOptionRemoved(option: Option) {
-    const index = this.selectedOptions.indexOf(option);
-    this.selectedOptions.splice(index, 1);
-    this.selectionChange.next(this.selectedOptions);
+    const index = this.filter.selectedOptions.indexOf(option);
+    this.filter.selectedOptions.splice(index, 1);
+    this.filter.next();
   }
 }

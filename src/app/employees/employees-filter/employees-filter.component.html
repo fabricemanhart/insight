@@ -2,63 +2,19 @@
     <mat-card-title>Filters</mat-card-title>
     <mat-card-content fxLayout="column">
 
-        <app-autocomplete-with-chips
-            *ngIf="jobProfileOptions"
-            [options]="jobProfileOptions"
-            (selectionChange)="onOptionChanged($event)"
+        <app-autocomplete-with-chips *ngIf="jobProfileFilter.options" [filter]="jobProfileFilter"></app-autocomplete-with-chips>
+
+        <!-- <app-autocomplete-with-chips
+            *ngIf="capabilityOptions$ | async; let capabilityOptions"
+            [options]="capabilityOptions"
+            (selectionChange)="onOptionChanged($event, 'capabilities')"
         ></app-autocomplete-with-chips>
 
-        <!-- <mat-form-field>
-            <input
-                matInput
-                [(ngModel)]="filterParams.name"
-                (ngModelChange)="onSearchParemeterChange()"
-                placeholder="Name"
-                type="text"
-            >
-        </mat-form-field>
-
-        <mat-select
-            [(ngModel)]="filterParams.jobProfiles"
-            (ngModelChange)="onSearchParemeterChange()"
-            placeholder="Job Profile"
-            multiple
-        >
-            <mat-option
-                *ngFor="let profile of jobProfiles$ | async"
-                [value]="profile.Id"
-            >
-                {{ profile.Name }}
-            </mat-option>
-        </mat-select>
-
-        <mat-select
-            [(ngModel)]="filterParams.capabilities"
-            (ngModelChange)="onSearchParemeterChange()"
-            placeholder="Capability"
-            multiple
-        >
-            <mat-option
-                *ngFor="let capability of capabilities$ | async"
-                [value]="capability.Id"
-            >
-                {{ capability.Name }}
-            </mat-option>
-        </mat-select>
-
-        <mat-select
-            [(ngModel)]="filterParams.offices"
-            (ngModelChange)="onSearchParemeterChange()"
-            placeholder="Office"
-            multiple
-        >
-            <mat-option
-                *ngFor="let office of offices$ | async"
-                [value]="office.Id"
-            >
-                {{ office.Name }}
-            </mat-option>
-        </mat-select> -->
+        <app-autocomplete-with-chips
+            *ngIf="officeOptions$ | async; let officeOptions"
+            [options]="officeOptions"
+            (selectionChange)="onOptionChanged($event, 'offices')"
+        ></app-autocomplete-with-chips> -->
 
     </mat-card-content>
 </mat-card>

@@ -1,15 +1,16 @@
 <mat-form-field>
     <input
         type="text"
+        [placeholder]="filter.placeholder"
         matInput
-        [formControl]="myControl"
+        [formControl]="control"
         [matAutocomplete]="auto"
     >
 </mat-form-field>
 
 <mat-chip-list>
-  <mat-chip *ngFor="let option of selectedOptions">{{ option.name }}
-    <mat-icon (click)="onOptionRemoved(option)" matChipRemove *ngIf="removable">cancel</mat-icon>
+  <mat-chip *ngFor="let option of filter.selectedOptions">{{ option.name }}
+    <mat-icon (click)="onOptionRemoved(option)" matChipRemove>cancel</mat-icon>
   </mat-chip>
 </mat-chip-list>
 

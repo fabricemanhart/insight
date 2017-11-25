@@ -1,89 +1,67 @@
-import { Option } from './../../core/models/option';
+import 'rxjs/add/observable/combineLatest';
 import 'rxjs/add/operator/debounceTime';
+import 'rxjs/add/operator/mergeMap';
 
-import {
-  Component,
-  EventEmitter,
-  Input,
-  OnDestroy,
-  OnInit,
-  Output
-} from '@angular/core';
-import { ParamMap } from '@angular/router';
+import { HttpParams } from '@angular/common/http';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
-import { Subject } from 'rxjs/Subject';
-import { Subscription } from 'rxjs/Subscription';
 
-import { FilterParameters } from './../../core/models/filter-parameters';
-import { CapabilityService } from './../services/capability.service';
 import { JobProfileService } from './../services/job-profile.service';
-import { OfficeService } from './../services/office.service';
+import { JobProfileFilter } from './job-profile-filter';
 
 @Component({
   selector: 'app-employees-filter',
   templateUrl: './employees-filter.component.html',
   styleUrls: ['./employees-filter.component.scss']
 })
-export class EmployeesFilterComponent implements OnInit, OnDestroy {
+export class EmployeesFilterComponent implements OnInit {
   // when declaring rourterParams as ParamMap I get an compiler error
   @Input('routerParams') routerParams: any;
-  @Output('onFilterChange')
-  onFilterChange = new EventEmitter<FilterParameters>();
-  filterParametersChanged = new Subject<FilterParameters>();
-  filterParams: FilterParameters;
-  subscription: Subscription;
+  @Output('queryParamsChange')
+  queryParamsChange = new EventEmitter<HttpParams>();
+  @Output('routerParamsChange') routerParamsChange = new EventEmitter<any>();
 
-  jobProfileOptions: Array<Option>;
-  capabilities$: Observable<Array<Capability>>;
-  offices$: Observable<Array<Office>>;
+  jobProfileFilter: JobProfileFilter;
 
   constructor(
-    private jobProfileService: JobProfileService,
-    private capabilityService: CapabilityService,
-    private officeService: OfficeService
+    private route: ActivatedRoute,
+    private jobProfileService: JobProfileService
   ) {}
 
   ngOnInit() {
-    this.filterParams = new FilterParameters(this.routerParams as ParamMap);
-    this.subscription = this.filterParametersChanged
+    this.route.queryParamMap.subscribe(params => {
+      this.routerParams = params;
+      this.jobProfileFilter = new JobProfileFilter(
+        this.jobProfileService,
+        'jobProfiles',
+        'Job Profiles',
+        this.routerParams
+      );
+    });
+
+    Observable.combineLatest(this.jobProfileFilter.subject)
       .debounceTime(500)
       // TODO .distinctUntilChanged()
       .subscribe(filterParams => {
-        return this.onFilterChange.emit(filterParams);
+        let httpParams = new HttpParams();
+        const routerParams = {};
+
+        filterParams.forEach(function(param) {
+          if (param && param[0]) {
+            httpParams = httpParams.set(
+              param[0].parameterName,
+              param.map(s => s.id).toString()
+            );
+
+            routerParams[param[0].parameterName] = param
+              .map(s => s.id)
+              .toString();
+          }
+        });
+
+        this.queryParamsChange.emit(httpParams);
+        this.routerParamsChange.emit(routerParams);
       });
-
-    this.jobProfileService
-      .getAll<Array<JobProfile>>()
-      .map(p => p.filter(x => x.Name && !x.IsGroup))
-      .map(p => p.map(x => new Option(x.Id, x.Name)))
-      .subscribe(o => this.jobProfileOptions = o);
-
-    this.capabilities$ = this.capabilityService
-      .getAll<Array<Capability>>()
-      .map(p => p.filter(x => x.Name));
-
-    this.offices$ = this.officeService
-      .getAll<Array<Office>>()
-      .map(p => p.filter(x => x.Name));
-
-    this.initialLoadOfEmployeeList();
-  }
-
-  initialLoadOfEmployeeList() {
-    this.onSearchParemeterChanged();
-  }
-
-  onSearchParemeterChanged() {
-    this.filterParametersChanged.next(this.filterParams);
-  }
-
-  onOptionChanged(options: Array<Option>) {
-    console.log('changed ' + options);
-    this.filterParams.jobProfiles = options.map(o => o.id);
-    this.onSearchParemeterChanged();
-  }
-
-  ngOnDestroy() {
-    this.subscription.unsubscribe();
   }
 }

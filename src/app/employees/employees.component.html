@@ -18,7 +18,8 @@
             >
                 <app-employees-filter
                     [routerParams]="routerParams"
-                    (onFilterChange)="onFilterChanged($event)"
+                    (queryParamsChange)="onQueryParamsChanged($event)"
+                    (routerParamsChange)="onRouterParamsChanged($event)"
                 ></app-employees-filter>
             </div>
 
