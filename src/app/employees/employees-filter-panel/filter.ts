@@ -4,7 +4,6 @@ import { Subject } from 'rxjs/Rx';
 import { Option } from './../../core/models/option';
 
 export class Filter {
-  private params: any;
   private initialOptions: string;
   public options: Array<Option>;
   public selectedOptions: Array<Option> = [];
@@ -13,7 +12,7 @@ export class Filter {
   constructor(
     protected paramName: string,
     public placeholder: string,
-    params: ParamMap
+    private params: ParamMap
   ) {
     this.initialOptions = params.get(this.paramName);
   }

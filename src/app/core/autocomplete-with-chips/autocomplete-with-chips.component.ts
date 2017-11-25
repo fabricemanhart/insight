@@ -5,7 +5,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { Observable } from 'rxjs/Observable';
 
-import { JobProfileFilter } from '../../employees/employees-filter/job-profile-filter';
+import { JobProfileFilter } from '../../employees/employees-filter-panel/job-profile-filter';
 import { Option } from './../models/option';
 
 @Component({

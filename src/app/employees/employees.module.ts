@@ -19,7 +19,7 @@ import {
 import { CoreModule } from '../core/core.module';
 import { EmployeeDetailsComponent } from './employee/employee-details/employee-details.component';
 import { EmployeeComponent } from './employee/employee.component';
-import { EmployeesFilterComponent } from './employees-filter/employees-filter.component';
+import { EmployeesFilterPanelComponent } from './employees-filter-panel/employees-filter-panel.component';
 import { EmployeesComponent } from './employees.component';
 import { EmployeeService } from './services/employee.service';
 
@@ -42,7 +42,7 @@ import { EmployeeService } from './services/employee.service';
     EmployeesComponent,
     EmployeeComponent,
     EmployeeDetailsComponent,
-    EmployeesFilterComponent
+    EmployeesFilterPanelComponent
   ],
   providers: [
     EmployeeService,

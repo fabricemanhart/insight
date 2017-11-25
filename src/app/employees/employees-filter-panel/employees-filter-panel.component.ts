@@ -10,23 +10,20 @@ import { JobProfileService } from './../services/job-profile.service';
 import { JobProfileFilter } from './job-profile-filter';
 
 @Component({
-  selector: 'app-employees-filter',
-  templateUrl: './employees-filter.component.html',
-  styleUrls: ['./employees-filter.component.scss']
+  selector: 'app-employees-filter-panel',
+  templateUrl: './employees-filter-panel.component.html',
+  styleUrls: ['./employees-filter-panel.component.scss']
 })
-export class EmployeesFilterComponent implements OnInit {
-  // when declaring rourterParams as ParamMap I get an compiler error
+export class EmployeesFilterPanelComponent implements OnInit {
   @Input('routerParams') routerParams: any;
   @Output('queryParamsChange')
   queryParamsChange = new EventEmitter<HttpParams>();
   @Output('routerParamsChange') routerParamsChange = new EventEmitter<any>();
   jobProfileFilter: JobProfileFilter;
 
-
   constructor(private jobProfileService: JobProfileService) {}
 
   ngOnInit() {
-
     this.jobProfileFilter = new JobProfileFilter(
       this.jobProfileService,
       'jobProfiles',
