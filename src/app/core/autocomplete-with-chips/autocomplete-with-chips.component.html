@@ -7,13 +7,21 @@
     >
 </mat-form-field>
 
+<mat-chip-list>
+  <mat-chip *ngFor="let option of selectedOptions">{{ option.name }}
+    <mat-icon (click)="onOptionRemoved(option)" matChipRemove *ngIf="removable">cancel</mat-icon>
+  </mat-chip>
+</mat-chip-list>
+
 <mat-autocomplete
     #auto="matAutocomplete"
-    [displayWith]="displayFn"
+    [displayWith]="display"
 >
     <mat-option
         *ngFor="let option of filteredOptions$ | async"
-        [value]="option"
+        (onSelectionChange)="onSelectionChanged(option)"
+        [value]=""
+
     >
         {{ option.name }}
     </mat-option>

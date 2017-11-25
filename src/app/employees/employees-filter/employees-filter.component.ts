@@ -27,8 +27,8 @@ import { OfficeService } from './../services/office.service';
 export class EmployeesFilterComponent implements OnInit, OnDestroy {
   // when declaring rourterParams as ParamMap I get an compiler error
   @Input('routerParams') routerParams: any;
-  @Output('onFilterChanged')
-  onFilterChanged = new EventEmitter<FilterParameters>();
+  @Output('onFilterChange')
+  onFilterChange = new EventEmitter<FilterParameters>();
   filterParametersChanged = new Subject<FilterParameters>();
   filterParams: FilterParameters;
   subscription: Subscription;
@@ -49,12 +49,12 @@ export class EmployeesFilterComponent implements OnInit, OnDestroy {
       .debounceTime(500)
       // TODO .distinctUntilChanged()
       .subscribe(filterParams => {
-        return this.onFilterChanged.emit(filterParams);
+        return this.onFilterChange.emit(filterParams);
       });
 
     this.jobProfileService
       .getAll<Array<JobProfile>>()
-      .map(p => p.filter(x => x.Name))
+      .map(p => p.filter(x => x.Name && !x.IsGroup))
       .map(p => p.map(x => new Option(x.Id, x.Name)))
       .subscribe(o => this.jobProfileOptions = o);
 
@@ -70,11 +70,17 @@ export class EmployeesFilterComponent implements OnInit, OnDestroy {
   }
 
   initialLoadOfEmployeeList() {
-    this.onSearchParemeterChange();
+    this.onSearchParemeterChanged();
   }
 
-  onSearchParemeterChange() {
+  onSearchParemeterChanged() {
     this.filterParametersChanged.next(this.filterParams);
+  }
+
+  onOptionChanged(options: Array<Option>) {
+    console.log('changed ' + options);
+    this.filterParams.jobProfiles = options.map(o => o.id);
+    this.onSearchParemeterChanged();
   }
 
   ngOnDestroy() {

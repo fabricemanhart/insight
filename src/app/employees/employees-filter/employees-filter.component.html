@@ -2,10 +2,13 @@
     <mat-card-title>Filters</mat-card-title>
     <mat-card-content fxLayout="column">
 
-      <app-autocomplete-with-chips *ngIf="jobProfileOptions" [options]="jobProfileOptions"></app-autocomplete-with-chips>
+        <app-autocomplete-with-chips
+            *ngIf="jobProfileOptions"
+            [options]="jobProfileOptions"
+            (selectionChange)="onOptionChanged($event)"
+        ></app-autocomplete-with-chips>
 
-<!--
-        <mat-form-field>
+        <!-- <mat-form-field>
             <input
                 matInput
                 [(ngModel)]="filterParams.name"

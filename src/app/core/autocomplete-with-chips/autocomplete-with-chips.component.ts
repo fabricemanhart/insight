@@ -1,10 +1,11 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Option } from './../models/option';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { MatChipInputEvent } from '@angular/material';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/startWith';
 import 'rxjs/add/operator/map';
-import { Option } from '../models/option';
+
 
 @Component({
   selector: 'app-autocomplete-with-chips',
@@ -19,19 +20,21 @@ export class AutocompleteWithChipsComponent implements OnInit {
 
   myControl: FormControl = new FormControl();
   filteredOptions$: Observable<Array<Option>>;
+  selectedOptions: Array<Option> = [];
 
   @Input('options') options: Array<Option>;
 
+  @Output('selectionChange')
+  selectionChange = new EventEmitter<Array<Option>>();
+
   ngOnInit() {
-    console.log(this.options);
     this.filteredOptions$ = this.myControl.valueChanges
     .startWith(null)
-    .map(option => { console.log(option); return option && typeof option === 'object' ? option.name : option; })
+    .map(option => option && typeof option === 'object' ? option.name : option)
     .map(name => name ? this.filter(name) : this.options.slice());
   }
 
   filter(val: string): Option[] {
-    console.log('filter ' + val);
     if (!this.options) {
       return [];
     }
@@ -41,7 +44,26 @@ export class AutocompleteWithChipsComponent implements OnInit {
     );
   }
 
-  displayFn(option: Option): string | Option {
+  display(option: Option): string | Option {
     return option ? option.name : option;
+  }
+
+  onSelectionChanged(option: Option) {
+
+    console.log(option);
+    console.log(this.selectedOptions);
+    
+    if (this.selectedOptions.indexOf(option) !== -1) {
+      return;
+    }
+
+    this.selectedOptions.push(option);
+    this.selectionChange.next(this.selectedOptions);
+  }
+
+  onOptionRemoved(option: Option) {
+    const index = this.selectedOptions.indexOf(option);
+    this.selectedOptions.splice(index, 1);
+    this.selectionChange.next(this.selectedOptions);
   }
 }

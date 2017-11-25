@@ -5,14 +5,14 @@ import { ParamMap } from '@angular/router';
 export class FilterParameters {
   private params: HttpParams;
 
-  name: string;
+  employeeName: string;
   jobProfiles: Array<number>;
   capabilities: Array<number>;
   offices: Array<number>;
 
   constructor(params: ParamMap) {
     const keys = params.keys;
-    this.name = params.get('name');
+    this.employeeName = params.get('name');
     this.jobProfiles = params.getAll('jobProfiles').map(j => +j);
     this.capabilities = params.getAll('assets').map(c => +c);
     this.offices = params.getAll('offices').map(o => +o);
@@ -20,7 +20,7 @@ export class FilterParameters {
 
   get HttpParamsForHttpClient() {
     this.params = new HttpParams();
-    this.params = this.name ? this.params.set('name', this.name) : this.params;
+    this.params = this.employeeName ? this.params.set('name', this.employeeName) : this.params;
     this.params = this.jobProfiles.length > 0
       ? this.params.set('jobProfiles', this.jobProfiles.toString())
       : this.params;
@@ -36,7 +36,7 @@ export class FilterParameters {
 
   get QueryParamsForAngularRouter() {
     return {
-      name: this.name && this.name.length > 0 ? this.name : undefined,
+      name: this.employeeName && this.employeeName.length > 0 ? this.employeeName : undefined,
       jobProfiles: this.jobProfiles.length > 0 ? this.jobProfiles : undefined,
       assets: this.capabilities.length > 0 ? this.capabilities : undefined,
       offices: this.offices.length > 0 ? this.offices : undefined
