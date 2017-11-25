@@ -6,8 +6,10 @@ import { HttpParams } from '@angular/common/http';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 
+import { OfficeService } from '../services/office.service';
 import { JobProfileService } from './../services/job-profile.service';
 import { JobProfileFilter } from './job-profile-filter';
+import { OfficeFilter } from './office-filter';
 
 @Component({
   selector: 'app-employees-filter-panel',
@@ -20,8 +22,12 @@ export class EmployeesFilterPanelComponent implements OnInit {
   queryParamsChange = new EventEmitter<HttpParams>();
   @Output('routerParamsChange') routerParamsChange = new EventEmitter<any>();
   jobProfileFilter: JobProfileFilter;
+  officeFilter: OfficeFilter;
 
-  constructor(private jobProfileService: JobProfileService) {}
+  constructor(
+    private jobProfileService: JobProfileService,
+    private officeService: OfficeService
+  ) {}
 
   ngOnInit() {
     this.jobProfileFilter = new JobProfileFilter(
@@ -31,7 +37,17 @@ export class EmployeesFilterPanelComponent implements OnInit {
       this.routerParams
     );
 
-    Observable.combineLatest(this.jobProfileFilter.subject)
+    this.officeFilter = new OfficeFilter(
+      this.officeService,
+      'offices',
+      'Offices',
+      this.routerParams
+    );
+
+    Observable.combineLatest(
+      this.jobProfileFilter.subject,
+      this.officeFilter.subject
+    )
       .debounceTime(500)
       // TODO .distinctUntilChanged()
       .subscribe(filterParams => {

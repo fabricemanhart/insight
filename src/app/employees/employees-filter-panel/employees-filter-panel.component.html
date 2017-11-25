@@ -2,19 +2,15 @@
     <mat-card-title>Filters</mat-card-title>
     <mat-card-content fxLayout="column">
 
-        <app-autocomplete-with-chips *ngIf="jobProfileFilter.options" [filter]="jobProfileFilter"></app-autocomplete-with-chips>
-
-        <!-- <app-autocomplete-with-chips
-            *ngIf="capabilityOptions$ | async; let capabilityOptions"
-            [options]="capabilityOptions"
-            (selectionChange)="onOptionChanged($event, 'capabilities')"
+        <app-autocomplete-with-chips
+            *ngIf="jobProfileFilter.options"
+            [filter]="jobProfileFilter"
         ></app-autocomplete-with-chips>
 
         <app-autocomplete-with-chips
-            *ngIf="officeOptions$ | async; let officeOptions"
-            [options]="officeOptions"
-            (selectionChange)="onOptionChanged($event, 'offices')"
-        ></app-autocomplete-with-chips> -->
+            *ngIf="officeFilter.options"
+            [filter]="officeFilter"
+        ></app-autocomplete-with-chips>
 
     </mat-card-content>
 </mat-card>
