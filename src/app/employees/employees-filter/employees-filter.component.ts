@@ -4,7 +4,6 @@ import 'rxjs/add/operator/mergeMap';
 
 import { HttpParams } from '@angular/common/http';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
 
 import { JobProfileService } from './../services/job-profile.service';
@@ -21,24 +20,19 @@ export class EmployeesFilterComponent implements OnInit {
   @Output('queryParamsChange')
   queryParamsChange = new EventEmitter<HttpParams>();
   @Output('routerParamsChange') routerParamsChange = new EventEmitter<any>();
-
   jobProfileFilter: JobProfileFilter;
 
-  constructor(
-    private route: ActivatedRoute,
-    private jobProfileService: JobProfileService
-  ) {}
+
+  constructor(private jobProfileService: JobProfileService) {}
 
   ngOnInit() {
-    this.route.queryParamMap.subscribe(params => {
-      this.routerParams = params;
-      this.jobProfileFilter = new JobProfileFilter(
-        this.jobProfileService,
-        'jobProfiles',
-        'Job Profiles',
-        this.routerParams
-      );
-    });
+
+    this.jobProfileFilter = new JobProfileFilter(
+      this.jobProfileService,
+      'jobProfiles',
+      'Job Profiles',
+      this.routerParams
+    );
 
     Observable.combineLatest(this.jobProfileFilter.subject)
       .debounceTime(500)

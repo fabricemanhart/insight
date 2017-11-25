@@ -1,24 +1,16 @@
-import { HttpParams } from '@angular/common/http';
-import { ParamMap } from '@angular/router';
-import { BehaviorSubject, Subject } from 'rxjs/Rx';
-
 import { Option } from './../../core/models/option';
 import { JobProfileService } from './../services/job-profile.service';
+import { Filter } from './filter';
 
-export class JobProfileFilter {
-  private params: HttpParams;
-  private initialOptions: string;
-  options: Array<Option>;
-  selectedOptions: Array<Option> = [];
-  subject = new Subject<Array<Option>>();
+export class JobProfileFilter extends Filter {
 
   constructor(
     private jobProfileService: JobProfileService,
-    private paramName: string,
-    public placeholder: string,
-    params: ParamMap
+    paramName: string,
+    placeholder: string,
+    params: any,
   ) {
-    this.initialOptions = params.get(this.paramName);
+    super(paramName, placeholder, params);
     this.jobProfileService
       .getAll<Array<JobProfile>>()
       .map(p => p.filter(x => x.Name && !x.IsGroup))
@@ -27,26 +19,5 @@ export class JobProfileFilter {
         this.options = o;
         this.setInitalOptions();
       });
-  }
-
-  setInitalOptions() {
-    if (this.initialOptions) {
-      this.selectedOptions = this.initialOptions
-        .split(',')
-        .map(
-          p =>
-            new Option(
-              +p,
-              this.options.filter(x => x.id === +p)[0].name,
-              this.paramName
-            )
-        );
-    }
-
-    this.next();
-  }
-
-  next() {
-    this.subject.next(this.selectedOptions);
   }
 }
