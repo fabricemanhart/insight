@@ -1,15 +1,15 @@
-import { OfficeFilterService } from './../services/office-filter.service';
-import { JobProfileFilterService } from './../services/job-profile-filter.service';
 import 'rxjs/add/observable/combineLatest';
 import 'rxjs/add/operator/debounceTime';
 import 'rxjs/add/operator/mergeMap';
 
 import { HttpParams } from '@angular/common/http';
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 
-import { OfficeService } from '../services/office.service';
-import { JobProfileService } from './../services/job-profile.service';
+import { CapabilityFilterService } from '../services/capability-filter.service';
+import { JobProfileFilterService } from './../services/job-profile-filter.service';
+import { OfficeFilterService } from './../services/office-filter.service';
+import { SkillFilterService } from './../services/skill-filter.service';
 
 @Component({
   selector: 'app-employees-filter-panel',
@@ -22,15 +22,18 @@ export class EmployeesFilterPanelComponent implements OnInit {
   @Output('routerParamsChange') routerParamsChange = new EventEmitter<any>();
 
   constructor(
-    public jobProfileFilterService: JobProfileFilterService,
-    public officeFilterService: OfficeFilterService
+    private jobProfileFilterService: JobProfileFilterService,
+    private officeFilterService: OfficeFilterService,
+    private capabilityFilterService: CapabilityFilterService,
+    private skillFilterService: SkillFilterService
   ) {}
 
   ngOnInit() {
-
     Observable.combineLatest(
       this.jobProfileFilterService.subject,
-      this.officeFilterService.subject
+      this.officeFilterService.subject,
+      this.capabilityFilterService.subject,
+      this.skillFilterService.subject
     )
       .debounceTime(500)
       // TODO .distinctUntilChanged()

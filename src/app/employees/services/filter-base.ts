@@ -24,22 +24,20 @@ export class FilterBase {
     ).subscribe(result => {
       this.initialOptions = result.params.get(this.paramName);
       this.options = result.response;
-      this.setInitalOptions();
+      this.setInitialOptions();
     });
   }
 
-  setInitalOptions() {
+  setInitialOptions() {
     if (this.initialOptions) {
-      this.selectedOptions = this.initialOptions
-        .split(',')
-        .map(
-          p =>
-            new Option(
-              +p,
-              this.options.filter(x => x.id === +p)[0].name,
-              this.paramName
-            )
+      this.selectedOptions = this.initialOptions.split(',').map(p => {
+        const option = this.options.filter(x => x.id === +p)[0];
+        return new Option(
+          +p,
+          option ? option.name : null,
+          this.paramName
         );
+      }).filter(o => o.name);
     }
 
     this.next();

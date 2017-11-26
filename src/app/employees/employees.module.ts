@@ -1,4 +1,6 @@
-import { EmployeesFilterPanelComponent } from './employees-filter-panel/employees-filter-panel.component';
+import { SkillFilterService } from './services/skill-filter.service';
+import { SkillService } from './services/skill.service';
+import { CapabilityFilterService } from './services/capability-filter.service';
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FlexLayoutModule } from '@angular/flex-layout';
@@ -17,6 +19,7 @@ import {
 import { CoreModule } from '../core/core.module';
 import { EmployeeDetailsComponent } from './employee/employee-details/employee-details.component';
 import { EmployeeComponent } from './employee/employee.component';
+import { EmployeesFilterPanelComponent } from './employees-filter-panel/employees-filter-panel.component';
 import { EmployeesComponent } from './employees.component';
 import { CapabilityService } from './services/capability.service';
 import { EmployeeService } from './services/employee.service';
@@ -50,9 +53,12 @@ import { OfficeService } from './services/office.service';
     EmployeeService,
     JobProfileService,
     CapabilityService,
+    SkillService,
     OfficeService,
     JobProfileFilterService,
-    OfficeFilterService
+    OfficeFilterService,
+    CapabilityFilterService,
+    SkillFilterService
   ]
 })
 export class EmployeesModule {}

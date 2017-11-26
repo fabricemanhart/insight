@@ -9,9 +9,15 @@
 </mat-form-field>
 
 <mat-chip-list>
-  <mat-chip *ngFor="let option of filter.selectedOptions">{{ option.name }}
-    <mat-icon (click)="onOptionRemoved(option)" matChipRemove>cancel</mat-icon>
-  </mat-chip>
+    <mat-chip *ngFor="let option of filter.selectedOptions">
+        {{ option.name }}
+        <mat-icon
+            (click)="onOptionRemoved(option)"
+            matChipRemove
+        >
+            cancel
+        </mat-icon>
+    </mat-chip>
 </mat-chip-list>
 
 <mat-autocomplete

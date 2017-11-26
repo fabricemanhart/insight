@@ -1,5 +1,7 @@
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/startWith';
+import 'rxjs/add/operator/mergeMap';
+import 'rxjs/add/operator/debounceTime';
 
 import { Component, Input, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
@@ -17,16 +19,27 @@ export class AutocompleteWithChipsComponent implements OnInit {
   filteredOptions$: Observable<Array<Option>>;
 
   @Input('filter') filter: any;
+  // if true, we going to the server to get the options list, else the list is preloaded
+  @Input('lazyOptionsLoading') lazyOptionsLoading = false;
 
   ngOnInit() {
     this.filteredOptions$ = this.control.valueChanges
+      .debounceTime(this.lazyOptionsLoading ? 500 : 0)
       .startWith(null)
+      .mergeMap(
+        val => (this.lazyOptionsLoading && val ? this.filter.search(val) : Observable.of(null)),
+        (val, optionsFromSearch) => {
+          if (this.lazyOptionsLoading && optionsFromSearch) {
+            this.filter.options = optionsFromSearch;
+          }
+          return val;
+        }
+      )
       .map(
         option => (option && typeof option === 'object' ? option.name : option)
       )
       .map(
-        name => (name ? this.filterDropdown(name) : this.filter.options.slice())
-      );
+        name => (name && !this.lazyOptionsLoading ? this.filterDropdown(name) : this.filter.options.slice()));
   }
 
   filterDropdown(val: string): Option[] {
@@ -46,7 +59,7 @@ export class AutocompleteWithChipsComponent implements OnInit {
   onSelectionChanged(option: Option, event) {
     // bug https://github.com/angular/material2/issues/4094
     if (
-      this.filter.selectedOptions.indexOf(option) !== -1 ||
+      this.filter.selectedOptions.findIndex(o => o.id === option.id) !== -1 ||
       event.source.selected === false
     ) {
       return;

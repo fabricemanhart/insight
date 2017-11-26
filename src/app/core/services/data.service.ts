@@ -8,7 +8,7 @@ import { Injectable } from '@angular/core';
 
 @Injectable()
 export class DataService {
-  constructor(private url: string, private httpClient: HttpClient) { }
+  constructor(protected url: string, protected httpClient: HttpClient) {}
 
   getAll<T>(params?: HttpParams) {
     return this.httpClient.get<T>(this.url, {

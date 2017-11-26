@@ -8,8 +8,19 @@
         ></app-autocomplete-with-chips>
 
         <app-autocomplete-with-chips
-            *ngIf="jobProfileFilterService.options"
+            *ngIf="officeFilterService.options"
             [filter]="officeFilterService"
+        ></app-autocomplete-with-chips>
+
+        <app-autocomplete-with-chips
+            *ngIf="capabilityFilterService.options"
+            [filter]="capabilityFilterService"
+        ></app-autocomplete-with-chips>
+
+        <app-autocomplete-with-chips
+            *ngIf="skillFilterService.options"
+            [filter]="skillFilterService"
+            [lazyOptionsLoading]="true"
         ></app-autocomplete-with-chips>
 
     </mat-card-content>
