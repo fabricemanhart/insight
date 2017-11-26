@@ -5,7 +5,6 @@ import { Component, Input, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { Observable } from 'rxjs/Observable';
 
-import { JobProfileFilter } from '../../employees/employees-filter-panel/job-profile-filter';
 import { Option } from './../models/option';
 
 @Component({
@@ -17,7 +16,7 @@ export class AutocompleteWithChipsComponent implements OnInit {
   control: FormControl = new FormControl();
   filteredOptions$: Observable<Array<Option>>;
 
-  @Input('filter') filter: JobProfileFilter;
+  @Input('filter') filter: any;
 
   ngOnInit() {
     this.filteredOptions$ = this.control.valueChanges

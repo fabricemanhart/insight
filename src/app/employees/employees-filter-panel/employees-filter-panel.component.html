@@ -1,15 +1,15 @@
-<mat-card fxFlex.gt-md="300px">
+<mat-card fxFlex.gt-md="400px">
     <mat-card-title>Filters</mat-card-title>
     <mat-card-content fxLayout="column">
 
         <app-autocomplete-with-chips
-            *ngIf="jobProfileFilter.options"
-            [filter]="jobProfileFilter"
+            *ngIf="jobProfileFilterService.options"
+            [filter]="jobProfileFilterService"
         ></app-autocomplete-with-chips>
 
         <app-autocomplete-with-chips
-            *ngIf="officeFilter.options"
-            [filter]="officeFilter"
+            *ngIf="jobProfileFilterService.options"
+            [filter]="officeFilterService"
         ></app-autocomplete-with-chips>
 
     </mat-card-content>

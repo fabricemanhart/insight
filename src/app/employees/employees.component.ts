@@ -3,8 +3,8 @@ import 'rxjs/add/operator/switchMap';
 import 'rxjs/add/operator/take';
 
 import { HttpClient, HttpParams } from '@angular/common/http';
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { ActivatedRoute, ParamMap, Router } from '@angular/router';
+import { Component, ElementRef, ViewChild } from '@angular/core';
+import { ParamMap, Router } from '@angular/router';
 
 import { EmployeeService } from './services/employee.service';
 
@@ -13,7 +13,7 @@ import { EmployeeService } from './services/employee.service';
   templateUrl: './employees.component.html',
   styleUrls: ['./employees.component.scss']
 })
-export class EmployeesComponent implements OnInit {
+export class EmployeesComponent {
   @ViewChild('sticky') sticky: ElementRef;
 
   routerParams: ParamMap;
@@ -22,15 +22,8 @@ export class EmployeesComponent implements OnInit {
   constructor(
     private employeeService: EmployeeService,
     private httpClient: HttpClient,
-    private route: ActivatedRoute,
     private router: Router
   ) {}
-
-  ngOnInit() {
-    this.route.queryParamMap.subscribe(params => {
-      this.routerParams = params;
-    });
-  }
 
   onRouterParamsChanged(params: any) {
     this.router.navigate(['/employees'], {

@@ -1,3 +1,5 @@
+import { OfficeFilterService } from './../services/office-filter.service';
+import { JobProfileFilterService } from './../services/job-profile-filter.service';
 import 'rxjs/add/observable/combineLatest';
 import 'rxjs/add/operator/debounceTime';
 import 'rxjs/add/operator/mergeMap';
@@ -8,8 +10,6 @@ import { Observable } from 'rxjs/Observable';
 
 import { OfficeService } from '../services/office.service';
 import { JobProfileService } from './../services/job-profile.service';
-import { JobProfileFilter } from './job-profile-filter';
-import { OfficeFilter } from './office-filter';
 
 @Component({
   selector: 'app-employees-filter-panel',
@@ -17,36 +17,20 @@ import { OfficeFilter } from './office-filter';
   styleUrls: ['./employees-filter-panel.component.scss']
 })
 export class EmployeesFilterPanelComponent implements OnInit {
-  @Input('routerParams') routerParams: any;
   @Output('queryParamsChange')
   queryParamsChange = new EventEmitter<HttpParams>();
   @Output('routerParamsChange') routerParamsChange = new EventEmitter<any>();
-  jobProfileFilter: JobProfileFilter;
-  officeFilter: OfficeFilter;
 
   constructor(
-    private jobProfileService: JobProfileService,
-    private officeService: OfficeService
+    public jobProfileFilterService: JobProfileFilterService,
+    public officeFilterService: OfficeFilterService
   ) {}
 
   ngOnInit() {
-    this.jobProfileFilter = new JobProfileFilter(
-      this.jobProfileService,
-      'jobProfiles',
-      'Job Profiles',
-      this.routerParams
-    );
-
-    this.officeFilter = new OfficeFilter(
-      this.officeService,
-      'offices',
-      'Offices',
-      this.routerParams
-    );
 
     Observable.combineLatest(
-      this.jobProfileFilter.subject,
-      this.officeFilter.subject
+      this.jobProfileFilterService.subject,
+      this.officeFilterService.subject
     )
       .debounceTime(500)
       // TODO .distinctUntilChanged()

@@ -16,8 +16,7 @@
                 class="sticky"
                 #sticky
             >
-                <app-employees-filter-panel *ngIf="routerParams"
-                    [routerParams]="routerParams"
+                <app-employees-filter-panel
                     (queryParamsChange)="onQueryParamsChanged($event)"
                     (routerParamsChange)="onRouterParamsChanged($event)"
                 ></app-employees-filter-panel>
