@@ -23,5 +23,11 @@
             [lazyOptionsLoading]="true"
         ></app-autocomplete-with-chips>
 
+        <app-autocomplete-with-chips
+            *ngIf="trainingFilterService.options"
+            [filter]="trainingFilterService"
+            [lazyOptionsLoading]="true"
+        ></app-autocomplete-with-chips>
+
     </mat-card-content>
 </mat-card>

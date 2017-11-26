@@ -7,6 +7,7 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 
 import { CapabilityFilterService } from '../services/capability-filter.service';
+import { TrainingFilterService } from '../services/training-filter.service';
 import { JobProfileFilterService } from './../services/job-profile-filter.service';
 import { OfficeFilterService } from './../services/office-filter.service';
 import { SkillFilterService } from './../services/skill-filter.service';
@@ -25,7 +26,8 @@ export class EmployeesFilterPanelComponent implements OnInit {
     private jobProfileFilterService: JobProfileFilterService,
     private officeFilterService: OfficeFilterService,
     private capabilityFilterService: CapabilityFilterService,
-    private skillFilterService: SkillFilterService
+    private skillFilterService: SkillFilterService,
+    private trainingFilterService: TrainingFilterService
   ) {}
 
   ngOnInit() {
@@ -33,29 +35,27 @@ export class EmployeesFilterPanelComponent implements OnInit {
       this.jobProfileFilterService.subject,
       this.officeFilterService.subject,
       this.capabilityFilterService.subject,
-      this.skillFilterService.subject
-    )
-      .debounceTime(500)
-      // TODO .distinctUntilChanged()
-      .subscribe(filterParams => {
-        let httpParams = new HttpParams();
-        const routerParams = {};
+      this.skillFilterService.subject,
+      this.trainingFilterService.subject
+    ).subscribe(filterParams => {
+      let httpParams = new HttpParams();
+      const routerParams = {};
 
-        filterParams.forEach(function(param) {
-          if (param && param[0]) {
-            httpParams = httpParams.set(
-              param[0].parameterName,
-              param.map(s => s.id).toString()
-            );
+      filterParams.forEach(function(param) {
+        if (param && param[0]) {
+          httpParams = httpParams.set(
+            param[0].parameterName,
+            param.map(s => s.id).toString()
+          );
 
-            routerParams[param[0].parameterName] = param
-              .map(s => s.id)
-              .toString();
-          }
-        });
-
-        this.queryParamsChange.emit(httpParams);
-        this.routerParamsChange.emit(routerParams);
+          routerParams[param[0].parameterName] = param
+            .map(s => s.id)
+            .toString();
+        }
       });
+
+      this.queryParamsChange.emit(httpParams);
+      this.routerParamsChange.emit(routerParams);
+    });
   }
 }
