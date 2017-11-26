@@ -17,7 +17,7 @@ import { SkillFilterService } from './../services/skill-filter.service';
   templateUrl: './employees-filter-panel.component.html',
   styleUrls: ['./employees-filter-panel.component.scss']
 })
-export class EmployeesFilterPanelComponent implements OnInit {
+export class EmployeesFilterPanelComponent {
   @Output('queryParamsChange')
   queryParamsChange = new EventEmitter<HttpParams>();
   @Output('routerParamsChange') routerParamsChange = new EventEmitter<any>();
@@ -25,23 +25,22 @@ export class EmployeesFilterPanelComponent implements OnInit {
   constructor(
     private jobProfileFilterService: JobProfileFilterService,
     private officeFilterService: OfficeFilterService,
-    private capabilityFilterService: CapabilityFilterService,
-    private skillFilterService: SkillFilterService,
+    // private capabilityFilterService: CapabilityFilterService,
+    // private skillFilterService: SkillFilterService,
     private trainingFilterService: TrainingFilterService
-  ) {}
-
-  ngOnInit() {
+  ) {
     Observable.combineLatest(
       this.jobProfileFilterService.subject,
       this.officeFilterService.subject,
-      this.capabilityFilterService.subject,
-      this.skillFilterService.subject,
+      // this.capabilityFilterService.subject,
+      // this.skillFilterService.subject,
       this.trainingFilterService.subject
     ).subscribe(filterParams => {
       let httpParams = new HttpParams();
       const routerParams = {};
 
       filterParams.forEach(function(param) {
+        console.log("param" + param);
         if (param && param[0]) {
           httpParams = httpParams.set(
             param[0].parameterName,

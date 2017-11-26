@@ -33,6 +33,7 @@ export class FilterLazyBase<T> extends FilterBase {
         );
       })
       .subscribe((o: Array<Option>) => {
+        console.log(o);
         this.options = o;
         this.setInitialOptions();
         this.options = []; // for lazy list we don't want to have inital values

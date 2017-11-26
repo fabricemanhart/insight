@@ -1,5 +1,5 @@
 import { ActivatedRoute } from '@angular/router';
-import { Subject, Observable } from 'rxjs/Rx';
+import { ReplaySubject , Observable } from 'rxjs/Rx';
 
 import { Option } from '../../core/models/option';
 
@@ -8,7 +8,7 @@ export class FilterBase {
   protected httpResponse$: Observable<Option[]>;
   public options: Array<Option>;
   public selectedOptions: Array<Option> = [];
-  public subject = new Subject<Array<Option>>();
+  public subject = new ReplaySubject <Array<Option>>();
 
   constructor(
     private route: ActivatedRoute,
