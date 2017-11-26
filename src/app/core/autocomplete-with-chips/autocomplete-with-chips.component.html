@@ -20,9 +20,7 @@
 >
     <mat-option
         *ngFor="let option of filteredOptions$ | async"
-        (onSelectionChange)="onSelectionChanged(option)"
-        [value]=""
-
+        (onSelectionChange)="onSelectionChanged(option, $event)"
     >
         {{ option.name }}
     </mat-option>

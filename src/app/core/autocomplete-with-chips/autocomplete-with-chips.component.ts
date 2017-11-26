@@ -43,8 +43,12 @@ export class AutocompleteWithChipsComponent implements OnInit {
     return option ? option.name : option;
   }
 
-  onSelectionChanged(option: Option) {
-    if (this.filter.selectedOptions.indexOf(option) !== -1) {
+  onSelectionChanged(option: Option, event) {
+    // bug https://github.com/angular/material2/issues/4094
+    if (
+      this.filter.selectedOptions.indexOf(option) !== -1 ||
+      event.source.selected === false
+    ) {
       return;
     }
 
