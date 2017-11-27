@@ -5,8 +5,9 @@ import { Option } from '../../core/models/option';
 import { DataService } from '../../core/services/data.service';
 import { FilterBase } from './filter-base';
 
-export class FilterPreload<T> extends FilterBase {
-
+export class FilterPreload<
+  T extends { Id: number; Name: string; IsGroup: boolean }
+> extends FilterBase {
   constructor(
     private dataService: DataService,
     private route: ActivatedRoute,
@@ -17,7 +18,7 @@ export class FilterPreload<T> extends FilterBase {
     super(paramName, placeholder);
 
     const httpResponse$ = this.dataService
-      .getAll<Array<JobProfile>>(this.url)
+      .getAll<Array<T>>(this.url)
       .map(p => p.filter(x => x.Name && !x.IsGroup))
       .map(p => p.map(x => new Option(x.Id, x.Name, this.paramName)));
 

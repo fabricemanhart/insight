@@ -7,6 +7,7 @@ interface Capability {
   Id: number;
   Investment: number;
   InvestmentText: string;
+  IsGroup: boolean;
   IsVisible: boolean;
   Name: string;
   // Owners: [{VertecId: 0, Code: "alb", FirstName: "Alex", LastName: "Bögli", FullName: "Alex Bögli",…},…]

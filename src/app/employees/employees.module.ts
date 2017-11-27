@@ -11,6 +11,7 @@ import {
     MatInputModule,
     MatSelectModule,
     MatTabsModule,
+    MatExpansionModule,
 } from '@angular/material';
 
 import { CoreModule } from '../core/core.module';
@@ -33,7 +34,8 @@ import { EmployeeService } from './filters/employee.service';
     MatCheckboxModule,
     MatCardModule,
     MatSelectModule,
-    MatInputModule
+    MatInputModule,
+    MatExpansionModule
   ],
   declarations: [
     EmployeesComponent,

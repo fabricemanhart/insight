@@ -1,6 +1,12 @@
-<mat-card fxFlex.gt-md="400px">
-    <mat-card-title>Filters</mat-card-title>
-    <mat-card-content fxLayout="column">
+<div
+    class="example-headers-align"
+    fxFlex.gt-md="400px"
+    fxLayout="column"
+>
+    <mat-expansion-panel [expanded]="true">
+        <mat-expansion-panel-header>
+            <mat-panel-title>Filters</mat-panel-title>
+        </mat-expansion-panel-header>
 
         <app-autocomplete-with-chips
             *ngIf="jobProfileFilter.options"
@@ -16,6 +22,11 @@
             *ngIf="capabilityFilter.options"
             [filter]="capabilityFilter"
         ></app-autocomplete-with-chips>
+    </mat-expansion-panel>
+    <mat-expansion-panel [expanded]="false">
+        <mat-expansion-panel-header>
+            <mat-panel-title>More Filters</mat-panel-title>
+        </mat-expansion-panel-header>
 
         <app-autocomplete-with-chips
             *ngIf="skillFilter.options"
@@ -28,6 +39,5 @@
             [filter]="trainingFilter"
             [lazyOptionsLoading]="true"
         ></app-autocomplete-with-chips>
-
-    </mat-card-content>
-</mat-card>
+    </mat-expansion-panel>
+  </div>
