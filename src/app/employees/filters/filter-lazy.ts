@@ -1,17 +1,20 @@
+import { DataService } from '../../core/services/data.service';
 import { FilterBase } from './filter-base';
 import { ActivatedRoute } from '@angular/router';
 import { Subject, Observable } from 'rxjs/Rx';
 
 import { Option } from '../../core/models/option';
 
-export class FilterLazyBase<T> extends FilterBase {
+export class FilterLazy<T extends {Id: number, Name: string }> extends FilterBase {
   constructor(
+    private dataService: DataService,
     route: ActivatedRoute,
+    private searchByTermUrl: string,
+    private getByIdUrl: string,
     paramName: string,
     placeholder: string,
-    protected service: LazySearch<T>
   ) {
-    super(route, paramName, placeholder);
+    super(paramName, placeholder);
 
     route.queryParamMap
       .mergeMap(params => {
@@ -26,14 +29,13 @@ export class FilterLazyBase<T> extends FilterBase {
           this.initialOptions
             .split(',')
             .map(id =>
-              this.service
-                .searchById<T>(+id)
+              this.dataService
+                .searchById<T>(getByIdUrl, +id)
                 .map(p => new Option(p.Id, p.Name, this.paramName))
             )
         );
       })
       .subscribe((o: Array<Option>) => {
-        console.log(o);
         this.options = o;
         this.setInitialOptions();
         this.options = []; // for lazy list we don't want to have inital values
@@ -41,8 +43,8 @@ export class FilterLazyBase<T> extends FilterBase {
   }
 
   search(term: string) {
-    return this.service
-      .searchByName<Array<T>>(term)
+    return this.dataService
+      .searchByName<Array<T>>(this.searchByTermUrl, term)
       .map(p => p.map(x => new Option(x.Id, x.Name, this.paramName)));
   }
 }

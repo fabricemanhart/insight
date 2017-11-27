@@ -6,7 +6,7 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { Component, ElementRef, ViewChild } from '@angular/core';
 import { ParamMap, Router } from '@angular/router';
 
-import { EmployeeService } from './services/employee.service';
+import { EmployeeService } from './filters/employee.service';
 
 @Component({
   selector: 'app-employees',
@@ -16,6 +16,7 @@ import { EmployeeService } from './services/employee.service';
 export class EmployeesComponent {
   @ViewChild('sticky') sticky: ElementRef;
 
+  url = 'http://localhost:41588/api/v1/employees';
   routerParams: ParamMap;
   employees: Employee[];
 
@@ -33,7 +34,7 @@ export class EmployeesComponent {
 
   onQueryParamsChanged(params: HttpParams) {
     this.employeeService
-      .getAll<Array<Employee>>(params)
+      .getAll<Array<Employee>>(this.url, params)
       .subscribe(response => (this.employees = response));
   }
 

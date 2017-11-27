@@ -1,15 +1,15 @@
 import { TestBed, inject } from '@angular/core/testing';
 
-import { SkillFilterService } from './skill-filter.service';
+import { SkillFilter } from './skill-filter';
 
 describe('SkillFilterService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [SkillFilterService]
+      providers: [SkillFilter]
     });
   });
 
-  it('should be created', inject([SkillFilterService], (service: SkillFilterService) => {
+  it('should be created', inject([SkillFilter], (service: SkillFilter) => {
     expect(service).toBeTruthy();
   }));
 });

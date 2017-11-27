@@ -11,7 +11,7 @@ interface Employee {
     Gender: number;
     Grade: string;
     GradeText: string;
-    //HomeLocation: HomeLocation;
+    // HomeLocation: HomeLocation;
     Id: number;
     InternalRate: number;
     IsManagement: boolean;

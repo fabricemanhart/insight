@@ -18,17 +18,7 @@ import { EmployeeDetailsComponent } from './employee/employee-details/employee-d
 import { EmployeeComponent } from './employee/employee.component';
 import { EmployeesFilterPanelComponent } from './employees-filter-panel/employees-filter-panel.component';
 import { EmployeesComponent } from './employees.component';
-import { CapabilityFilterService } from './services/capability-filter.service';
-import { CapabilityService } from './services/capability.service';
-import { EmployeeService } from './services/employee.service';
-import { JobProfileFilterService } from './services/job-profile-filter.service';
-import { JobProfileService } from './services/job-profile.service';
-import { OfficeFilterService } from './services/office-filter.service';
-import { OfficeService } from './services/office.service';
-import { SkillFilterService } from './services/skill-filter.service';
-import { SkillService } from './services/skill.service';
-import { TrainingFilterService } from './services/training-filter.service';
-import { TrainingService } from './services/training.service';
+import { EmployeeService } from './filters/employee.service';
 
 @NgModule({
   imports: [
@@ -53,16 +43,6 @@ import { TrainingService } from './services/training.service';
   ],
   providers: [
     EmployeeService,
-    JobProfileService,
-    CapabilityService,
-    SkillService,
-    TrainingService,
-    OfficeService,
-    JobProfileFilterService,
-    OfficeFilterService,
-    CapabilityFilterService,
-    SkillFilterService,
-    TrainingFilterService
   ]
 })
 export class EmployeesModule {}

@@ -1,15 +1,16 @@
+
 import { TestBed, inject } from '@angular/core/testing';
 
-import { JobProfileFilterService } from './job-profile-filter.service';
+import { JobProfileFilter } from './job-profile-filter';
 
 describe('JobProfileFilterService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [JobProfileFilterService]
+      providers: [JobProfileFilter]
     });
   });
 
-  it('should be created', inject([JobProfileFilterService], (service: JobProfileFilterService) => {
+  it('should be created', inject([JobProfileFilter], (service: JobProfileFilter) => {
     expect(service).toBeTruthy();
   }));
 });

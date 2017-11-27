@@ -3,14 +3,16 @@ import 'rxjs/add/operator/debounceTime';
 import 'rxjs/add/operator/mergeMap';
 
 import { HttpParams } from '@angular/common/http';
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
 
-import { CapabilityFilterService } from '../services/capability-filter.service';
-import { TrainingFilterService } from '../services/training-filter.service';
-import { JobProfileFilterService } from './../services/job-profile-filter.service';
-import { OfficeFilterService } from './../services/office-filter.service';
-import { SkillFilterService } from './../services/skill-filter.service';
+import { CapabilityFilter } from '../filters/capability-filter';
+import { JobProfileFilter } from '../filters/job-profile-filter';
+import { OfficeFilter } from '../filters/office-filter';
+import { SkillFilter } from '../filters/skill-filter';
+import { TrainingFilter } from '../filters/training-filter';
+import { DataService } from './../../core/services/data.service';
 
 @Component({
   selector: 'app-employees-filter-panel',
@@ -22,25 +24,30 @@ export class EmployeesFilterPanelComponent {
   queryParamsChange = new EventEmitter<HttpParams>();
   @Output('routerParamsChange') routerParamsChange = new EventEmitter<any>();
 
-  constructor(
-    private jobProfileFilterService: JobProfileFilterService,
-    private officeFilterService: OfficeFilterService,
-    // private capabilityFilterService: CapabilityFilterService,
-    // private skillFilterService: SkillFilterService,
-    private trainingFilterService: TrainingFilterService
-  ) {
+  private jobProfileFilter: JobProfileFilter;
+  private officeFilter: OfficeFilter;
+  private capabilityFilter: CapabilityFilter;
+  private skillFilter: SkillFilter;
+  private trainingFilter: TrainingFilter;
+
+  constructor(private route: ActivatedRoute, private dataService: DataService) {
+    this.jobProfileFilter = new JobProfileFilter(dataService, route);
+    this.officeFilter = new OfficeFilter(dataService, route);
+    this.capabilityFilter = new CapabilityFilter(dataService, route);
+    this.skillFilter = new SkillFilter(dataService, route);
+    this.trainingFilter = new TrainingFilter(dataService, route);
+
     Observable.combineLatest(
-      this.jobProfileFilterService.subject,
-      this.officeFilterService.subject,
-      // this.capabilityFilterService.subject,
-      // this.skillFilterService.subject,
-      this.trainingFilterService.subject
+      this.jobProfileFilter.subject,
+      this.officeFilter.subject,
+      this.capabilityFilter.subject,
+      this.skillFilter.subject,
+      this.trainingFilter.subject
     ).subscribe(filterParams => {
       let httpParams = new HttpParams();
       const routerParams = {};
 
       filterParams.forEach(function(param) {
-        console.log("param" + param);
         if (param && param[0]) {
           httpParams = httpParams.set(
             param[0].parameterName,

@@ -3,29 +3,29 @@
     <mat-card-content fxLayout="column">
 
         <app-autocomplete-with-chips
-            *ngIf="jobProfileFilterService.options"
-            [filter]="jobProfileFilterService"
+            *ngIf="jobProfileFilter.options"
+            [filter]="jobProfileFilter"
         ></app-autocomplete-with-chips>
 
         <app-autocomplete-with-chips
-            *ngIf="officeFilterService.options"
-            [filter]="officeFilterService"
+            *ngIf="officeFilter.options"
+            [filter]="officeFilter"
         ></app-autocomplete-with-chips>
 
         <app-autocomplete-with-chips
-            *ngIf="capabilityFilterService.options"
-            [filter]="capabilityFilterService"
+            *ngIf="capabilityFilter.options"
+            [filter]="capabilityFilter"
         ></app-autocomplete-with-chips>
 
         <app-autocomplete-with-chips
-            *ngIf="skillFilterService.options"
-            [filter]="skillFilterService"
+            *ngIf="skillFilter.options"
+            [filter]="skillFilter"
             [lazyOptionsLoading]="true"
         ></app-autocomplete-with-chips>
 
         <app-autocomplete-with-chips
-            *ngIf="trainingFilterService.options"
-            [filter]="trainingFilterService"
+            *ngIf="trainingFilter.options"
+            [filter]="trainingFilter"
             [lazyOptionsLoading]="true"
         ></app-autocomplete-with-chips>
 

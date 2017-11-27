@@ -1,6 +1,6 @@
 import { TestBed, inject } from '@angular/core/testing';
 
-import { OfficeFilterService } from './office-filter.service';
+import { OfficeFilterService } from './office-filter';
 
 describe('OfficeFilterService', () => {
   beforeEach(() => {

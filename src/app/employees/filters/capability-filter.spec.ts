@@ -1,15 +1,15 @@
 import { TestBed, inject } from '@angular/core/testing';
 
-import { CapabilityFilterService } from './capability-filter.service';
+import { CapabilityFilter } from './capability-filter';
 
 describe('CapabilityFilterService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [CapabilityFilterService]
+      providers: [CapabilityFilter]
     });
   });
 
-  it('should be created', inject([CapabilityFilterService], (service: CapabilityFilterService) => {
+  it('should be created', inject([CapabilityFilter], (service: CapabilityFilter) => {
     expect(service).toBeTruthy();
   }));
 });
