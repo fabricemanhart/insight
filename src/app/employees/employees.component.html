@@ -37,7 +37,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr *ngFor="let employee of employees">
+                        <tr *ngFor="let employee of employees" [routerLink]="employee.Code">
                             <td class="avatar-cell">
                                 <img
                                     class="avatar"

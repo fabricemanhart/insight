@@ -1,7 +1,7 @@
-import 'rxjs/add/operator/map';
-import 'rxjs/add/operator/startWith';
-import 'rxjs/add/operator/mergeMap';
 import 'rxjs/add/operator/debounceTime';
+import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/mergeMap';
+import 'rxjs/add/operator/startWith';
 
 import { Component, Input, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
@@ -21,6 +21,10 @@ export class AutocompleteWithChipsComponent implements OnInit {
   @Input('filter') filter: any;
   // if true, we going to the server to get the options list, else the list is preloaded
   @Input('lazyOptionsLoading') lazyOptionsLoading = false;
+
+  static display(option: Option): string | Option {
+    return option ? option.name : option;
+  }
 
   ngOnInit() {
     this.filteredOptions$ = this.control.valueChanges
@@ -50,10 +54,6 @@ export class AutocompleteWithChipsComponent implements OnInit {
     return this.filter.options.filter(
       option => option.name.toLowerCase().indexOf(val.toLowerCase()) === 0
     );
-  }
-
-  display(option: Option): string | Option {
-    return option ? option.name : option;
   }
 
   onSelectionChanged(option: Option, event) {

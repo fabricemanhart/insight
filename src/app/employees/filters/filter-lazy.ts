@@ -30,7 +30,7 @@ export class FilterLazy<T extends {Id: number, Name: string }> extends FilterBas
             .split(',')
             .map(id =>
               this.dataService
-                .searchById<T>(getByIdUrl, +id)
+                .getById<T>(getByIdUrl, +id)
                 .map(p => new Option(p.Id, p.Name, this.paramName))
             )
         );

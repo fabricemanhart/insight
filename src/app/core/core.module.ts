@@ -4,14 +4,14 @@ import { NgModule } from '@angular/core';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { ReactiveFormsModule } from '@angular/forms';
 import {
-    MatAutocompleteModule,
-    MatButtonModule,
-    MatChipsModule,
-    MatIconModule,
-    MatInputModule,
-    MatOptionModule,
-    MatRippleModule,
-    MatSidenavModule,
+  MatAutocompleteModule,
+  MatButtonModule,
+  MatChipsModule,
+  MatIconModule,
+  MatInputModule,
+  MatOptionModule,
+  MatRippleModule,
+  MatSidenavModule
 } from '@angular/material';
 import { RouterModule } from '@angular/router';
 
@@ -33,11 +33,13 @@ import { WinAuthInterceptor } from './WinAuthInterceptor';
 @NgModule({
   imports: [
     CommonModule,
-    RouterModule.forRoot([
-      { path: '', component: LayoutComponent},
-      { path: 'employee', component: EmployeeComponent},
-      { path: 'employees', component: EmployeesComponent}
-    ]),
+    RouterModule.forRoot(
+      [
+        { path: '', component: LayoutComponent },
+        { path: 'employees/:code', component: EmployeeComponent },
+        { path: 'employees', component: EmployeesComponent }
+      ]
+    ),
     FlexLayoutModule,
     MatButtonModule,
     MatIconModule,
@@ -59,19 +61,20 @@ import { WinAuthInterceptor } from './WinAuthInterceptor';
     ClickOutsideDirective,
     ToolbarUserMenuComponent,
     PageHeaderComponent,
-    AutocompleteWithChipsComponent],
-    exports: [
-      LayoutComponent,
-      PageHeaderComponent,
-      AutocompleteWithChipsComponent
-    ],
-    providers: [
-      {
-        provide: HTTP_INTERCEPTORS,
-        useClass: WinAuthInterceptor,
-        multi: true
-      },
-      DataService
-    ]
+    AutocompleteWithChipsComponent
+  ],
+  exports: [
+    LayoutComponent,
+    PageHeaderComponent,
+    AutocompleteWithChipsComponent
+  ],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: WinAuthInterceptor,
+      multi: true
+    },
+    DataService
+  ]
 })
-export class CoreModule { }
+export class CoreModule {}

@@ -6,7 +6,7 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { Component, ElementRef, ViewChild } from '@angular/core';
 import { ParamMap, Router } from '@angular/router';
 
-import { EmployeeService } from './filters/employee.service';
+import { DataService } from '../core/services/data.service';
 
 @Component({
   selector: 'app-employees',
@@ -19,9 +19,10 @@ export class EmployeesComponent {
   url = 'http://localhost:41588/api/v1/employees';
   routerParams: ParamMap;
   employees: Employee[];
+  view = 'table';
 
   constructor(
-    private employeeService: EmployeeService,
+    private dataService: DataService,
     private httpClient: HttpClient,
     private router: Router
   ) {}
@@ -33,7 +34,7 @@ export class EmployeesComponent {
   }
 
   onQueryParamsChanged(params: HttpParams) {
-    this.employeeService
+    this.dataService
       .getAll<Array<Employee>>(this.url, params)
       .subscribe(response => (this.employees = response));
   }

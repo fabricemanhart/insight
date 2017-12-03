@@ -1,71 +1,117 @@
 <!-- TODO: rename -->
-<div class="profile">
-  
+<div
+    class="profile"
+    *ngIf="employee$ | async let employee"
+>
+
     <!-- <vr-page-header [height]="'416px'" background="url(/assets/img/demo/headers/pattern-1.png)" [reverse]="true"></vr-page-header> -->
-  
+
     <div class="container">
-  
-      <!-- <vr-breadcrumbs [currentPage]="'Profile'" [header]="'primary'"></vr-breadcrumbs> -->
-  
-      <div class="splash mat-elevation-z4" fxLayout="column" fxLayout.gt-sm="row" fxLayoutAlign="start center" fxLayoutAlign.gt-sm="space-between">
-  
-        <div class="left" fxLayout="row">
-  
-          <img fxFlex="150px" class="picture" src="assets/picture.jpg">
-  
-          <div fxLayout="column" fxLayoutAlign="space-between">
-            <div>
-              <div class="name">Fabrice Manhart
-                <mat-card-subtitle class="mat-card-subtitle">fama</mat-card-subtitle>
-              </div>
-              <div class="description">Advanced Software Engineer Schlieren 100%</div>
-              <div class="contact" fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="6px">
-                <mat-icon class="icon">mail</mat-icon>
-                <span>fabrice.manhart@zuehlke.com</span>
-              </div>
+
+        <!-- <vr-breadcrumbs [currentPage]="'Profile'" [header]="'primary'"></vr-breadcrumbs> -->
+
+        <div
+            class="splash mat-elevation-z4"
+            fxLayout="column"
+            fxLayout.gt-sm="row"
+            fxLayoutAlign="start center"
+            fxLayoutAlign.gt-sm="space-between"
+        >
+
+            <div
+                class="left"
+                fxLayout="row"
+            >
+
+                <img
+                    fxFlex="150px"
+                    class="picture"
+                    src="http://localhost:41588/api/v1/employees/{{ employee.Code }}/picture?large=true"
+                >
+
+                <div
+                    fxLayout="column"
+                    fxLayoutAlign="space-between"
+                >
+                    <div>
+                        <div class="name">
+                            {{ employee.FirstName }} {{ employee.LastName}}
+                            <mat-card-subtitle class="mat-card-subtitle">{{ employee.Code }}</mat-card-subtitle>
+                        </div>
+                        <div class="heading">{{ employee.Title }}</div>
+                        <div
+                            class="description"
+                            fxLayout="row"
+                            fxLayoutAlign="start center"
+                            fxLayoutGap="6px"
+                        >
+                            {{ employee.Location }}
+                            <span *ngIf="employee.WorkingPlace">, {{ employee.WorkingPlace }}</span>
+                            ({{ employee.Percentage }}%)
+                        </div>
+                    </div>
+                </div>
+
             </div>
-          </div>
-  
+
+            <div
+                class="right"
+                fxLayout="column"
+                fxLayoutAlign="space-between"
+            >
+                <div
+                    class="info"
+                    fxLayout="row"
+                >
+                    <div class="names">
+                        <div class="name">Availability:</div>
+                        <div class="name">Address:</div>
+                        <div class="name">Telephone:</div>
+                    </div>
+                    <div class="values">
+                        <div class="value">Full-time (40h/week)</div>
+                        <div class="value">Albulastrasse 52, 8048 Zürich</div>
+                        <div class="value">+41 78 202 20 54</div>
+                    </div>
+                </div>
+
+                <div
+                    class="social"
+                    fxLayout="row"
+                    fxLayoutAlign="start center"
+                    fxLayoutGap="32px"
+                >
+                    <i class="fa fa-github"></i>
+                    <i class="fa fa-twitter"></i>
+                    <i class="fa fa-facebook"></i>
+                    <i class="fa fa-linkedin"></i>
+                    <i class="fa fa-dribbble"></i>
+                    <i class="fa fa-stack-overflow"></i>
+                </div>
+            </div>
+
         </div>
-  
-        <div class="right" fxLayout="column" fxLayoutAlign="space-between">
-          <div class="info" fxLayout="row">
-            <div class="names">
-              <div class="name">Availability:</div>
-              <div class="name">Address:</div>
-              <div class="name">Telephone:</div>
-            </div>
-            <div class="values">
-              <div class="value">Full-time (40h/week)</div>
-              <div class="value">Albulastrasse 52, 8048 Zürich</div>
-              <div class="value">+41 78 202 20 54</div>
-            </div>
-          </div>
-  
-          <div class="social" fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="32px">
-            <i class="fa fa-github"></i>
-            <i class="fa fa-twitter"></i>
-            <i class="fa fa-facebook"></i>
-            <i class="fa fa-linkedin"></i>
-            <i class="fa fa-dribbble"></i>
-            <i class="fa fa-stack-overflow"></i>
-          </div>
-        </div>
-  
-      </div>
-  
-      <mat-tab-group class="profile-tabs clean-tabs mat-elevation-z4">
-        <mat-tab label="Details">
-          <app-employee-details></app-employee-details>
-        </mat-tab>
-        <mat-tab label="Further Development" [disabled]="true">
-        </mat-tab>
-        <mat-tab label="Project History" [disabled]="true">
-        </mat-tab>
-        <mat-tab label="Offering Material" [disabled]="true">
-        </mat-tab>
-      </mat-tab-group>
-  
+
+        <mat-tab-group class="profile-tabs clean-tabs mat-elevation-z4">
+            <mat-tab label="Details">
+                <app-employee-details></app-employee-details>
+            </mat-tab>
+            <mat-tab
+                label="Further Development"
+                [disabled]="true"
+            >
+            </mat-tab>
+            <mat-tab
+                label="Project History"
+                [disabled]="true"
+            >
+            </mat-tab>
+            <mat-tab
+                label="Offering Material"
+                [disabled]="true"
+            >
+            </mat-tab>
+        </mat-tab-group>
+
     </div>
-  </div>
-  
+</div>

@@ -86,8 +86,8 @@ $width__sidenav-collapsed: 270px;
 $padding-left__sidenav-item: 36px;
 $padding-right__sidenav-item: 24px;
 
-$layout-alpha__background__sidenav: #303441;
-$layout-alpha__background__sidenav_header: #2b303c;
+$layout-alpha__background__sidenav: #925fa7;
+$layout-alpha__background__sidenav_header: #6c3b80;
 
 $layout-beta__background__sidenav: white;
 
@@ -98,7 +98,7 @@ $layout-beta__background__sidenav: white;
 
 $layout-alpha__color__sidenav-item: rgba(255, 255, 255, 0.5);
 $layout-alpha__color__sidenav-heading: rgba(255, 255, 255, 0.3);
-$layout-alpha__background__sidenav-item__icon: rgba(255, 255, 255, 0.05);
+$layout-alpha__background__sidenav-item__icon: rgb(108, 59, 128);
 
 $layout-alpha__background-color__sidenav-item: $layout-alpha__background__sidenav;
 $layout-alpha__background-color__sidenav-item__hover: darken($layout-alpha__background-color__sidenav-item, 2);

@@ -20,7 +20,7 @@ export class DataService {
     return this.httpClient.get<T>(url + term, {});
   }
 
-  searchById<T>(url: string, id: number) {
+  getById<T>(url: string, id: any) {
     return this.httpClient.get<T>(url + '/' + id, {});
   }
 }

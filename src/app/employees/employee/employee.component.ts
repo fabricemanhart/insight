@@ -1,4 +1,10 @@
+import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/operator/switchMap';
+
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+
+import { DataService } from '../../core/services/data.service';
 
 @Component({
   selector: 'app-employee',
@@ -6,10 +12,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./employee.component.scss']
 })
 export class EmployeeComponent implements OnInit {
+  employee$: Observable<Employee>;
 
-  constructor() { }
+  url = 'http://localhost:41588/api/v1/employees';
 
-  ngOnInit() {
+  constructor(private dataService: DataService, route: ActivatedRoute) {
+    this.employee$ = route.paramMap.switchMap(p =>
+      dataService.getById<Employee>(this.url, p.get('code'))
+    );
   }
 
+  ngOnInit() {}
 }

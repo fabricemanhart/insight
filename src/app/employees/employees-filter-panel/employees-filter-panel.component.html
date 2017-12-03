@@ -5,7 +5,7 @@
 >
     <mat-expansion-panel [expanded]="true">
         <mat-expansion-panel-header>
-            <mat-panel-title>Filters</mat-panel-title>
+            <mat-panel-title>General</mat-panel-title>
         </mat-expansion-panel-header>
 
         <app-autocomplete-with-chips
@@ -22,6 +22,39 @@
             *ngIf="capabilityFilter.options"
             [filter]="capabilityFilter"
         ></app-autocomplete-with-chips>
+
+    </mat-expansion-panel>
+    <mat-expansion-panel [expanded]="true">
+        <mat-expansion-panel-header>
+            <mat-panel-title>Avalability</mat-panel-title>
+        </mat-expansion-panel-header>
+
+        <mat-form-field>
+            <input
+                matInput
+                [matDatepicker]="pickerStart"
+                placeholder="Choose a Start Date"
+            >
+            <mat-datepicker-toggle
+                matSuffix
+                [for]="pickerStart"
+            ></mat-datepicker-toggle>
+            <mat-datepicker #pickerStart></mat-datepicker>
+        </mat-form-field>
+
+        <mat-form-field>
+            <input
+                matInput
+                [matDatepicker]="pickerEnd"
+                placeholder="Choose a End Date"
+            >
+            <mat-datepicker-toggle
+                matSuffix
+                [for]="pickerEnd"
+            ></mat-datepicker-toggle>
+            <mat-datepicker #pickerEnd></mat-datepicker>
+        </mat-form-field>
+
     </mat-expansion-panel>
     <mat-expansion-panel [expanded]="false">
         <mat-expansion-panel-header>
@@ -40,4 +73,4 @@
             [lazyOptionsLoading]="true"
         ></app-autocomplete-with-chips>
     </mat-expansion-panel>
-  </div>
+</div>

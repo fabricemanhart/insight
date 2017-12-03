@@ -7,19 +7,21 @@ import {
     MatCardModule,
     MatCheckboxModule,
     MatChipsModule,
+    MatDatepickerModule,
+    MatExpansionModule,
     MatIconModule,
     MatInputModule,
+    MatNativeDateModule,
     MatSelectModule,
     MatTabsModule,
-    MatExpansionModule,
 } from '@angular/material';
+import { RouterModule } from '@angular/router';
 
 import { CoreModule } from '../core/core.module';
 import { EmployeeDetailsComponent } from './employee/employee-details/employee-details.component';
 import { EmployeeComponent } from './employee/employee.component';
 import { EmployeesFilterPanelComponent } from './employees-filter-panel/employees-filter-panel.component';
 import { EmployeesComponent } from './employees.component';
-import { EmployeeService } from './filters/employee.service';
 
 @NgModule({
   imports: [
@@ -35,7 +37,10 @@ import { EmployeeService } from './filters/employee.service';
     MatCardModule,
     MatSelectModule,
     MatInputModule,
-    MatExpansionModule
+    MatExpansionModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    RouterModule
   ],
   declarations: [
     EmployeesComponent,
@@ -43,8 +48,6 @@ import { EmployeeService } from './filters/employee.service';
     EmployeeDetailsComponent,
     EmployeesFilterPanelComponent
   ],
-  providers: [
-    EmployeeService,
-  ]
+  providers: []
 })
 export class EmployeesModule {}
