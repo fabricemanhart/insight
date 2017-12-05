@@ -1,99 +1,170 @@
-<div class="profile-overview" fxLayout="column" fxLayout.gt-sm="row" fxLayoutAlign.gt-sm="start start" fxLayoutGap="32px">
-  <div class="main" fxFlex.gt-sm>
+<div
+    class="profile-overview"
+    fxLayout="column"
+    fxLayout.gt-sm="row"
+    fxLayoutAlign.gt-sm="start start"
+    fxLayoutGap="32px"
+>
+    <div
+        class="main"
+        fxFlex.gt-sm
+    >
 
-    <div class="section">
-      <div class="heading">ABOUT</div>
-      <div class="content">
-        <p>Nach Beendigung meines Zweitstudiums bin ich hochmotiviert wieder in die Berufswelt einzusteigen. Ich freue mich deshalb ab Januar 2015 als Software Engineer bei Zühlke arbeiten zu dürfen und meine Ideen und mein Engagement im Berufsalltag einzubringen. Den Ausgleich zum Beruf finde ich beim Wintersport in den Bergen, wo ich aufgewachsen bin, bei Reisen um die ganze Welt oder einfach beim gemütlichen Zusammensein mit Freunden.</p>
-      </div>
+        <div class="section">
+            <div class="heading">ABOUT</div>
+            <div
+                class="content"
+                *ngIf="shortProfiles$ | async let shortProfiles"
+            >
+
+                <div *ngIf="shortProfiles.length > 1; then multiple else single"></div>
+                <ng-template #single>
+                    <div
+                        fxLayout="column"
+                        fxLayout.gt-sm="row"
+                        fxLayoutGap="5px"
+                    >
+                        <p>{{ shortProfiles[0].DescriptionDe }}</p>
+                        <p>{{ shortProfiles[0].DescriptionEn }}</p>
+                    </div>
+                </ng-template>
+                <ng-template #multiple>
+                    <mat-accordion>
+                        <mat-expansion-panel *ngFor="let p of shortProfiles; first as isFirst" [expanded]="isFirst">
+                            <mat-expansion-panel-header>
+                                <mat-panel-title>{{ p.Role }}</mat-panel-title>
+                            </mat-expansion-panel-header>
+                            <div
+                                fxLayout="column"
+                                fxLayout.gt-sm="row"
+                                fxLayoutGap="12px"
+                            >
+                                <p>{{ p.DescriptionDe }}</p>
+                                <p>{{ p.DescriptionEn }}</p>
+                            </div>
+                        </mat-expansion-panel>
+                    </mat-accordion>
+                </ng-template>
+            </div>
+        </div>
+
+        <div class="divider"></div>
+
+        <div class="section">
+            <div class="heading">SKILLS</div>
+            <div class="content">
+                <mat-chip-list class="chips">
+                    <mat-chip>Web Design</mat-chip>
+                    <mat-chip>Angular 2+</mat-chip>
+                    <mat-chip>iOS</mat-chip>
+                    <mat-chip>Android</mat-chip>
+                    <mat-chip>UI</mat-chip>
+                    <mat-chip>Javascript</mat-chip>
+                    <mat-chip>Photoshop</mat-chip>
+                    <mat-chip>PHP</mat-chip>
+                    <mat-chip>Linux</mat-chip>
+                    <mat-chip>UX</mat-chip>
+                    <mat-chip>Illustrator</mat-chip>
+                    <mat-chip>InDesign</mat-chip>
+                    <mat-chip>Python</mat-chip>
+                    <mat-chip>C#</mat-chip>
+                    <mat-chip>C++</mat-chip>
+                    <mat-chip>Communication</mat-chip>
+                    <mat-chip>Teamwork</mat-chip>
+                    <mat-chip>NodeJS</mat-chip>
+                </mat-chip-list>
+            </div>
+        </div>
+
     </div>
+    <div
+        class="aside"
+        fxFlex.gt-sm="320px"
+    >
+        <div class="heading">RECENT ACTIVITY</div>
 
-    <div class="divider"></div>
+        <div class="activity">
+            <div
+                class="event"
+                fxLayout="row"
+            >
+                <div class="dot primary"></div>
+                <div class="line"></div>
+                <div class="info">
+                    <div class="when">17 mins ago</div>
+                    <div class="name">Called Jefferson</div>
+                    <div class="description">
+                        Jason called Jefferson about the meeting
+                    </div>
+                </div>
+            </div>
 
-    <div class="section">
-      <div class="heading">SKILLS</div>
-      <div class="content">
-        <mat-chip-list class="chips">
-          <mat-chip>Web Design</mat-chip>
-          <mat-chip>Angular 2+</mat-chip>
-          <mat-chip>iOS</mat-chip>
-          <mat-chip>Android</mat-chip>
-          <mat-chip>UI</mat-chip>
-          <mat-chip>Javascript</mat-chip>
-          <mat-chip>Photoshop</mat-chip>
-          <mat-chip>PHP</mat-chip>
-          <mat-chip>Linux</mat-chip>
-          <mat-chip>UX</mat-chip>
-          <mat-chip>Illustrator</mat-chip>
-          <mat-chip>InDesign</mat-chip>
-          <mat-chip>Python</mat-chip>
-          <mat-chip>C#</mat-chip>
-          <mat-chip>C++</mat-chip>
-          <mat-chip>Communication</mat-chip>
-          <mat-chip>Teamwork</mat-chip>
-          <mat-chip>NodeJS</mat-chip>
-        </mat-chip-list>
-      </div>
+            <div
+                class="event"
+                fxLayout="row"
+            >
+                <div class="dot accent"></div>
+                <div class="line"></div>
+                <div class="info">
+                    <div class="when">54 mins ago</div>
+                    <div class="name">New purchase</div>
+                    <div class="description">Jason successfully purchased item #26</div>
+                </div>
+            </div>
+
+            <div
+                class="event"
+                fxLayout="row"
+            >
+                <div class="dot primary"></div>
+                <div class="line"></div>
+                <div class="info">
+                    <div class="when">2 hours ago</div>
+                    <div class="name">Printed sales report</div>
+                    <div class="description">Jason printed the sales report</div>
+                </div>
+            </div>
+
+            <div
+                class="event"
+                fxLayout="row"
+            >
+                <div class="dot warn"></div>
+                <div class="line"></div>
+                <div class="info">
+                    <div class="when">4 hours ago</div>
+                    <div class="name">Created ticket</div>
+                    <div class="description">
+                        Jason created a new ticket about the design
+                    </div>
+                </div>
+            </div>
+
+            <div
+                class="event"
+                fxLayout="row"
+            >
+                <div class="dot accent"></div>
+                <div class="line"></div>
+                <div class="info">
+                    <div class="when">5 hours ago</div>
+                    <div class="name">New purchase</div>
+                    <div class="description">Jason bought the elastic ui template</div>
+                </div>
+            </div>
+        </div>
+
+        <div
+            class="footer"
+            fxLayout="row"
+            fxLayoutAlign="center center"
+        >
+            <button
+                type="button"
+                mat-button
+            >
+                LOAD MORE
+            </button>
+        </div>
     </div>
-
-  </div>
-  <div class="aside" fxFlex.gt-sm="320px">
-    <div class="heading">RECENT ACTIVITY</div>
-
-    <div class="activity">
-      <div class="event" fxLayout="row">
-        <div class="dot primary"></div>
-        <div class="line"></div>
-        <div class="info">
-          <div class="when">17 mins ago</div>
-          <div class="name">Called Jefferson</div>
-          <div class="description">Jason called Jefferson about the meeting</div>
-        </div>
-      </div>
-
-      <div class="event" fxLayout="row">
-        <div class="dot accent"></div>
-        <div class="line"></div>
-        <div class="info">
-          <div class="when">54 mins ago</div>
-          <div class="name">New purchase</div>
-          <div class="description">Jason successfully purchased item #26</div>
-        </div>
-      </div>
-
-      <div class="event" fxLayout="row">
-        <div class="dot primary"></div>
-        <div class="line"></div>
-        <div class="info">
-          <div class="when">2 hours ago</div>
-          <div class="name">Printed sales report</div>
-          <div class="description">Jason printed the sales report</div>
-        </div>
-      </div>
-
-      <div class="event" fxLayout="row">
-        <div class="dot warn"></div>
-        <div class="line"></div>
-        <div class="info">
-          <div class="when">4 hours ago</div>
-          <div class="name">Created ticket</div>
-          <div class="description">Jason created a new ticket about the design</div>
-        </div>
-      </div>
-
-      <div class="event" fxLayout="row">
-        <div class="dot accent"></div>
-        <div class="line"></div>
-        <div class="info">
-          <div class="when">5 hours ago</div>
-          <div class="name">New purchase</div>
-          <div class="description">Jason bought the elastic ui template</div>
-        </div>
-      </div>
-    </div>
-
-    <div class="footer" fxLayout="row" fxLayoutAlign="center center">
-      <button type="button" mat-button>LOAD MORE</button>
-    </div>
-  </div>
 </div>
