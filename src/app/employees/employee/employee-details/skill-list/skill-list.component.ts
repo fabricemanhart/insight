@@ -20,6 +20,8 @@ export class SkillListComponent implements OnInit {
       .filter(s => s.Experience === this.level)
       .sort(this.compareByIsCapability)
       .sort(this.compareByExperiencePoints);
+
+      this.hasLimit = this.skillsFiltered.length > 10;
   }
 
   get skills() {

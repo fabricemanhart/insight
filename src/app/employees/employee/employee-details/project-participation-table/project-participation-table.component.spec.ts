@@ -1,6 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ProjectTableComponent } from './project-table.component';
+import { ProjectTableComponent } from './project-participation-table.component';
 
 describe('ProjectTableComponent', () => {
   let component: ProjectTableComponent;

@@ -1,0 +1,173 @@
+<div class="header">
+    <mat-form-field>
+        <input
+            matInput
+            (keyup)="applyFilter($event.target.value)"
+            placeholder="Filter"
+        >
+    </mat-form-field>
+</div>
+
+<div class="container mat-elevation-z8">
+
+    <mat-table
+        [dataSource]="dataSource"
+        matSort
+    >
+
+        <ng-container matColumnDef="priority">
+            <mat-header-cell
+                *matHeaderCellDef
+                mat-sort-header
+            >
+                Prio
+            </mat-header-cell>
+            <mat-cell *matCellDef="let row">{{row.priority}}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="projectCode">
+            <mat-header-cell
+                *matHeaderCellDef
+                mat-sort-header
+            >
+                Project Code
+            </mat-header-cell>
+            <mat-cell *matCellDef="let row">{{row.projectCode}}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="projectName">
+            <mat-header-cell
+                *matHeaderCellDef
+                mat-sort-header
+            >
+                Project Name
+            </mat-header-cell>
+            <mat-cell *matCellDef="let row">{{row.projectName}}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="phaseCode">
+            <mat-header-cell
+                *matHeaderCellDef
+                mat-sort-header
+            >
+                Phase
+            </mat-header-cell>
+            <mat-cell *matCellDef="let row">{{row.phaseCode}} {{row.phaseName}}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="phaseStateText">
+          <mat-header-cell
+              *matHeaderCellDef
+              mat-sort-header
+          >
+              Sales State
+          </mat-header-cell>
+          <mat-cell *matCellDef="let row">{{row.phaseStateText}}</mat-cell>
+      </ng-container>
+
+        <ng-container matColumnDef="function">
+            <mat-header-cell
+                *matHeaderCellDef
+                mat-sort-header
+            >
+                Function
+            </mat-header-cell>
+            <mat-cell *matCellDef="let row">{{row.function}}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="percentageEffective">
+            <mat-header-cell
+                *matHeaderCellDef
+                mat-sort-header
+            >
+                %
+            </mat-header-cell>
+            <mat-cell *matCellDef="let row">{{row.percentageEffective}}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="days">
+            <mat-header-cell
+                *matHeaderCellDef
+                mat-sort-header
+            >
+                Days
+            </mat-header-cell>
+            <mat-cell *matCellDef="let row">{{row.days}}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="fromPlanned">
+            <mat-header-cell
+                *matHeaderCellDef
+                mat-sort-header
+            >
+                From
+            </mat-header-cell>
+            <mat-cell *matCellDef="let row">{{row.fromPlanned}}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="toPlanned">
+            <mat-header-cell
+                *matHeaderCellDef
+                mat-sort-header
+            >
+                To
+            </mat-header-cell>
+            <mat-cell *matCellDef="let row">{{row.toPlanned}}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="projectManagerCode">
+            <mat-header-cell
+                *matHeaderCellDef
+                mat-sort-header
+            >
+                PM
+            </mat-header-cell>
+            <mat-cell *matCellDef="let row">{{row.projectManagerCode}}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="engagementManagerCode">
+            <mat-header-cell
+                *matHeaderCellDef
+                mat-sort-header
+            >
+                EM
+            </mat-header-cell>
+            <mat-cell *matCellDef="let row">{{row.engagementManagerCode}}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="staffingManagerCode">
+            <mat-header-cell
+                *matHeaderCellDef
+                mat-sort-header
+            >
+                SM
+            </mat-header-cell>
+            <mat-cell *matCellDef="let row">{{row.staffingManagerCode}}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="businessDeveloperCode">
+            <mat-header-cell
+                *matHeaderCellDef
+                mat-sort-header
+            >
+                BDM
+            </mat-header-cell>
+            <mat-cell *matCellDef="let row">{{row.businessDeveloperCode}}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="hourlyRate">
+            <mat-header-cell
+                *matHeaderCellDef
+                mat-sort-header
+            >
+                Hourly Rate
+            </mat-header-cell>
+            <mat-cell *matCellDef="let row">{{row.hourlyRate}}</mat-cell>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+
+    <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+</div>

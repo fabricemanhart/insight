@@ -22,7 +22,7 @@ import { RouterModule } from '@angular/router';
 
 import { CoreModule } from '../core/core.module';
 import { EmployeeDetailsComponent } from './employee/employee-details/employee-details.component';
-import { ProjectTableComponent } from './employee/employee-details/project-table/project-table.component';
+import { ProjectTableComponent } from './employee/employee-details/project-participation-table/project-participation-table.component';
 import {
     ExperienceIndicatorComponent,
 } from './employee/employee-details/skill-list/experience-indicator/experience-indicator.component';
