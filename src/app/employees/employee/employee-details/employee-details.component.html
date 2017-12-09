@@ -11,7 +11,7 @@
     >
 
         <div class="section">
-            <div class="heading">ABOUT</div>
+            <div class="heading">About</div>
             <div
                 class="content"
                 *ngIf="shortProfiles$ | async let shortProfiles"
@@ -30,7 +30,10 @@
                 </ng-template>
                 <ng-template #multiple>
                     <mat-accordion>
-                        <mat-expansion-panel *ngFor="let p of shortProfiles; first as isFirst" [expanded]="isFirst">
+                        <mat-expansion-panel
+                            *ngFor="let p of shortProfiles; first as isFirst"
+                            [expanded]="isFirst"
+                        >
                             <mat-expansion-panel-header>
                                 <mat-panel-title>{{ p.Role }}</mat-panel-title>
                             </mat-expansion-panel-header>
@@ -51,28 +54,54 @@
         <div class="divider"></div>
 
         <div class="section">
-            <div class="heading">SKILLS</div>
+            <div class="heading">Projects</div>
             <div class="content">
-                <mat-chip-list class="chips">
-                    <mat-chip>Web Design</mat-chip>
-                    <mat-chip>Angular 2+</mat-chip>
-                    <mat-chip>iOS</mat-chip>
-                    <mat-chip>Android</mat-chip>
-                    <mat-chip>UI</mat-chip>
-                    <mat-chip>Javascript</mat-chip>
-                    <mat-chip>Photoshop</mat-chip>
-                    <mat-chip>PHP</mat-chip>
-                    <mat-chip>Linux</mat-chip>
-                    <mat-chip>UX</mat-chip>
-                    <mat-chip>Illustrator</mat-chip>
-                    <mat-chip>InDesign</mat-chip>
-                    <mat-chip>Python</mat-chip>
-                    <mat-chip>C#</mat-chip>
-                    <mat-chip>C++</mat-chip>
-                    <mat-chip>Communication</mat-chip>
-                    <mat-chip>Teamwork</mat-chip>
-                    <mat-chip>NodeJS</mat-chip>
-                </mat-chip-list>
+                <img
+                    class="img-responsive"
+                    style="margin-bottom: 20px;"
+                    src="http://localhost:41588/api/v1/employees/{{ code }}/utilization?width=1000&weeks=32&offset=0"
+                >
+
+            </div>
+        </div>
+
+        <div class="divider"></div>
+
+        <div class="section">
+            <div class="heading">Skills</div>
+            <div class="content" *ngIf="allSkills">
+                <div
+                    fxLayout="row"
+                    fxLayoutGap="5px"
+                >
+                    <div
+                        fxFlex
+                        fxLayout="column"
+                    >
+                        <app-skill-list
+                            [level]="1"
+                            [allSkills]="allSkills"
+                        ></app-skill-list>
+                    </div>
+                    <div
+                        fxFlex
+                        fxLayout="column"
+                    >
+                        <app-skill-list
+                            [level]="2"
+                            [allSkills]="allSkills"
+                        ></app-skill-list>
+                    </div>
+                    <div
+                        fxFlex
+                        fxLayout="column"
+                    >
+                        <app-skill-list
+                            [level]="4"
+                            [allSkills]="allSkills"
+                        ></app-skill-list>
+                    </div>
+                </div>
             </div>
         </div>
 

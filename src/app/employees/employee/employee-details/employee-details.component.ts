@@ -1,9 +1,10 @@
 import 'rxjs/add/operator/switchMap';
 
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
 
+import { EmployeeSkill } from '../../../core/models/employee-skill';
 import { ShortProfile } from '../../../core/models/shortProfile';
 import { DataService } from '../../../core/services/data.service';
 
@@ -12,19 +13,24 @@ import { DataService } from '../../../core/services/data.service';
   templateUrl: './employee-details.component.html',
   styleUrls: ['./employee-details.component.scss']
 })
-export class EmployeeDetailsComponent implements OnInit {
+export class EmployeeDetailsComponent {
   url: string;
-
+  code: string;
   shortProfiles$: Observable<Array<ShortProfile>>;
+  allSkills: Array<EmployeeSkill>;
 
   constructor(private dataService: DataService, route: ActivatedRoute) {
+    this.code = route.snapshot.paramMap.get('code');
+    this.url = 'http://localhost:41588/api/v1/employees/' + this.code;
 
-    this.url = 'http://localhost:41588/api/v1/employees/' +
-    route.snapshot.paramMap.get('code') +
-    '/shortprofiles';
+    this.shortProfiles$ = dataService.getAll<Array<ShortProfile>>(
+      this.url + '/shortprofiles'
+    );
 
-    this.shortProfiles$ = dataService.getAll<Array<ShortProfile>>(this.url);
+    dataService
+      .getAll<Array<EmployeeSkill>>(this.url + '/skills')
+      .subscribe(res => {
+        this.allSkills = res;
+      });
   }
-
-  ngOnInit() {}
 }

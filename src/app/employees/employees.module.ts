@@ -19,9 +19,13 @@ import { RouterModule } from '@angular/router';
 
 import { CoreModule } from '../core/core.module';
 import { EmployeeDetailsComponent } from './employee/employee-details/employee-details.component';
+import {
+    ExperienceIndicatorComponent,
+} from './employee/employee-details/skill-list/experience-indicator/experience-indicator.component';
 import { EmployeeComponent } from './employee/employee.component';
 import { EmployeesFilterPanelComponent } from './employees-filter-panel/employees-filter-panel.component';
 import { EmployeesComponent } from './employees.component';
+import { SkillListComponent } from './employee/employee-details/skill-list/skill-list.component';
 
 @NgModule({
   imports: [
@@ -46,7 +50,9 @@ import { EmployeesComponent } from './employees.component';
     EmployeesComponent,
     EmployeeComponent,
     EmployeeDetailsComponent,
-    EmployeesFilterPanelComponent
+    EmployeesFilterPanelComponent,
+    ExperienceIndicatorComponent,
+    SkillListComponent
   ],
   providers: []
 })

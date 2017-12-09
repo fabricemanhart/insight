@@ -1,0 +1,18 @@
+<app-experience-indicator [level]="level"></app-experience-indicator>
+<mat-chip-list
+    class="chips"
+    *ngIf="skills"
+>
+    <mat-chip
+        *ngFor="let skill of skills"
+        [style.font-size.px]="calculateSkillFontSize(skill)"
+    >
+        {{ skill.Name }}
+    </mat-chip>
+    <mat-chip
+        *ngIf="hasLimit"
+        (click)="setNoLimitForSkills()"
+    >
+        ...
+    </mat-chip>
+</mat-chip-list>
