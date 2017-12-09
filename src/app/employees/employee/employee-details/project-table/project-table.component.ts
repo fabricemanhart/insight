@@ -1,4 +1,6 @@
-import { AfterViewInit, Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, ViewChild } from '@angular/core';
+import { Project } from '../../../../core/models/project';
+import { MatTableDataSource, MatSort, MatPaginator } from '@angular/material';
 
 @Component({
   selector: 'app-project-table',
@@ -6,7 +8,6 @@ import { AfterViewInit, Component, OnInit } from '@angular/core';
   styleUrls: ['./project-table.component.scss']
 })
 export class ProjectTableComponent implements AfterViewInit {
-
   displayedColumns = ['id', 'name', 'progress', 'color'];
   dataSource: MatTableDataSource<Project>;
 
@@ -14,9 +15,7 @@ export class ProjectTableComponent implements AfterViewInit {
   @ViewChild(MatSort) sort: MatSort;
 
   constructor() {
-
-
-    this.dataSource = new MatTableDataSource(users);
+    this.dataSource = new MatTableDataSource();
   }
 
   /**
@@ -33,6 +32,4 @@ export class ProjectTableComponent implements AfterViewInit {
     filterValue = filterValue.toLowerCase(); // Datasource defaults to lowercase matches
     this.dataSource.filter = filterValue;
   }
-}
-
 }

@@ -67,9 +67,9 @@
 
         <div class="divider"></div>
 
-        <div class="section">
+        <div class="section" *ngIf="allSkills?.length > 0">
             <div class="heading">Skills</div>
-            <div class="content" *ngIf="allSkills">
+            <div class="content">
                 <div
                     fxLayout="row"
                     fxLayoutGap="5px"

@@ -1,5 +1,5 @@
 <!-- Todo move card-elevation-z4 -->
-<mat-sidenav-container class="layout-container" [ngClass]='card-elevation-z4'>
+<mat-sidenav-container class="layout-container">
 
   <div class="layout" fxLayout="column" [class.alpha]="true" [class.boxed]="false">
 
@@ -13,7 +13,7 @@
         </mat-sidenav>
 
         <div class="toolbar-container" fxLayout="column">
-          
+
           <app-toolbar [sidenavCollapsed]="sidenavCollapsed"
             (toggledSidenav)="toggleSidenav()">
           </app-toolbar>

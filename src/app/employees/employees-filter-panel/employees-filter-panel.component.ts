@@ -24,11 +24,11 @@ export class EmployeesFilterPanelComponent {
   queryParamsChange = new EventEmitter<HttpParams>();
   @Output('routerParamsChange') routerParamsChange = new EventEmitter<any>();
 
-  private jobProfileFilter: JobProfileFilter;
-  private officeFilter: OfficeFilter;
-  private capabilityFilter: CapabilityFilter;
-  private skillFilter: SkillFilter;
-  private trainingFilter: TrainingFilter;
+  jobProfileFilter: JobProfileFilter;
+  officeFilter: OfficeFilter;
+  capabilityFilter: CapabilityFilter;
+  skillFilter: SkillFilter;
+  trainingFilter: TrainingFilter;
 
   constructor(private route: ActivatedRoute, private dataService: DataService) {
     this.jobProfileFilter = new JobProfileFilter(dataService, route);

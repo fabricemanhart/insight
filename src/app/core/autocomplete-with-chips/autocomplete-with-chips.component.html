@@ -20,10 +20,7 @@
     </mat-chip>
 </mat-chip-list>
 
-<mat-autocomplete
-    #auto="matAutocomplete"
-    [displayWith]="display"
->
+<mat-autocomplete #auto="matAutocomplete">
     <mat-option
         *ngFor="let option of filteredOptions$ | async"
         (onSelectionChange)="onSelectionChanged(option, $event)"
