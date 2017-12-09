@@ -12,20 +12,24 @@ import {
     MatIconModule,
     MatInputModule,
     MatNativeDateModule,
+    MatPaginatorModule,
     MatSelectModule,
+    MatSortModule,
+    MatTableModule,
     MatTabsModule,
 } from '@angular/material';
 import { RouterModule } from '@angular/router';
 
 import { CoreModule } from '../core/core.module';
 import { EmployeeDetailsComponent } from './employee/employee-details/employee-details.component';
+import { ProjectTableComponent } from './employee/employee-details/project-table/project-table.component';
 import {
     ExperienceIndicatorComponent,
 } from './employee/employee-details/skill-list/experience-indicator/experience-indicator.component';
+import { SkillListComponent } from './employee/employee-details/skill-list/skill-list.component';
 import { EmployeeComponent } from './employee/employee.component';
 import { EmployeesFilterPanelComponent } from './employees-filter-panel/employees-filter-panel.component';
 import { EmployeesComponent } from './employees.component';
-import { SkillListComponent } from './employee/employee-details/skill-list/skill-list.component';
 
 @NgModule({
   imports: [
@@ -44,6 +48,9 @@ import { SkillListComponent } from './employee/employee-details/skill-list/skill
     MatExpansionModule,
     MatDatepickerModule,
     MatNativeDateModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatSortModule,
     RouterModule
   ],
   declarations: [
@@ -52,7 +59,8 @@ import { SkillListComponent } from './employee/employee-details/skill-list/skill
     EmployeeDetailsComponent,
     EmployeesFilterPanelComponent,
     ExperienceIndicatorComponent,
-    SkillListComponent
+    SkillListComponent,
+    ProjectTableComponent
   ],
   providers: []
 })
