@@ -28,7 +28,7 @@
                     matSort
                 >
 
-                    <ng-container matColumnDef="Avatar">
+                    <ng-container matColumnDef="avatar">
                         <mat-header-cell
                             *matHeaderCellDef
                             mat-sort-header
@@ -37,62 +37,62 @@
                         <mat-cell *matCellDef="let row">
                             <img
                                 class="avatar"
-                                src="http://localhost:41588/img/Employees/{{row.Code}}.jpg"
+                                src="http://localhost:41588/img/Employees/{{row.code}}.jpg"
                             >
                         </mat-cell>
                     </ng-container>
 
-                    <ng-container matColumnDef="FullName">
+                    <ng-container matColumnDef="fullName">
                         <mat-header-cell
                             *matHeaderCellDef
                             mat-sort-header
                         >
                             Name
                         </mat-header-cell>
-                        <mat-cell *matCellDef="let row">{{row.FullName}}</mat-cell>
+                        <mat-cell *matCellDef="let row">{{row.fullName}}</mat-cell>
                     </ng-container>
 
-                    <ng-container matColumnDef="Code">
+                    <ng-container matColumnDef="code">
                         <mat-header-cell
                             *matHeaderCellDef
                             mat-sort-header
                         >
                             Code
                         </mat-header-cell>
-                        <mat-cell *matCellDef="let row">{{row.Code}}</mat-cell>
+                        <mat-cell *matCellDef="let row">{{row.code}}</mat-cell>
                     </ng-container>
 
-                    <ng-container matColumnDef="Title">
+                    <ng-container matColumnDef="title">
                         <mat-header-cell
                             *matHeaderCellDef
                             mat-sort-header
                         >
                             Title
                         </mat-header-cell>
-                        <mat-cell *matCellDef="let row">{{row.Title}}</mat-cell>
+                        <mat-cell *matCellDef="let row">{{row.title}}</mat-cell>
                     </ng-container>
 
-                    <ng-container matColumnDef="OrganisationUnit">
+                    <ng-container matColumnDef="organisationUnit">
                         <mat-header-cell
                             *matHeaderCellDef
                             mat-sort-header
                         >
                             Organisation Unit
                         </mat-header-cell>
-                        <mat-cell *matCellDef="let row">{{ row.OrganisationUnit }}</mat-cell>
+                        <mat-cell *matCellDef="let row">{{ row.organisationUnit }}</mat-cell>
                     </ng-container>
 
-                    <ng-container matColumnDef="Location">
+                    <ng-container matColumnDef="location">
                         <mat-header-cell
                             *matHeaderCellDef
                             mat-sort-header
                         >
                             Location
                         </mat-header-cell>
-                        <mat-cell *matCellDef="let row">{{ row.Location }}</mat-cell>
+                        <mat-cell *matCellDef="let row">{{ row.location }}</mat-cell>
                     </ng-container>
 
-                    <ng-container matColumnDef="PrivateAddress">
+                    <ng-container matColumnDef="privateAddress">
                         <mat-header-cell
                             *matHeaderCellDef
                             mat-sort-header
@@ -104,7 +104,7 @@
                         </mat-cell>
                     </ng-container>
 
-                    <ng-container matColumnDef="Availability">
+                    <ng-container matColumnDef="availability">
                         <mat-header-cell
                             *matHeaderCellDef
                             mat-sort-header
@@ -112,7 +112,7 @@
                             Availability
                         </mat-header-cell>
                         <mat-cell *matCellDef="let row">
-                            <img src="http://localhost:41588/api/v1/employees/{{row.Code}}/utilization/line">
+                            <img src="http://localhost:41588/api/v1/employees/{{row.code}}/utilization/line">
                         </mat-cell>
                     </ng-container>
 

@@ -5,7 +5,7 @@ import { MatPaginator, MatSort, MatTableDataSource } from '@angular/material';
 import { ActivatedRoute } from '@angular/router';
 
 import { ProjectParticipation } from '../../../../core/models/project-participation';
-import { ProjectRow } from '../../../../core/models/projectRow';
+import { ProjectRow } from '../../../../core/models/project-row';
 import { DataService } from '../../../../core/services/data.service';
 
 @Component({

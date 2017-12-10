@@ -1,3 +1,4 @@
+import { EmployeeRow } from './../core/models/employee-row';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/switchMap';
 import 'rxjs/add/operator/take';
@@ -15,8 +16,8 @@ import { DataService } from '../core/services/data.service';
   styleUrls: ['./employees.component.scss']
 })
 export class EmployeesComponent  {
-  displayedColumns = ['Avatar', 'FullName', 'Code', 'Title', 'OrganisationUnit', 'Location', 'PrivateAddress', 'Availability'];
-  dataSource: MatTableDataSource<Employee>;
+  displayedColumns = ['avatar', 'fullName', 'code', 'title', 'organisationUnit', 'location', 'privateAddress', 'availability'];
+  dataSource: MatTableDataSource<EmployeeRow>;
 
   @ViewChild('sticky') sticky: ElementRef;
   @ViewChild(MatPaginator) paginator: MatPaginator;
@@ -40,8 +41,9 @@ export class EmployeesComponent  {
   onQueryParamsChanged(params: HttpParams) {
     this.dataService
       .getAll<Array<Employee>>(this.url, params)
-      .subscribe(response => {
-        this.dataSource = new MatTableDataSource(response);
+      .subscribe(res => {
+        const employeeRows = res.map(r => new EmployeeRow(r));
+        this.dataSource = new MatTableDataSource(employeeRows);
         this.dataSource.paginator = this.paginator;
         this.dataSource.sort = this.sort;
       });
