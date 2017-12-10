@@ -1,15 +1,12 @@
-import {
-  AfterViewInit,
-  Component,
-  Input,
-  OnInit,
-  ViewChild
-} from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator, MatSort, MatTableDataSource } from '@angular/material';
 
 import { ProjectParticipation } from '../../../../core/models/project-participation';
-import { DataService } from '../../../../core/services/data.service';
 import { ProjectRow } from '../../../../core/models/projectRow';
+import { DataService } from '../../../../core/services/data.service';
+
+import 'rxjs/add/operator/switchMap';
 
 @Component({
   selector: 'app-project-participation-table',
@@ -17,8 +14,6 @@ import { ProjectRow } from '../../../../core/models/projectRow';
   styleUrls: ['./project-participation-table.component.scss']
 })
 export class ProjectTableComponent implements AfterViewInit, OnInit {
-  @Input('code') code: string;
-
   displayedColumns = [
     'priority',
     'projectCode',
@@ -41,21 +36,27 @@ export class ProjectTableComponent implements AfterViewInit, OnInit {
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 
-  constructor(private dataService: DataService) {}
+  constructor(
+    private dataService: DataService,
+    private route: ActivatedRoute
+  ) {}
 
   ngOnInit() {
-    const url =
-      'http://localhost:41588/api/v1/employees/' +
-      this.code +
-      '/projects/current';
-    this.dataService.getAll<Array<ProjectParticipation>>(url).subscribe(p => {
+    this.route.paramMap
+      .switchMap(p => {
+        const url =
+          'http://localhost:41588/api/v1/employees/' +
+          p.get('code') +
+          '/projects/current';
+        return this.dataService.getAll<Array<ProjectParticipation>>(url);
+      })
+      .subscribe(p => {
+        const projectRows = p.map(r => new ProjectRow(r));
 
-      const projectRows = p.map(r => new ProjectRow(r));
-
-      this.dataSource = new MatTableDataSource(projectRows);
-      this.dataSource.paginator = this.paginator;
-      this.dataSource.sort = this.sort;
-    });
+        this.dataSource = new MatTableDataSource(projectRows);
+        this.dataSource.paginator = this.paginator;
+        this.dataSource.sort = this.sort;
+      });
   }
 
   /**

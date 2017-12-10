@@ -1,5 +1,3 @@
-import 'rxjs/add/operator/switchMap';
-
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
@@ -16,21 +14,23 @@ import { DataService } from '../../../core/services/data.service';
 export class EmployeeDetailsComponent {
   url: string;
   code: string;
-  shortProfiles$: Observable<Array<ShortProfile>>;
+  shortProfiles: Array<ShortProfile>;
   allSkills: Array<EmployeeSkill>;
 
   constructor(private dataService: DataService, route: ActivatedRoute) {
-    this.code = route.snapshot.paramMap.get('code');
-    this.url = 'http://localhost:41588/api/v1/employees/' + this.code;
+    route.paramMap.subscribe(p => {
+      this.code = p.get('code');
+      this.url = 'http://localhost:41588/api/v1/employees/' + this.code;
 
-    this.shortProfiles$ = dataService.getAll<Array<ShortProfile>>(
-      this.url + '/shortprofiles'
-    );
+      dataService
+        .getAll<Array<ShortProfile>>(this.url + '/shortprofiles')
+        .subscribe(res => (this.shortProfiles = res));
 
-    dataService
-      .getAll<Array<EmployeeSkill>>(this.url + '/skills')
-      .subscribe(res => {
-        this.allSkills = res;
-      });
+      dataService
+        .getAll<Array<EmployeeSkill>>(this.url + '/skills')
+        .subscribe(res => (this.allSkills = res));
+
+      return [];
+    });
   }
 }
