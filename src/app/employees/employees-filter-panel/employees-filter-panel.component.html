@@ -5,8 +5,16 @@
 >
     <mat-expansion-panel [expanded]="true">
         <mat-expansion-panel-header>
-            <mat-panel-title>General</mat-panel-title>
+            <mat-panel-title>General Filters</mat-panel-title>
         </mat-expansion-panel-header>
+
+        <mat-form-field>
+            <input
+                matInput
+                (keyup)="applyFilter($event)"
+                placeholder="Filter in Table"
+            >
+        </mat-form-field>
 
         <app-autocomplete-with-chips
             *ngIf="jobProfileFilter.options"
@@ -26,7 +34,7 @@
     </mat-expansion-panel>
     <mat-expansion-panel [expanded]="true">
         <mat-expansion-panel-header>
-            <mat-panel-title>Avalability</mat-panel-title>
+            <mat-panel-title>Avalability Filter</mat-panel-title>
         </mat-expansion-panel-header>
 
         <mat-form-field>

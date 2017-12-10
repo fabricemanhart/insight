@@ -1,19 +1,19 @@
-import { ActivatedRoute } from '@angular/router';
-import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
+import 'rxjs/add/operator/switchMap';
+
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator, MatSort, MatTableDataSource } from '@angular/material';
+import { ActivatedRoute } from '@angular/router';
 
 import { ProjectParticipation } from '../../../../core/models/project-participation';
 import { ProjectRow } from '../../../../core/models/projectRow';
 import { DataService } from '../../../../core/services/data.service';
-
-import 'rxjs/add/operator/switchMap';
 
 @Component({
   selector: 'app-project-participation-table',
   templateUrl: './project-participation-table.component.html',
   styleUrls: ['./project-participation-table.component.scss']
 })
-export class ProjectTableComponent implements AfterViewInit, OnInit {
+export class ProjectTableComponent implements OnInit {
   displayedColumns = [
     'priority',
     'projectCode',
@@ -58,12 +58,6 @@ export class ProjectTableComponent implements AfterViewInit, OnInit {
         this.dataSource.sort = this.sort;
       });
   }
-
-  /**
-   * Set the paginator and sort after the view init since this component will
-   * be able to query its view for the initialized paginator and sort.
-   */
-  ngAfterViewInit() {}
 
   applyFilter(filterValue: string) {
     filterValue = filterValue.trim(); // Remove whitespace

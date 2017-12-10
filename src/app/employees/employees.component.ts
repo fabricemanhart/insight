@@ -4,6 +4,7 @@ import 'rxjs/add/operator/take';
 
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Component, ElementRef, ViewChild } from '@angular/core';
+import { MatPaginator, MatSort, MatTableDataSource } from '@angular/material';
 import { ParamMap, Router } from '@angular/router';
 
 import { DataService } from '../core/services/data.service';
@@ -13,13 +14,16 @@ import { DataService } from '../core/services/data.service';
   templateUrl: './employees.component.html',
   styleUrls: ['./employees.component.scss']
 })
-export class EmployeesComponent {
+export class EmployeesComponent  {
+  displayedColumns = ['Avatar', 'FullName', 'Code', 'Title', 'OrganisationUnit', 'Location', 'PrivateAddress', 'Availability'];
+  dataSource: MatTableDataSource<Employee>;
+
   @ViewChild('sticky') sticky: ElementRef;
+  @ViewChild(MatPaginator) paginator: MatPaginator;
+  @ViewChild(MatSort) sort: MatSort;
 
   url = 'http://localhost:41588/api/v1/employees';
   routerParams: ParamMap;
-  employees: Employee[];
-  view = 'table';
 
   constructor(
     private dataService: DataService,
@@ -36,26 +40,16 @@ export class EmployeesComponent {
   onQueryParamsChanged(params: HttpParams) {
     this.dataService
       .getAll<Array<Employee>>(this.url, params)
-      .subscribe(response => (this.employees = response));
+      .subscribe(response => {
+        this.dataSource = new MatTableDataSource(response);
+        this.dataSource.paginator = this.paginator;
+        this.dataSource.sort = this.sort;
+      });
   }
 
-  // ngAfterViewInit() {
-  //   const scrollbar = Scrollbar.get(document.getElementById('main-scrollbar'));
-  //   const marginTop = 60 + 98;
-  //   const scrollHeight = scrollbar.targets.content.clientHeight - marginTop;
-
-  //   scrollbar.addListener(({ offset }) => {
-  //     const distance = offset.y;
-
-  //     if (distance >= marginTop) {
-  //       if (distance > scrollHeight) {
-  //         this.sticky.nativeElement.style.top = scrollHeight - marginTop + 'px';
-  //       } else {
-  //         this.sticky.nativeElement.style.top = distance - marginTop + 'px';
-  //       }
-  //     } else {
-  //       this.sticky.nativeElement.style.top = '0px';
-  //     }
-  //   });
-  // }
+  applyFilter(filterValue: string) {
+    filterValue = filterValue.trim();
+    filterValue = filterValue.toLowerCase();
+    this.dataSource.filter = filterValue;
+  }
 }

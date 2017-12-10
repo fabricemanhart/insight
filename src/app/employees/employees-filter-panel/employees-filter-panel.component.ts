@@ -23,6 +23,7 @@ export class EmployeesFilterPanelComponent {
   @Output('queryParamsChange')
   queryParamsChange = new EventEmitter<HttpParams>();
   @Output('routerParamsChange') routerParamsChange = new EventEmitter<any>();
+  @Output('tableFilterChange') tableFilterChange = new EventEmitter<string>();
 
   jobProfileFilter: JobProfileFilter;
   officeFilter: OfficeFilter;
@@ -63,5 +64,9 @@ export class EmployeesFilterPanelComponent {
       this.queryParamsChange.emit(httpParams);
       this.routerParamsChange.emit(routerParams);
     });
+  }
+
+  applyFilter(value: string) {
+    this.tableFilterChange.emit(value);
   }
 }

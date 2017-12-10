@@ -1,10 +1,6 @@
 <div class="simple-table">
 
-    <!-- <app-page-header [height]="'158px'" background="url(/assets/pattern-3.png)"></app-page-header> -->
-
     <div class="container">
-
-        <!-- <vr-breadcrumbs [currentPage]="'Simple Table'" [names]="['Tables']" [header]="'primary'"></vr-breadcrumbs> -->
 
         <div
             fxLayout="column"
@@ -19,44 +15,115 @@
                 <app-employees-filter-panel
                     (queryParamsChange)="onQueryParamsChanged($event)"
                     (routerParamsChange)="onRouterParamsChanged($event)"
+                    (tableFilterChange)="applyFilter($event.target.value)"
                 ></app-employees-filter-panel>
             </div>
 
             <div
                 fxFlex
-                class="mat-elevation-z2"
+                class="container mat-elevation-z2"
             >
-                <table class="table table-hover table-striped table-condensed table-bordered">
-                    <thead>
-                        <tr>
-                            <th></th>
-                            <th>Name</th>
-                            <th>Title</th>
-                            <th>Location</th>
-                            <th>Avalability</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr *ngFor="let employee of employees" [routerLink]="employee.Code">
-                            <td class="avatar-cell">
-                                <img
-                                    class="avatar"
-                                    src="http://localhost:41588/img/Employees/{{employee.Code}}.jpg"
-                                >
-                            </td>
-                            <td>{{ employee.FullName }}</td>
-                            <td>{{ employee.Title }}</td>
-                            <td>
-                                {{ employee.Location }}
-                                <br>
-                                {{employee.PrivateAddressZip}} {{employee.PrivateAddressCity}}
-                            </td>
-                            <td>
-                                <img src="http://localhost:41588/api/v1/employees/{{employee.Code}}/utilization/line">
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
+                <mat-table
+                    [dataSource]="dataSource"
+                    matSort
+                >
+
+                    <ng-container matColumnDef="Avatar">
+                        <mat-header-cell
+                            *matHeaderCellDef
+                            mat-sort-header
+                        >
+                        </mat-header-cell>
+                        <mat-cell *matCellDef="let row">
+                            <img
+                                class="avatar"
+                                src="http://localhost:41588/img/Employees/{{row.Code}}.jpg"
+                            >
+                        </mat-cell>
+                    </ng-container>
+
+                    <ng-container matColumnDef="FullName">
+                        <mat-header-cell
+                            *matHeaderCellDef
+                            mat-sort-header
+                        >
+                            Name
+                        </mat-header-cell>
+                        <mat-cell *matCellDef="let row">{{row.FullName}}</mat-cell>
+                    </ng-container>
+
+                    <ng-container matColumnDef="Code">
+                        <mat-header-cell
+                            *matHeaderCellDef
+                            mat-sort-header
+                        >
+                            Code
+                        </mat-header-cell>
+                        <mat-cell *matCellDef="let row">{{row.Code}}</mat-cell>
+                    </ng-container>
+
+                    <ng-container matColumnDef="Title">
+                        <mat-header-cell
+                            *matHeaderCellDef
+                            mat-sort-header
+                        >
+                            Title
+                        </mat-header-cell>
+                        <mat-cell *matCellDef="let row">{{row.Title}}</mat-cell>
+                    </ng-container>
+
+                    <ng-container matColumnDef="OrganisationUnit">
+                        <mat-header-cell
+                            *matHeaderCellDef
+                            mat-sort-header
+                        >
+                            Organisation Unit
+                        </mat-header-cell>
+                        <mat-cell *matCellDef="let row">{{ row.OrganisationUnit }}</mat-cell>
+                    </ng-container>
+
+                    <ng-container matColumnDef="Location">
+                        <mat-header-cell
+                            *matHeaderCellDef
+                            mat-sort-header
+                        >
+                            Location
+                        </mat-header-cell>
+                        <mat-cell *matCellDef="let row">{{ row.Location }}</mat-cell>
+                    </ng-container>
+
+                    <ng-container matColumnDef="PrivateAddress">
+                        <mat-header-cell
+                            *matHeaderCellDef
+                            mat-sort-header
+                        >
+                            Private Address
+                        </mat-header-cell>
+                        <mat-cell *matCellDef="let row">
+                            {{row.PrivateAddressZip}} {{row.PrivateAddressCity}}
+                        </mat-cell>
+                    </ng-container>
+
+                    <ng-container matColumnDef="Availability">
+                        <mat-header-cell
+                            *matHeaderCellDef
+                            mat-sort-header
+                        >
+                            Availability
+                        </mat-header-cell>
+                        <mat-cell *matCellDef="let row">
+                            <img src="http://localhost:41588/api/v1/employees/{{row.Code}}/utilization/line">
+                        </mat-cell>
+                    </ng-container>
+
+                    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+                    <mat-row
+                        [routerLink]="row.Code"
+                        *matRowDef="let row; columns: displayedColumns;"
+                    ></mat-row>
+                </mat-table>
+
+                <mat-paginator [pageSizeOptions]="[10, 25, 50, 100]"></mat-paginator>
             </div>
         </div>
     </div>
