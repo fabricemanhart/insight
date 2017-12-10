@@ -82,7 +82,7 @@
             >
                 %
             </mat-header-cell>
-            <mat-cell *matCellDef="let row">{{row.percentageEffective}}</mat-cell>
+            <mat-cell *matCellDef="let row">{{row.percentageEffective | number:'1.2-2'}}</mat-cell>
         </ng-container>
 
         <ng-container matColumnDef="days">
@@ -102,7 +102,7 @@
             >
                 From
             </mat-header-cell>
-            <mat-cell *matCellDef="let row">{{row.fromPlanned}}</mat-cell>
+            <mat-cell *matCellDef="let row">{{row.fromPlanned | date:'dd.MM.yyyy'}}</mat-cell>
         </ng-container>
 
         <ng-container matColumnDef="toPlanned">
@@ -112,7 +112,7 @@
             >
                 To
             </mat-header-cell>
-            <mat-cell *matCellDef="let row">{{row.toPlanned}}</mat-cell>
+            <mat-cell *matCellDef="let row">{{row.toPlanned | date:'dd.MM.yyyy'}}</mat-cell>
         </ng-container>
 
         <ng-container matColumnDef="projectManagerCode">

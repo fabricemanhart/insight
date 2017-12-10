@@ -17,17 +17,34 @@
             fxLayoutAlign="start center"
             fxLayoutAlign.gt-sm="space-between"
         >
-
             <div
-                class="left"
                 fxLayout="row"
+                class="left"
             >
-
-                <img
-                    fxFlex="150px"
-                    class="picture"
-                    src="http://localhost:41588/api/v1/employees/{{ employee.Code }}/picture?large=true"
+                <div
+                    fxLayout="column"
+                    fxLayoutGap="35px"
+                    fxLayoutAlign="center"
                 >
+                    <img
+                        fxFlex="150px"
+                        class="picture"
+                        src="http://localhost:41588/api/v1/employees/{{ employee.Code }}/picture?large=true"
+                    >
+                    <div
+                        class="social"
+                        fxLayout="row"
+                        fxLayoutAlign="start center"
+                        fxLayoutGap="15px"
+                    >
+                        <i class="fa fa-github"></i>
+                        <i class="fa fa-twitter"></i>
+                        <i class="fa fa-facebook"></i>
+                        <i class="fa fa-linkedin"></i>
+                        <i class="fa fa-dribbble"></i>
+                        <i class="fa fa-stack-overflow"></i>
+                    </div>
+                </div>
 
                 <div
                     fxLayout="column"
@@ -36,20 +53,44 @@
                     <div>
                         <div class="name">
                             {{ employee.FirstName }} {{ employee.LastName}}
-                            <mat-card-subtitle class="mat-card-subtitle">{{ employee.Code }}</mat-card-subtitle>
-                        </div>
-                        <div class="heading">{{ employee.Title }}</div>
-                        <div
-                            class="description"
-                            fxLayout="row"
-                            fxLayoutAlign="start center"
-                            fxLayoutGap="6px"
-                        >
-                            {{ employee.Location }}
-                            <span *ngIf="employee.WorkingPlace">, {{ employee.WorkingPlace }}</span>
-                            ({{ employee.Percentage }}%)
+                            <mat-card-subtitle class="heading">{{ employee.Title }}</mat-card-subtitle>
                         </div>
                     </div>
+                    <div
+                        class="info"
+                        fxLayout="row"
+                    >
+                        <div class="names">
+                            <div class="name">Phone</div>
+                            <div class="name"></div>
+                            <div class="name">Home Address</div>
+                            <div class="name"></div>
+                            <div class="name"></div>
+                            <div class="name">Date of Birth</div>
+                            <div class="name">Citzenship</div>
+                        </div>
+                        <div class="values">
+                            <div class="value">+41 78 202 20 54</div>
+                            <div class="value">+41 78 202 20 54</div>
+                            <div class="value">Albulastrasse 52</div>
+                            <div class="value">8048 Zürich</div>
+                            <div class="value">Switzerland</div>
+                            <div class="value">09.03.1983</div>
+                            <div class="value">Quarten SG</div>
+                        </div>
+                    </div>
+
+                    <div
+                        class="description"
+                        fxLayout="row"
+                        fxLayoutAlign="start center"
+                        fxLayoutGap="6px"
+                    >
+                        {{ employee.Location }}
+                        <span *ngIf="employee.WorkingPlace">, {{ employee.WorkingPlace }}</span>
+                        ({{ employee.Percentage }}%)
+                    </div>
+
                 </div>
 
             </div>
@@ -59,6 +100,7 @@
                 fxLayout="column"
                 fxLayoutAlign="space-between"
             >
+
                 <div
                     class="info"
                     fxLayout="row"
@@ -75,19 +117,6 @@
                     </div>
                 </div>
 
-                <div
-                    class="social"
-                    fxLayout="row"
-                    fxLayoutAlign="start center"
-                    fxLayoutGap="32px"
-                >
-                    <i class="fa fa-github"></i>
-                    <i class="fa fa-twitter"></i>
-                    <i class="fa fa-facebook"></i>
-                    <i class="fa fa-linkedin"></i>
-                    <i class="fa fa-dribbble"></i>
-                    <i class="fa fa-stack-overflow"></i>
-                </div>
             </div>
 
         </div>

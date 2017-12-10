@@ -1,8 +1,21 @@
-@import "../../../../styles/var";
+@import '../../../../styles/var';
+
+.mat-card-title {
+  font-size: 25px !important;
+}
+
+.project-graph {
+  margin-top: 40px;
+  align-content: center;
+}
+
+.example-header-image {
+  background-size: cover;
+}
 
 .profile-overview {
   @include responsivePadding();
-  background: #F4F4F4;
+  background: #f4f4f4;
 
   .main {
     background: white;
@@ -13,8 +26,10 @@
     .section {
       padding-top: 32px;
       padding-bottom: 16px;
+      margin-bottom: 30px;
 
       .heading {
+        font-size: 30px;
         font-weight: 500;
         margin-bottom: 24px;
       }
@@ -37,8 +52,6 @@
     }
 
     .activity {
-
-
       .event {
         position: relative;
 
@@ -82,7 +95,7 @@
         .line {
           width: 1px;
           height: 100%;
-          background: #E0E0E0;
+          background: #e0e0e0;
           z-index: 5;
           position: absolute;
           left: 0;
@@ -114,7 +127,7 @@
     }
 
     .footer {
-      border-top: 1px solid #E0E0E0;
+      border-top: 1px solid #e0e0e0;
       padding: 16px 0;
     }
   }
