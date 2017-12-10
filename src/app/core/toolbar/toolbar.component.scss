@@ -1,4 +1,30 @@
 :host {
-    z-index: 500;
-  }
-  
+  z-index: 500;
+}
+
+.mat-form-field {
+  width: 100%;
+}
+
+.mat-option {
+  height: 45px;
+  line-height: normal;
+  font-size: 13px;
+}
+
+.category {
+  padding: 5px;
+  background-color: #e8e8e8;
+  width: 100%;
+}
+
+.search-result-thumb {
+  height: 40px;
+  width: 40px;
+  vertical-align: middle;
+}
+
+a:link a:visited a:hover a:active {
+  text-decoration: none !important;
+  color: black !important;
+}

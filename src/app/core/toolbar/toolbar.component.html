@@ -1,21 +1,79 @@
-<div class="toolbar" fxLayout="row">
+<div
+    class="toolbar"
+    fxLayout="row"
+>
 
-    <div fxLayout="row" fxLayoutAlign="start center" fxHide.gt-sm>
-      <button type="button" mat-icon-button (click)="toggleSidenav()">
-        <mat-icon>menu</mat-icon>
-      </button>
+    <div
+        fxLayout="row"
+        fxLayoutAlign="start center"
+        fxHide.gt-sm
+    >
+        <button
+            type="button"
+            mat-icon-button
+            (click)="toggleSidenav()"
+        >
+            <mat-icon>menu</mat-icon>
+        </button>
     </div>
 
-    <div fxLayout="row" fxLayoutAlign="end stretch" fxLayoutAlign.gt-sm="space-between stretch" fxFlex>
-      <div class="search-bar" fxHide fxShow.gt-sm
-           fxLayout="row" fxLayoutAlign="start center" fxFlex fxFlex.gt-md="500px">
-        <!-- <vr-search-bar></vr-search-bar> -->
-      </div>
+    <div
+        fxLayout="row"
+        fxLayoutAlign="end stretch"
+        fxLayoutAlign.gt-sm="space-between stretch"
+        fxFlex
+    >
+        <div
+            class="search-bar"
+            fxShow.gt-sm
+            fxLayout="row"
+            fxFlex
+            fxFlex.gt-md="1000px"
+            fxFlexAlign="center"
+        >
+            <mat-form-field>
+                <input
+                    matInput
+                    placeholder="Search"
+                    aria-label="Search"
+                    [matAutocomplete]="auto"
+                    [formControl]="control"
+                >
+                <mat-autocomplete #auto="matAutocomplete">
+                    <div *ngFor="let category of searchResults$ | async">
+                        <div class="category">{{category.Category}}</div>
+                        <mat-option
+                            *ngFor="let entry of category.Results"
+                            [value]="entry.Name"
+                        >
+                            <div [routerLink]="entry.Url">
+                                <div
+                                    fxLayout="row"
+                                    fxLayoutGap="5px"
+                                >
+                                    <img
+                                        class="search-result-thumb"
+                                        aria-hidden
+                                        src="data:image/jpg;base64,{{entry.Thumb}}"
+                                    >
+                                    <div>
+                                        <div>{{ entry.Name }} ({{ entry.Code }})</div>
+                                        <div>{{ entry.Details }}</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </mat-option>
+                    </div>
+                </mat-autocomplete>
+            </mat-form-field>
+        </div>
 
-      <div fxLayout="row" fxFlexOffset.gt-sm="24px">
-        <!-- <vr-search fxShow fxHide.gt-sm></vr-search> -->
-        <app-toolbar-user-menu></app-toolbar-user-menu>
-      </div>
+        <div
+            fxLayout="row"
+            fxFlexOffset.gt-sm="24px"
+        >
+            <!-- <vr-search fxShow fxHide.gt-sm></vr-search> -->
+            <app-toolbar-user-menu></app-toolbar-user-menu>
+        </div>
     </div>
-  </div>
-
+</div>
