@@ -100,7 +100,7 @@
                             Private Address
                         </mat-header-cell>
                         <mat-cell *matCellDef="let row">
-                            {{row.PrivateAddressZip}} {{row.PrivateAddressCity}}
+                            {{row.privateAddressZip}} {{row.privateAddressCity}}
                         </mat-cell>
                     </ng-container>
 
@@ -118,7 +118,7 @@
 
                     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
                     <mat-row
-                        [routerLink]="row.Code"
+                        [routerLink]="row.code"
                         *matRowDef="let row; columns: displayedColumns;"
                     ></mat-row>
                 </mat-table>
