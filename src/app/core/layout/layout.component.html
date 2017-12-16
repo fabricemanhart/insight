@@ -1,30 +1,49 @@
 <!-- Todo move card-elevation-z4 -->
 <mat-sidenav-container class="layout-container">
 
-  <div class="layout" fxLayout="column" [class.alpha]="true" [class.boxed]="false">
+    <div
+        class="layout"
+        fxLayout="column"
+        [class.alpha]="true"
+        [class.boxed]="false"
+    >
 
-      <mat-sidenav-container fxFlex>
+        <mat-sidenav-container fxFlex>
 
-        <mat-sidenav class="sidenav-container" (open)="openSidenav()" (close)="closeSidenav()" [opened]="sidenavOpen" [align]="sidenavAlign"
-          [mode]="sidenavMode" [disableClose]="sidenavDisableClose" [appSidenavCollapse]="sidenavCollapsed">
+            <mat-sidenav
+                class="sidenav-container"
+                (open)="openSidenav()"
+                (close)="closeSidenav()"
+                [opened]="sidenavOpen"
+                [align]="sidenavAlign"
+                [mode]="sidenavMode"
+                [disableClose]="sidenavDisableClose"
+                [appSidenavCollapse]="sidenavCollapsed"
+            >
 
-          <app-sidenav [collapsed]="sidenavCollapsed" (toggledSidenavCollapse)="toggleSidenavCollapse()"></app-sidenav>
+                <app-sidenav
+                    [collapsed]="sidenavCollapsed"
+                    (toggledSidenavCollapse)="toggleSidenavCollapse()"
+                ></app-sidenav>
 
-        </mat-sidenav>
+            </mat-sidenav>
 
-        <div class="toolbar-container" fxLayout="column">
+            <div
+                class="toolbar-container"
+                fxLayout="column"
+            >
 
-          <app-toolbar [sidenavCollapsed]="sidenavCollapsed"
-            (toggledSidenav)="toggleSidenav()">
-          </app-toolbar>
+                <app-toolbar
+                    [sidenavCollapsed]="sidenavCollapsed"
+                    (toggledSidenav)="toggleSidenav()"
+                >
+                </app-toolbar>
 
+                <router-outlet class="content-container"></router-outlet>
 
-          <app-scrollbar id="main-scrollbar" class="content-container" fxFlex #scrollContainer>
-            <router-outlet (activate)="onActivate()"></router-outlet>
-          </app-scrollbar>
-        </div>
-      </mat-sidenav-container>
+            </div>
+        </mat-sidenav-container>
 
-  </div>
+    </div>
 
 </mat-sidenav-container>

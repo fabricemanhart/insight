@@ -1,19 +1,13 @@
-import {
-  AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, OnDestroy, OnInit,
-  ViewChild
-} from '@angular/core';
+import { ChangeDetectorRef, Component } from '@angular/core';
+import { Router } from '@angular/router';
 import Scrollbar from 'smooth-scrollbar';
-import { ScrollbarComponent } from '../scrollbar/scrollbar.component';
-import { NavigationEnd, Router } from '@angular/router';
-import { Observable } from 'rxjs/Observable';
-import { Subscription } from 'rxjs/Subscription';
 
 @Component({
   selector: 'app-layout',
   templateUrl: './layout.component.html',
   styleUrls: ['./layout.component.scss']
 })
-export class LayoutComponent implements AfterViewInit, OnDestroy {
+export class LayoutComponent {
 
   scrollbar: Scrollbar;
 
@@ -23,17 +17,11 @@ export class LayoutComponent implements AfterViewInit, OnDestroy {
   sidenavMode = 'side';
   sidenavDisableClose = true;
 
-  @ViewChild('scrollContainer')
-  scrollContainer: ScrollbarComponent;
-
   constructor(
     private router: Router,
     private cd: ChangeDetectorRef
   ) { }
 
-  ngAfterViewInit() {
-    this.scrollbar = Scrollbar.get(this.scrollContainer.element.nativeElement);
-  }
 
   openSidenav() {
     this.sidenavOpen = true;
@@ -50,17 +38,5 @@ export class LayoutComponent implements AfterViewInit, OnDestroy {
   toggleSidenavCollapse() {
     this.sidenavCollapsed = !this.sidenavCollapsed;
 
-  }
-
-  onActivate(): void {
-    if (this.scrollbar) {
-      this.scrollbar.setPosition(0, 0);
-    } else if (this.scrollContainer && this.scrollContainer.element) {
-      this.scrollbar = Scrollbar.get(this.scrollContainer.element.nativeElement);
-      this.scrollbar.setPosition(0, 0);
-    }
-  }
-
-  ngOnDestroy() {
   }
 }

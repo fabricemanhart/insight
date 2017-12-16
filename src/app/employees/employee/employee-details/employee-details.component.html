@@ -1,7 +1,6 @@
 <div
     class="profile-overview"
     fxLayout="column"
-    fxLayout.gt-sm="column"
     fxLayoutGap="32px"
 >
     <mat-card>
@@ -18,7 +17,6 @@
                 <ng-template #single>
                     <div
                         fxLayout="column"
-                        fxLayout.gt-sm="row"
                         fxLayoutGap="5px"
                     >
                         <p>{{ shortProfiles[0]?.DescriptionDe }}</p>
@@ -36,7 +34,6 @@
                             </mat-expansion-panel-header>
                             <div
                                 fxLayout="column"
-                                fxLayout.gt-sm="row"
                                 fxLayoutGap="12px"
                             >
                                 <p>{{ p.DescriptionDe }}</p>
@@ -66,7 +63,6 @@
                     </mat-expansion-panel-header>
                     <div
                         fxLayout="column"
-                        fxLayout.gt-sm="row"
                         fxLayoutGap="12px"
                     >
                         <img
