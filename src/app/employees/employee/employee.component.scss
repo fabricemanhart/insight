@@ -1,4 +1,4 @@
-@import "../../../styles/var";
+@import '../../../styles/var';
 
 .profile {
   @include responsivePadding;
@@ -7,8 +7,19 @@
     background: white;
     padding: 32px 8px;
 
-    border: 1px solid #E0E0E0;
+    border: 1px solid #e0e0e0;
     //@include mat-elevation(1);
+
+    .label {
+      display: flex;
+      flex-direction: column;
+      width: 150px;
+    }
+
+    .detail-box {
+      padding: 16px 32px;
+      border-left: 1px solid #e0e0e0;
+    }
 
     .left {
       padding: 16px 32px;
@@ -26,7 +37,8 @@
         font-size: 28px;
       }
 
-      .description, .contact {
+      .description,
+      .contact {
         margin-top: 6px;
         font-size: 14px;
         color: $color__text-dark;
@@ -50,7 +62,7 @@
 
     .right {
       padding: 16px 32px;
-      border-left: 1px solid #E0E0E0;
+      border-left: 1px solid #e0e0e0;
 
       @include lt-sm {
         border-left: none;
@@ -69,11 +81,10 @@
           margin-left: 24px;
         }
 
-        .name, .value {
+        .name,
+        .value {
           padding: 8px 0;
         }
-
-
       }
 
       .social {
@@ -88,6 +99,5 @@
   .profile-tabs {
     margin-top: 24px;
     background: white;
-
   }
 }

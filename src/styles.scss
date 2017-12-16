@@ -26,3 +26,10 @@ $fa-font-path: "~font-awesome/fonts";
 @import "styles/layouts/layout-beta";
 // @import "styles/layouts/layout-gamma";
 @import "styles/pages/components";
+
+a:link,
+a:hover,
+a:active,
+a:visited {
+  color: black;
+}

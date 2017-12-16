@@ -1,8 +1,8 @@
-import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/switchMap';
 
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Observable } from 'rxjs/Observable';
 
 import { DataService } from '../../core/services/data.service';
 
@@ -12,13 +12,13 @@ import { DataService } from '../../core/services/data.service';
   styleUrls: ['./employee.component.scss']
 })
 export class EmployeeComponent implements OnInit {
-  employee$: Observable<Employee>;
+  employee$: Observable<EmployeeDetail>;
 
   url = 'http://localhost:41588/api/v1/employees';
 
   constructor(private dataService: DataService, route: ActivatedRoute) {
     this.employee$ = route.paramMap.switchMap(p =>
-      dataService.getById<Employee>(this.url, p.get('code'))
+      dataService.getById<EmployeeDetail>(this.url, p.get('code'))
     );
   }
 

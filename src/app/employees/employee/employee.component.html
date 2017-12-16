@@ -1,14 +1,8 @@
-<!-- TODO: rename -->
 <div
     class="profile"
     *ngIf="employee$ | async let employee"
 >
-
-    <!-- <vr-page-header [height]="'416px'" background="url(/assets/img/demo/headers/pattern-1.png)" [reverse]="true"></vr-page-header> -->
-
     <div class="container">
-
-        <!-- <vr-breadcrumbs [currentPage]="'Profile'" [header]="'primary'"></vr-breadcrumbs> -->
 
         <div
             class="splash mat-elevation-z4"
@@ -19,11 +13,12 @@
         >
             <div
                 fxLayout="row"
+                fxLayoutGap="70px"
                 class="left"
             >
                 <div
                     fxLayout="column"
-                    fxLayoutGap="35px"
+                    fxLayoutGap="70px"
                     fxLayoutAlign="center"
                 >
                     <img
@@ -37,88 +32,204 @@
                         fxLayoutAlign="start center"
                         fxLayoutGap="15px"
                     >
-                        <i class="fa fa-github"></i>
-                        <i class="fa fa-twitter"></i>
-                        <i class="fa fa-facebook"></i>
-                        <i class="fa fa-linkedin"></i>
-                        <i class="fa fa-dribbble"></i>
-                        <i class="fa fa-stack-overflow"></i>
+                        <a
+                            *ngIf="employee.GitHubUrl"
+                            [href]="employee.GitHubUrl"
+                        >
+                            <i class="fa fa-github"></i>
+                        </a>
+                        <a
+                            *ngIf="employee.TwitterProfileUrl"
+                            [href]="employee.TwitterProfileUrl"
+                        >
+                            <i class="fa fa-twitter"></i>
+                        </a>
+                        <a
+                            *ngIf="employee.XingProfileUrl"
+                            [href]="employee.XingProfileUrl"
+                        >
+                            <i class="fa fa-xing"></i>
+                        </a>
+                        <a
+                            *ngIf="employee.BitBucketUrl"
+                            [href]="employee.BitBucketUrl"
+                        >
+                            <i class="fa fa-bitbucket"></i>
+                        </a>
+                        <a
+                            *ngIf="employee.LinkedInProfileUrl"
+                            [href]="employee.LinkedInProfileUrl"
+                        >
+                            <i class="fa fa-linkedin"></i>
+                        </a>
+                        <a
+                            *ngIf="employee.StackoverflowProfileUrl"
+                            [href]="employee.StackoverflowProfileUrl"
+                        >
+                            <i class="fa fa-stack-overflow"></i>
+                        </a>
                     </div>
                 </div>
 
                 <div
                     fxLayout="column"
-                    fxLayoutAlign="space-between"
                 >
                     <div>
-                        <div class="name">
-                            {{ employee.FirstName }} {{ employee.LastName}}
+                        <div>
+                            <h2>{{ employee.FirstName }} {{ employee.LastName}}</h2>
                             <mat-card-subtitle class="heading">{{ employee.Title }}</mat-card-subtitle>
-                        </div>
-                    </div>
-                    <div
-                        class="info"
-                        fxLayout="row"
-                    >
-                        <div class="names">
-                            <div class="name">Phone</div>
-                            <div class="name"></div>
-                            <div class="name">Home Address</div>
-                            <div class="name"></div>
-                            <div class="name"></div>
-                            <div class="name">Date of Birth</div>
-                            <div class="name">Citzenship</div>
-                        </div>
-                        <div class="values">
-                            <div class="value">+41 78 202 20 54</div>
-                            <div class="value">+41 78 202 20 54</div>
-                            <div class="value">Albulastrasse 52</div>
-                            <div class="value">8048 Zürich</div>
-                            <div class="value">Switzerland</div>
-                            <div class="value">09.03.1983</div>
-                            <div class="value">Quarten SG</div>
-                        </div>
-                    </div>
+                            <div class="description">
+                                {{ employee.Location }}
+                                <span *ngIf="employee.WorkingPlace">, {{ employee.WorkingPlace }}</span>
+                                ({{ employee.Percentage }}%)
+                            </div>
 
-                    <div
-                        class="description"
-                        fxLayout="row"
-                        fxLayoutAlign="start center"
-                        fxLayoutGap="6px"
-                    >
-                        {{ employee.Location }}
-                        <span *ngIf="employee.WorkingPlace">, {{ employee.WorkingPlace }}</span>
-                        ({{ employee.Percentage }}%)
+                        </div>
                     </div>
-
                 </div>
-
-            </div>
-
-            <div
-                class="right"
-                fxLayout="column"
-                fxLayoutAlign="space-between"
-            >
 
                 <div
-                    class="info"
-                    fxLayout="row"
+                    fxLayout="column"
+                    class="detail-box"
+                    fxLayoutGap="20px"
                 >
-                    <div class="names">
-                        <div class="name">Availability:</div>
-                        <div class="name">Address:</div>
-                        <div class="name">Telephone:</div>
+                <h2>Personal</h2>
+                    <div fxLayout="row">
+                        <div class="label">
+                            <div>Phone</div>
+                        </div>
+                        <div fxLayout="column">
+                            <div>{{ employee.BusinessPhone }}</div>
+                            <div>{{ employee.MobilePhone }}</div>
+                        </div>
                     </div>
-                    <div class="values">
-                        <div class="value">Full-time (40h/week)</div>
-                        <div class="value">Albulastrasse 52, 8048 Zürich</div>
-                        <div class="value">+41 78 202 20 54</div>
+
+                    <div fxLayout="row">
+                        <div class="label">
+                            <div>Home Address</div>
+                        </div>
+                        <div fxLayout="column">
+                            <div>{{ employee.PrivateAddress.Street }}</div>
+                            <div>
+                                {{ employee.PrivateAddress.Zip }} {{ employee.PrivateAddress.City }}
+                            </div>
+                            <div>{{ employee.PrivateAddress.Country }}</div>
+                        </div>
                     </div>
+
+                    <div fxLayout="row">
+                        <div class="label">
+                            <div>Date of Birth</div>
+                        </div>
+                        <div fxLayout="column">
+                            <div>
+                                {{ employee.DateOfBirth | date:'dd.MM.yyyy' }}
+                            </div>
+                        </div>
+                    </div>
+
+                    <div fxLayout="row">
+                        <div class="label">
+                            <div>Citizenship</div>
+                        </div>
+                        <div fxLayout="column">
+                            <div>{{ employee.Citizenship }}</div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div
+                    fxLayout="column"
+                    fxLayoutGap="20px"
+                    class="detail-box"
+                >
+                <h2>Employement</h2>
+                    <div fxLayout="row">
+                        <div class="label">
+                            <div>Percentage</div>
+                        </div>
+                        <div fxLayout="column">
+                            <div>{{ employee.Percentage }}%</div>
+                        </div>
+                    </div>
+
+                    <div fxLayout="row">
+                        <div class="label">
+                            <div>Location</div>
+                        </div>
+                        <div fxLayout="column">
+                            <div>{{ employee.Location }}</div>
+                        </div>
+                    </div>
+
+                    <div
+                        *ngIf="employee.JobProfile"
+                        fxLayout="row"
+                    >
+                        <div class="label">
+                            <div>Job Profile</div>
+                        </div>
+                        <div fxLayout="column">
+                            <div>{{ employee.JobProfile.Name }}</div>
+                        </div>
+                    </div>
+
+                    <div fxLayout="row">
+                        <div class="label">
+                            <div>Function</div>
+                        </div>
+                        <div fxLayout="column">
+                            <div>
+                                {{ employee.Qualification.Name }} (Grade {{ employee.Qualification.Grade }})
+                            </div>
+                        </div>
+                    </div>
+
+                    <div fxLayout="row">
+                        <div class="label">
+                            <div>Superior</div>
+                        </div>
+                        <div fxLayout="column">
+                            <div>{{ employee.Superior }}</div>
+                        </div>
+                    </div>
+
+                    <div
+                        *ngIf="employee.Assistance"
+                        fxLayout="row"
+                    >
+                        <div class="label">
+                            <div>Superior</div>
+                        </div>
+                        <div fxLayout="column">
+                            <div>{{ employee.Assistance.FullName }}</div>
+                        </div>
+                    </div>
+
+                    <div fxLayout="row">
+                        <div class="label">
+                            <div>Organisation Unit</div>
+                        </div>
+                        <div fxLayout="column">
+                            <div>{{ employee.Team.Name }}</div>
+                        </div>
+                    </div>
+
+                    <div fxLayout="row">
+                        <div class="label">
+                            <div>Internal Rate</div>
+                        </div>
+                        <div fxLayout="column">
+                            <div>
+                                {{ employee.ExternalRate}} {{ employee.Currency }}
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
 
             </div>
-
         </div>
 
         <mat-tab-group class="profile-tabs clean-tabs mat-elevation-z4">
