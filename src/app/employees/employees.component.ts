@@ -15,8 +15,17 @@ import { DataService } from '../core/services/data.service';
   templateUrl: './employees.component.html',
   styleUrls: ['./employees.component.scss']
 })
-export class EmployeesComponent  {
-  displayedColumns = ['avatar', 'fullName', 'code', 'title', 'organisationUnit', 'location', 'privateAddress', 'availability'];
+export class EmployeesComponent {
+  displayedColumns = [
+    'avatar',
+    'fullName',
+    'code',
+    'title',
+    'organisationUnit',
+    'location',
+    'privateAddress',
+    'availability'
+  ];
   dataSource: MatTableDataSource<EmployeeRow>;
 
   @ViewChild('sticky') sticky: ElementRef;
@@ -53,5 +62,9 @@ export class EmployeesComponent  {
     filterValue = filterValue.trim();
     filterValue = filterValue.toLowerCase();
     this.dataSource.filter = filterValue;
+  }
+
+  setAvatar(code: string) {
+    return  'http://localhost:41588/img/Employees/' + code + '.jpg';
   }
 }
