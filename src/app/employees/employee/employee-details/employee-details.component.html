@@ -57,13 +57,26 @@
             <div
                 class="content"
                 fxLayout="column"
-           >
+                fxLayoutGap="12px"
+            >
                 <app-project-participation-table></app-project-participation-table>
-                <img
-                    class="project-graph"
-                    fxFlexAlign="center"
-                    src="http://localhost:41588/api/v1/employees/{{ code }}/utilization?width=1000&weeks=32&offset=0"
-                >
+                <mat-expansion-panel [expanded]="true">
+                    <mat-expansion-panel-header>
+                        <mat-panel-title>Project Chart</mat-panel-title>
+                    </mat-expansion-panel-header>
+                    <div
+                        fxLayout="column"
+                        fxLayout.gt-sm="row"
+                        fxLayoutGap="12px"
+                    >
+                        <img
+                            class="project-graph"
+                            fxFlexAlign="center"
+                            src="http://localhost:41588/api/v1/employees/{{ code }}/utilization?width=1000&weeks=32&offset=0"
+                        >
+                    </div>
+                </mat-expansion-panel>
+
             </div>
         </mat-card-content>
     </mat-card>
@@ -109,95 +122,4 @@
             </div>
         </mat-card-content>
     </mat-card>
-
-    <div
-        class="aside"
-        fxFlex.gt-sm="320px"
-    >
-        <div class="heading">RECENT ACTIVITY</div>
-
-        <div class="activity">
-            <div
-                class="event"
-                fxLayout="row"
-            >
-                <div class="dot primary"></div>
-                <div class="line"></div>
-                <div class="info">
-                    <div class="when">17 mins ago</div>
-                    <div class="name">Called Jefferson</div>
-                    <div class="description">
-                        Jason called Jefferson about the meeting
-                    </div>
-                </div>
-            </div>
-
-            <div
-                class="event"
-                fxLayout="row"
-            >
-                <div class="dot accent"></div>
-                <div class="line"></div>
-                <div class="info">
-                    <div class="when">54 mins ago</div>
-                    <div class="name">New purchase</div>
-                    <div class="description">Jason successfully purchased item #26</div>
-                </div>
-            </div>
-
-            <div
-                class="event"
-                fxLayout="row"
-            >
-                <div class="dot primary"></div>
-                <div class="line"></div>
-                <div class="info">
-                    <div class="when">2 hours ago</div>
-                    <div class="name">Printed sales report</div>
-                    <div class="description">Jason printed the sales report</div>
-                </div>
-            </div>
-
-            <div
-                class="event"
-                fxLayout="row"
-            >
-                <div class="dot warn"></div>
-                <div class="line"></div>
-                <div class="info">
-                    <div class="when">4 hours ago</div>
-                    <div class="name">Created ticket</div>
-                    <div class="description">
-                        Jason created a new ticket about the design
-                    </div>
-                </div>
-            </div>
-
-            <div
-                class="event"
-                fxLayout="row"
-            >
-                <div class="dot accent"></div>
-                <div class="line"></div>
-                <div class="info">
-                    <div class="when">5 hours ago</div>
-                    <div class="name">New purchase</div>
-                    <div class="description">Jason bought the elastic ui template</div>
-                </div>
-            </div>
-        </div>
-
-        <div
-            class="footer"
-            fxLayout="row"
-            fxLayoutAlign="center center"
-        >
-            <button
-                type="button"
-                mat-button
-            >
-                LOAD MORE
-            </button>
-        </div>
-    </div>
 </div>

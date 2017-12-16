@@ -18,7 +18,9 @@
   background-size: cover;
 }
 
-
+.mat-card-content {
+  padding: 10px 20px !important;
+}
 
 .profile-overview {
   @include responsivePadding();

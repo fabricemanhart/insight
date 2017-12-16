@@ -3,31 +3,29 @@
     fxLayout="row"
 >
 
+<div
+fxLayout="row"
+fxLayoutAlign="start center"
+fxHide.gt-sm
+>
+<button
+    type="button"
+    mat-icon-button
+    (click)="toggleSidenav()"
+>
+    <mat-icon>menu</mat-icon>
+</button>
+</div>
     <div
         fxLayout="row"
-        fxLayoutAlign="start center"
-        fxHide.gt-sm
-    >
-        <button
-            type="button"
-            mat-icon-button
-            (click)="toggleSidenav()"
-        >
-            <mat-icon>menu</mat-icon>
-        </button>
-    </div>
-
-    <div
-        fxLayout="row"
-        fxLayoutAlign="end stretch"
-        fxLayoutAlign.gt-sm="space-between stretch"
+        fxLayoutAlign="space-between stretch"
         fxFlex
     >
+        <div flex="50px"></div>
         <div
             class="search-bar"
             fxShow.gt-sm
             fxLayout="row"
-            fxFlex
             fxFlex.gt-md="1000px"
             fxFlexAlign="center"
         >
