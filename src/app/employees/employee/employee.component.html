@@ -18,18 +18,27 @@
             >
                 <div
                     fxLayout="column"
-                    fxLayoutGap="70px"
-                    fxLayoutAlign="center"
+                    fxLayoutGap="10px"
+                    fxLayoutAlign="start center"
                 >
+                    <h2>
+                        {{ employee.FirstName }} {{ employee.LastName}}
+                    </h2>
                     <img
                         fxFlex="150px"
                         class="picture"
                         src="http://localhost:41588/api/v1/employees/{{ employee.Code }}/picture?large=true"
                     >
+
+                    <h3 class="heading">{{ employee.Title }}</h3>
+                    <div class="description">
+                        {{ employee.Location }}
+                        <span *ngIf="employee.WorkingPlace">, {{ employee.WorkingPlace }}</span>
+                        ({{ employee.Percentage }}%)
+                    </div>
                     <div
                         class="social"
                         fxLayout="row"
-                        fxLayoutAlign="start center"
                         fxLayoutGap="15px"
                     >
                         <a
@@ -73,27 +82,12 @@
 
                 <div
                     fxLayout="column"
-                >
-                    <div>
-                        <div>
-                            <h2>{{ employee.FirstName }} {{ employee.LastName}}</h2>
-                            <mat-card-subtitle class="heading">{{ employee.Title }}</mat-card-subtitle>
-                            <div class="description">
-                                {{ employee.Location }}
-                                <span *ngIf="employee.WorkingPlace">, {{ employee.WorkingPlace }}</span>
-                                ({{ employee.Percentage }}%)
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
-
-                <div
-                    fxLayout="column"
                     class="detail-box"
                     fxLayoutGap="20px"
+                    fxLayoutAlign="start start"
+
                 >
-                <h2>Personal</h2>
+                    <h2>Personal</h2>
                     <div fxLayout="row">
                         <div class="label">
                             <div>Phone</div>
@@ -144,7 +138,7 @@
                     fxLayoutGap="20px"
                     class="detail-box"
                 >
-                <h2>Employement</h2>
+                    <h2>Employement</h2>
                     <div fxLayout="row">
                         <div class="label">
                             <div>Percentage</div>
@@ -207,7 +201,7 @@
                         </div>
                     </div>
 
-                    <div fxLayout="row">
+                    <div *ngIf="employee.Team" fxLayout="row">
                         <div class="label">
                             <div>Organisation Unit</div>
                         </div>

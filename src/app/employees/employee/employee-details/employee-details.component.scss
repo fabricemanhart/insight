@@ -4,6 +4,11 @@
   font-size: 25px !important;
 }
 
+.mat-expansion-panel-header {
+ font-size: 20px !important;
+ font-weight: 400 !important;
+}
+
 .project-graph {
   margin-top: 40px;
   align-content: center;
@@ -12,6 +17,8 @@
 .example-header-image {
   background-size: cover;
 }
+
+
 
 .profile-overview {
   @include responsivePadding();
