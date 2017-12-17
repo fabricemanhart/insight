@@ -4,8 +4,12 @@
   width: 100%;
 }
 
-.simple-table {
+.table {
   @include responsivePadding();
+}
+
+.mat-cell {
+  cursor: pointer;
 }
 
 .avatar-cell {

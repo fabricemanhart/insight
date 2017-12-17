@@ -3,7 +3,7 @@
     fxLayout="column"
     fxLayoutGap="32px"
 >
-    <mat-card>
+    <mat-card *ngIf="shortProfiles?.length > 0">
         <mat-card-header>
             <mat-card-title>About</mat-card-title>
         </mat-card-header>
