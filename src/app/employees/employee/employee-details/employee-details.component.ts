@@ -16,6 +16,7 @@ export class EmployeeDetailsComponent {
   code: string;
   shortProfiles: Array<ShortProfile>;
   allSkills: Array<EmployeeSkill>;
+  employeeRoles: Array<any>;
 
   constructor(private dataService: DataService, route: ActivatedRoute) {
     route.paramMap.subscribe(p => {
@@ -29,6 +30,10 @@ export class EmployeeDetailsComponent {
       dataService
         .getAll<Array<EmployeeSkill>>(this.url + '/skills')
         .subscribe(res => (this.allSkills = res));
+
+      dataService
+        .getAll<Array<EmployeeRole>>(this.url + '/roles')
+        .subscribe(res => this.employeeRoles = res);
 
       return [];
     });
