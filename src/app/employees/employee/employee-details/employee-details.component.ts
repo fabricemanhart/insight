@@ -16,7 +16,7 @@ export class EmployeeDetailsComponent {
   code: string;
   shortProfiles: Array<ShortProfile>;
   allSkills: Array<EmployeeSkill>;
-  employeeRoles: Array<any>;
+  employeeRoles: Array<EmployeeRole>;
 
   constructor(private dataService: DataService, route: ActivatedRoute) {
     route.paramMap.subscribe(p => {

@@ -4,14 +4,14 @@ import { NgModule } from '@angular/core';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { ReactiveFormsModule } from '@angular/forms';
 import {
-  MatAutocompleteModule,
-  MatButtonModule,
-  MatChipsModule,
-  MatIconModule,
-  MatInputModule,
-  MatOptionModule,
-  MatRippleModule,
-  MatSidenavModule
+    MatAutocompleteModule,
+    MatButtonModule,
+    MatChipsModule,
+    MatIconModule,
+    MatInputModule,
+    MatOptionModule,
+    MatRippleModule,
+    MatSidenavModule
 } from '@angular/material';
 import { RouterModule } from '@angular/router';
 
@@ -20,7 +20,6 @@ import { EmployeeComponent } from './../employees/employee/employee.component';
 import { AutocompleteWithChipsComponent } from './autocomplete-with-chips/autocomplete-with-chips.component';
 import { LayoutComponent } from './layout/layout.component';
 import { PageHeaderComponent } from './page-header/page-header.component';
-import { ScrollbarComponent } from './scrollbar/scrollbar.component';
 import { DataService } from './services/data.service';
 import { SidenavCollapseDirective } from './sidenav/sidenav-collapse.directive';
 import { SidenavItemComponent } from './sidenav/sidenav-item/sidenav-item.component';
@@ -56,7 +55,6 @@ import { WinAuthInterceptor } from './WinAuthInterceptor';
     SidenavComponent,
     ToolbarComponent,
     SidenavItemComponent,
-    ScrollbarComponent,
     SidenavCollapseDirective,
     ClickOutsideDirective,
     ToolbarUserMenuComponent,
