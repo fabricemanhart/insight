@@ -29,7 +29,10 @@
                     fxLayout="column"
                     fxLayoutGap="10px"
                 >
-                    <img src="http://localhost:41588/api/v1/projects/{{ project.Project.Code }}/picture">
+                    <img
+                        src="http://localhost:41588/api/v1/projects/{{ project.Project.Code }}/picture"
+                        onError="this.src='http://localhost:41588/api/v1/projects/C18808/picture';"
+                    >
                     <div>{{ project.DescriptionResolved }}</div>
                     <div *ngIf="project.TasksResolved?.length > 0">
                         <b>Tasks:</b>
