@@ -36,7 +36,6 @@ export class RecommendedTrainingsTableComponent implements OnInit {
       })
       .subscribe(p => {
         const trainingRows = p.map(r => new TrainingRow(r));
-
         this.dataSource = new MatTableDataSource(trainingRows);
         this.dataSource.paginator = this.paginator;
         this.dataSource.sort = this.sort;

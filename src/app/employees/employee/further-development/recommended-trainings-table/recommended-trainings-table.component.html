@@ -41,7 +41,7 @@
           >
               Rating
           </mat-header-cell>
-          <mat-cell *matCellDef="let row">{{ row.averageRating }}</mat-cell>
+          <mat-cell *matCellDef="let row"><app-star-rating [rating]="row.averageRating"></app-star-rating> {{ row.averageRating | number : '1.2-2' }}</mat-cell>
       </ng-container>
 
       <ng-container matColumnDef="action">
@@ -51,12 +51,12 @@
           >
 
           </mat-header-cell>
-          <mat-cell *matCellDef="let row"><button class="btn btn-sm btn-default"><i class="fa fa-check"></i> I already participated</button></mat-cell>
+          <mat-cell *matCellDef="let row"><button mat-button color="primary"><i class="fa fa-check"></i> I already participated</button></mat-cell>
       </ng-container>
 
       <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
       <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
   </mat-table>
 
-  <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+  <mat-paginator [pageSizeOptions]="[10, 25, 100]"></mat-paginator>
 </div>

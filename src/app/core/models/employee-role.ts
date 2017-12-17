@@ -1,5 +1,5 @@
 import { Project } from './project';
-interface EmployeeRole {
+export class EmployeeRole {
   Role: Role;
   Project: Project;
   Unit: OrganisationUnit;

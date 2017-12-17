@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
 
 import { EmployeeSkill } from '../../../core/models/employee-skill';
+import { EmployeeRole } from '../../../core/models/employee-role';
 import { ShortProfile } from '../../../core/models/shortProfile';
 import { DataService } from '../../../core/services/data.service';
 

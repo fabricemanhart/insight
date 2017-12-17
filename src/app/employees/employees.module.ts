@@ -37,6 +37,7 @@ import {
 import { ProjectHistoryComponent } from './employee/project-history/project-history.component';
 import { EmployeesFilterPanelComponent } from './employees-filter-panel/employees-filter-panel.component';
 import { EmployeesComponent } from './employees.component';
+import { StarRatingComponent } from './employee/further-development/recommended-trainings-table/star-rating/star-rating.component';
 
 @NgModule({
   imports: [
@@ -70,7 +71,8 @@ import { EmployeesComponent } from './employees.component';
     ProjectParticipationTableComponent,
     FurtherDevelopmentComponent,
     ProjectHistoryComponent,
-    RecommendedTrainingsTableComponent
+    RecommendedTrainingsTableComponent,
+    StarRatingComponent
   ],
   providers: []
 })

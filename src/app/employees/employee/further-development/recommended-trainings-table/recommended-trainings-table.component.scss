@@ -17,3 +17,33 @@
   overflow: auto;
   max-height: 500px;
 }
+
+.mat-cell,
+.mat-header-cell {
+  margin-right: 10px;
+}
+
+.mat-cell:nth-child(1),
+.mat-header-cell:nth-child(1) {
+  flex: 30px;
+}
+
+.mat-cell:nth-child(2),
+.mat-header-cell:nth-child(2) {
+  flex: 600px;
+}
+
+.mat-cell:nth-child(3),
+.mat-header-cell:nth-child(3) {
+  flex: 150px;
+}
+
+.mat-cell:nth-child(4),
+.mat-header-cell:nth-child(4) {
+  flex: 100px;
+}
+
+.thumb {
+  max-width: 40px;
+  max-height: 40px;
+}
