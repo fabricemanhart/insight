@@ -1,0 +1,48 @@
+@import '../../../../styles/var';
+
+.mat-card-title {
+  font-size: 25px !important;
+}
+
+.mat-expansion-panel-header {
+ font-size: 20px !important;
+ font-weight: 400 !important;
+}
+
+.project-graph {
+  margin-top: 40px;
+  align-content: center;
+}
+
+.mat-card-content {
+  padding: 10px 20px !important;
+}
+
+.profile-overview {
+  @include responsivePadding();
+  background: #f4f4f4;
+
+  .main {
+    background: white;
+    padding: 0 32px 32px;
+
+    @include cardBorder;
+
+    .section {
+      padding-top: 32px;
+      padding-bottom: 16px;
+      margin-bottom: 30px;
+
+      .heading {
+        font-size: 30px;
+        font-weight: 500;
+        margin-bottom: 24px;
+      }
+
+      .content {
+        color: $color__text-dark;
+        font-size: 15px;
+      }
+    }
+  }
+}
