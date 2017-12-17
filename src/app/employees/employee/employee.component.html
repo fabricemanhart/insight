@@ -232,14 +232,11 @@
             <mat-tab label="Details">
                 <app-employee-details></app-employee-details>
             </mat-tab>
-            <mat-tab
-                label="Further Development"
-            >
+            <mat-tab label="Further Development">
                 <app-further-development></app-further-development>
             </mat-tab>
-            <mat-tab
-                label="Project History"
-            >
+            <mat-tab label="Project History">
+                <app-project-history [employeeDetail]="employee"></app-project-history>
             </mat-tab>
             <mat-tab
                 label="Offering Material"

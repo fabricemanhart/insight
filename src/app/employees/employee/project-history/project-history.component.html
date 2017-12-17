@@ -1,22 +1,45 @@
 <div
-class="profile-overview"
-fxLayout="column"
-fxLayoutGap="32px"
+    class="profile-overview"
+    fxLayout="column"
+    fxLayoutGap="32px"
 >
-<mat-card>
-    <mat-card-header>
-        <mat-card-title>Recommended Trainings</mat-card-title>
-    </mat-card-header>
-    <mat-card-content *ngIf="code">
-        <div
-            class="content"
-            fxLayout="column"
-            fxLayoutGap="12px"
+    <mat-card>
+        <mat-card-header>
+            <mat-card-title>Project History</mat-card-title>
+        </mat-card-header>
+        <mat-card-content
+            *ngIf="code"
+            fxLayout="row"
+            fxLayoutWrap
+            fxFlexAlign="center center"
         >
-            <app-recommended-trainings-table></app-recommended-trainings-table>
-
-        </div>
-    </mat-card-content>
-</mat-card>
-
+            <mat-card
+                fxFlex="31%"
+                class="project-card"
+                *ngFor="let project of projects"
+            >
+                <mat-card-header>
+                    <mat-card-title>{{ project.TitleResolved }}</mat-card-title>
+                    <mat-card-subtitle>
+                        {{ project.Project.Code }} | {{ project.FromEffective | date:'dd.MM.yyyy' }} - {{ project.ToEffective|date:'dd.MM.yyyy' }} | {{ project.TotalHoursEffective / employeeDetail.WorkHoursPerDay|number:'1.1-1' }} days
+                    </mat-card-subtitle>
+                </mat-card-header>
+                <mat-card-content
+                    *ngIf="code"
+                    fxLayout="column"
+                    fxLayoutGap="10px"
+                >
+                    <img src="http://localhost:41588/api/v1/projects/{{ project.Project.Code }}/picture">
+                    <div>{{ project.DescriptionResolved }}</div>
+                    <div *ngIf="project.TasksResolved?.length > 0">
+                        <b>Tasks:</b>
+                        {{ project.TasksResolved }}
+                    </div>
+                    <mat-chip-list>
+                        <mat-chip *ngFor="let skill of project.Descriptions[0]?.Skills">{{ skill.Name }}</mat-chip>
+                    </mat-chip-list>
+                </mat-card-content>
+            </mat-card>
+        </mat-card-content>
+    </mat-card>
 </div>

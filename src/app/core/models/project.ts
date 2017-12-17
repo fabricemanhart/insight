@@ -6,7 +6,7 @@ export class Project {
   Code: string;
   CreateDate: Date;
   Currency: string;
-  // Customer: {VertecId: 0, Name: "Zurich Global Corporate Switzerland, Zürich", HasLogo: false, City: "Zürich",…}
+  Customer: Customer;
   Description: string;
   EngagementManager: Employee;
   FullName: string;

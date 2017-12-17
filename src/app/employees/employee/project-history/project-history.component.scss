@@ -18,6 +18,16 @@
   padding: 10px 20px !important;
 }
 
+.project-card {
+  margin-bottom: 30px !important;
+  margin-right: 30px !important;
+}
+
+img {
+  height: 200px;
+  object-fit: cover;
+}
+
 .profile-overview {
   @include responsivePadding();
   background: #f4f4f4;

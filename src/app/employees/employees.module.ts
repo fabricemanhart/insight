@@ -9,6 +9,7 @@ import {
     MatChipsModule,
     MatDatepickerModule,
     MatExpansionModule,
+    MatGridListModule,
     MatIconModule,
     MatInputModule,
     MatNativeDateModule,
@@ -34,10 +35,12 @@ import { FurtherDevelopmentComponent } from './employee/further-development/furt
 import {
     RecommendedTrainingsTableComponent,
 } from './employee/further-development/recommended-trainings-table/recommended-trainings-table.component';
+import {
+    StarRatingComponent,
+} from './employee/further-development/recommended-trainings-table/star-rating/star-rating.component';
 import { ProjectHistoryComponent } from './employee/project-history/project-history.component';
 import { EmployeesFilterPanelComponent } from './employees-filter-panel/employees-filter-panel.component';
 import { EmployeesComponent } from './employees.component';
-import { StarRatingComponent } from './employee/further-development/recommended-trainings-table/star-rating/star-rating.component';
 
 @NgModule({
   imports: [
@@ -59,7 +62,8 @@ import { StarRatingComponent } from './employee/further-development/recommended-
     MatTableModule,
     MatPaginatorModule,
     MatSortModule,
-    RouterModule
+    RouterModule,
+    MatGridListModule
   ],
   declarations: [
     EmployeesComponent,

@@ -1,11 +1,13 @@
+import { Description } from './description';
 import { Project } from './project';
 export class ProjectParticipation {
   Days: number;
   Description: string;
   DescriptionResolved: string;
-  // Descriptions: [{Id: 44135, ReleaseStateEn: 0, ReleaseStateDe: 0, Language: 0, LanguageText: "English",…}]
+  Descriptions: Array<Description>;
   Employee: Employee;
   From: Date;
+  FromEffective: Date;
   FromPlanned: Date;
   FromYear: number;
   Function: string;
@@ -22,10 +24,13 @@ export class ProjectParticipation {
   Project: Project;
   Status: number;
   StatusText: string;
+  TasksResolved: string;
   Title: string;
   TitleResolved: string;
   To: Date;
+  ToEffective: Date;
   ToPlanned: Date;
+  TotalHoursEffective: number;
   ToYear: string;
   Warnings: string;
   WorkingForCustomerSince: Date;
