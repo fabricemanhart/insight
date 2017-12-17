@@ -30,6 +30,8 @@ import { SkillListComponent } from './employee/employee-details/skill-list/skill
 import { EmployeeComponent } from './employee/employee.component';
 import { EmployeesFilterPanelComponent } from './employees-filter-panel/employees-filter-panel.component';
 import { EmployeesComponent } from './employees.component';
+import { FurtherDevelopmentComponent } from './employee/further-development/further-development.component';
+import { ProjectHistoryComponent } from './employee/project-history/project-history.component';
 
 @NgModule({
   imports: [
@@ -60,7 +62,9 @@ import { EmployeesComponent } from './employees.component';
     EmployeesFilterPanelComponent,
     ExperienceIndicatorComponent,
     SkillListComponent,
-    ProjectTableComponent
+    ProjectTableComponent,
+    FurtherDevelopmentComponent,
+    ProjectHistoryComponent
   ],
   providers: []
 })
