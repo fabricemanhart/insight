@@ -22,16 +22,21 @@ import { RouterModule } from '@angular/router';
 
 import { CoreModule } from '../core/core.module';
 import { EmployeeDetailsComponent } from './employee/employee-details/employee-details.component';
-import { ProjectTableComponent } from './employee/employee-details/project-participation-table/project-participation-table.component';
+import {
+    ProjectParticipationTableComponent,
+} from './employee/employee-details/project-participation-table/project-participation-table.component';
 import {
     ExperienceIndicatorComponent,
 } from './employee/employee-details/skill-list/experience-indicator/experience-indicator.component';
 import { SkillListComponent } from './employee/employee-details/skill-list/skill-list.component';
 import { EmployeeComponent } from './employee/employee.component';
+import { FurtherDevelopmentComponent } from './employee/further-development/further-development.component';
+import {
+    RecommendedTrainingsTableComponent,
+} from './employee/further-development/recommended-trainings-table/recommended-trainings-table.component';
+import { ProjectHistoryComponent } from './employee/project-history/project-history.component';
 import { EmployeesFilterPanelComponent } from './employees-filter-panel/employees-filter-panel.component';
 import { EmployeesComponent } from './employees.component';
-import { FurtherDevelopmentComponent } from './employee/further-development/further-development.component';
-import { ProjectHistoryComponent } from './employee/project-history/project-history.component';
 
 @NgModule({
   imports: [
@@ -62,9 +67,10 @@ import { ProjectHistoryComponent } from './employee/project-history/project-hist
     EmployeesFilterPanelComponent,
     ExperienceIndicatorComponent,
     SkillListComponent,
-    ProjectTableComponent,
+    ProjectParticipationTableComponent,
     FurtherDevelopmentComponent,
-    ProjectHistoryComponent
+    ProjectHistoryComponent,
+    RecommendedTrainingsTableComponent
   ],
   providers: []
 })

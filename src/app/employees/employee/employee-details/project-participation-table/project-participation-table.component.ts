@@ -13,7 +13,7 @@ import { DataService } from '../../../../core/services/data.service';
   templateUrl: './project-participation-table.component.html',
   styleUrls: ['./project-participation-table.component.scss']
 })
-export class ProjectTableComponent implements OnInit {
+export class ProjectParticipationTableComponent implements OnInit {
   displayedColumns = [
     'priority',
     'projectCode',

@@ -85,7 +85,6 @@
                     class="detail-box"
                     fxLayoutGap="20px"
                     fxLayoutAlign="start start"
-
                 >
                     <h2>Personal</h2>
                     <div fxLayout="row">
@@ -201,7 +200,10 @@
                         </div>
                     </div>
 
-                    <div *ngIf="employee.Team" fxLayout="row">
+                    <div
+                        *ngIf="employee.Team"
+                        fxLayout="row"
+                    >
                         <div class="label">
                             <div>Organisation Unit</div>
                         </div>
@@ -232,12 +234,11 @@
             </mat-tab>
             <mat-tab
                 label="Further Development"
-                [disabled]="true"
             >
+                <app-further-development></app-further-development>
             </mat-tab>
             <mat-tab
                 label="Project History"
-                [disabled]="true"
             >
             </mat-tab>
             <mat-tab
