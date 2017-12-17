@@ -36,7 +36,6 @@
     "numeral": "^2.0.6",
     "reselect": "^3.0.1",
     "rxjs": "^5.4.2",
-    "smooth-scrollbar": "^7.4.1",
     "sortablejs": "^1.6.0",
     "web-animations-js": "^2.3.1",
     "zone.js": "^0.8.16"

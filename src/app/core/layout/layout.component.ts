@@ -1,6 +1,5 @@
 import { ChangeDetectorRef, Component } from '@angular/core';
 import { Router } from '@angular/router';
-import Scrollbar from 'smooth-scrollbar';
 
 @Component({
   selector: 'app-layout',
@@ -8,8 +7,6 @@ import Scrollbar from 'smooth-scrollbar';
   styleUrls: ['./layout.component.scss']
 })
 export class LayoutComponent {
-
-  scrollbar: Scrollbar;
 
   sidenavOpen = true;
   sidenavCollapsed = true;
