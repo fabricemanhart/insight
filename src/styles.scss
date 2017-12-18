@@ -1,26 +1,13 @@
-/* You can add global styles to this file, and also import other style files */
 @import "~normalize.css/normalize.css";
 $fa-font-path: "~font-awesome/fonts";
 @import "~font-awesome/scss/font-awesome.scss";
 
 @import "styles/var";
 @import "styles/misc";
-@import "styles/card";
-@import "styles/boxed";
-@import "styles/tabs";
-@import "styles/badges";
 @import "styles/helpers";
-@import "styles/tables";
-@import "styles/elevation";
-@import "styles/components/sidenav";
-@import "styles/components/quickpanel";
-@import "styles/components/toolbar";
-@import "styles/components/dashboard";
-@import "styles/pages/profile";
-@import "styles/pages/chat";
+@import "styles/sidenav";
 @import "styles/layouts/layout-alpha";
 @import "styles/layouts/layout-beta";
-@import "styles/pages/components";
 
 a:link,
 a:hover,
@@ -33,6 +20,5 @@ a:visited {
   margin: 0 3px 3px 0 !important;
   padding: 4px 8px !important;
   border-radius: 2px !important;
-  // font-size: 10px !important;
   line-height: normal !important;
 }
