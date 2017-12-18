@@ -66,14 +66,8 @@ $background-color: #FAFAFA;
 $height__toolbar: 64px;
 $padding-left__toolbar: 24px;
 
-$layout-alpha__background__toolbar: white;
-$layout-alpha__color__toolbar: $color__text-darker;
-
-$layout-beta__background__toolbar: mat-color($color-primary, 900);
-$layout-beta__color__toolbar: mat-contrast($color-primary, 900);
-
-$layout-gamma__background__toolbar: mat-color($color-primary, 900);
-$layout-gamma__color__toolbar: mat-contrast($color-primary, 900);
+$layout__background__toolbar: white;
+$layout__color__toolbar: $color__text-darker;
 
 /*
   Sidenav
@@ -86,83 +80,44 @@ $width__sidenav-collapsed: 270px;
 $padding-left__sidenav-item: 36px;
 $padding-right__sidenav-item: 24px;
 
-$layout-alpha__background__sidenav: #925fa7;
-$layout-alpha__background__sidenav_header: #6c3b80;
-
-$layout-beta__background__sidenav: white;
-
+$layout__background__sidenav: #925fa7;
+$layout__background__sidenav_header: #6c3b80;
 
 /*
-  Sidenav: Layout Alpha
+  Sidenav: Layout
  */
 
-$layout-alpha__color__sidenav-item: rgba(255, 255, 255, 0.5);
-$layout-alpha__color__sidenav-heading: rgba(255, 255, 255, 0.3);
-$layout-alpha__background__sidenav-item__icon: rgb(108, 59, 128);
+$layout__color__sidenav-item: rgba(255, 255, 255, 0.5);
+$layout__color__sidenav-heading: rgba(255, 255, 255, 0.3);
+$layout__background__sidenav-item__icon: rgb(108, 59, 128);
 
-$layout-alpha__background-color__sidenav-item: $layout-alpha__background__sidenav;
-$layout-alpha__background-color__sidenav-item__hover: darken($layout-alpha__background-color__sidenav-item, 2);
-$layout-alpha__background-color__sidenav-item__active: $layout-alpha__background-color__sidenav-item__hover;
+$layout__background-color__sidenav-item: $layout__background__sidenav;
+$layout__background-color__sidenav-item__hover: darken($layout__background-color__sidenav-item, 2);
+$layout__background-color__sidenav-item__active: $layout__background-color__sidenav-item__hover;
 
-$layout-alpha__background-color__sidenav-item__level1: darken($layout-alpha__background-color__sidenav-item, 2.5);
-$layout-alpha__background-color__sidenav-item__level1__hover: darken($layout-alpha__background-color__sidenav-item__level1, 1.5);
-$layout-alpha__background-color__sidenav-item__level1__active: $layout-alpha__background-color__sidenav-item__level1__hover;
+$layout__background-color__sidenav-item__level1: darken($layout__background-color__sidenav-item, 2.5);
+$layout__background-color__sidenav-item__level1__hover: darken($layout__background-color__sidenav-item__level1, 1.5);
+$layout__background-color__sidenav-item__level1__active: $layout__background-color__sidenav-item__level1__hover;
 
-$layout-alpha__background-color__sidenav-item__level2: darken($layout-alpha__background-color__sidenav-item__level1, 2.5);
-$layout-alpha__background-color__sidenav-item__level2__hover: darken($layout-alpha__background-color__sidenav-item__level2, 1.5);
-$layout-alpha__background-color__sidenav-item__level2__active: $layout-alpha__background-color__sidenav-item__level2__hover;
+$layout__background-color__sidenav-item__level2: darken($layout__background-color__sidenav-item__level1, 2.5);
+$layout__background-color__sidenav-item__level2__hover: darken($layout__background-color__sidenav-item__level2, 1.5);
+$layout__background-color__sidenav-item__level2__active: $layout__background-color__sidenav-item__level2__hover;
 
-$layout-alpha__background-color__sidenav-item__level3: darken($layout-alpha__background-color__sidenav-item__level2, 2.5);
-$layout-alpha__background-color__sidenav-item__level3__hover: darken($layout-alpha__background-color__sidenav-item__level3, 1.5);
-$layout-alpha__background-color__sidenav-item__level3__active: $layout-alpha__background-color__sidenav-item__level3__hover;
+$layout__background-color__sidenav-item__level3: darken($layout__background-color__sidenav-item__level2, 2.5);
+$layout__background-color__sidenav-item__level3__hover: darken($layout__background-color__sidenav-item__level3, 1.5);
+$layout__background-color__sidenav-item__level3__active: $layout__background-color__sidenav-item__level3__hover;
 
-$layout-alpha__background-color__sidenav-item__level4: darken($layout-alpha__background-color__sidenav-item__level3, 2.5);
-$layout-alpha__background-color__sidenav-item__level4__hover: darken($layout-alpha__background-color__sidenav-item__level4, 1.5);
-$layout-alpha__background-color__sidenav-item__level4__active: $layout-alpha__background-color__sidenav-item__level4__hover;
+$layout__background-color__sidenav-item__level4: darken($layout__background-color__sidenav-item__level3, 2.5);
+$layout__background-color__sidenav-item__level4__hover: darken($layout__background-color__sidenav-item__level4, 1.5);
+$layout__background-color__sidenav-item__level4__active: $layout__background-color__sidenav-item__level4__hover;
 
-$layout-alpha__background-color__sidenav-item__level5: darken($layout-alpha__background-color__sidenav-item__level4, 2.5);
-$layout-alpha__background-color__sidenav-item__level5__hover: darken($layout-alpha__background-color__sidenav-item__level5, 1.5);
-$layout-alpha__background-color__sidenav-item__level5__active: $layout-alpha__background-color__sidenav-item__level5__hover;
+$layout__background-color__sidenav-item__level5: darken($layout__background-color__sidenav-item__level4, 2.5);
+$layout__background-color__sidenav-item__level5__hover: darken($layout__background-color__sidenav-item__level5, 1.5);
+$layout__background-color__sidenav-item__level5__active: $layout__background-color__sidenav-item__level5__hover;
 
-$layout-alpha__background-color__sidenav-item__level6: darken($layout-alpha__background-color__sidenav-item__level5, 2.5);
-$layout-alpha__background-color__sidenav-item__level6__hover: darken($layout-alpha__background-color__sidenav-item__level6, 1.5);
-$layout-alpha__background-color__sidenav-item__level6__active: $layout-alpha__background-color__sidenav-item__level6__hover;
-
-/*
-  Sidenav: Layout Beta
- */
-
-$layout-beta__color__sidenav-item: #555;
-$layout-beta__color__sidenav-heading: rgba(0, 0, 0, 0.3);
-$layout-beta__background__sidenav-item__icon: rgba(0, 0, 0, 0.05);
-
-$layout-beta__background-color__sidenav-item: $layout-beta__background__sidenav;
-$layout-beta__background-color__sidenav-item__hover: darken($layout-beta__background-color__sidenav-item, 2);
-$layout-beta__background-color__sidenav-item__active: $layout-beta__background-color__sidenav-item__hover;
-
-$layout-beta__background-color__sidenav-item__level1: darken($layout-beta__background-color__sidenav-item, 2.5);
-$layout-beta__background-color__sidenav-item__level1__hover: darken($layout-beta__background-color__sidenav-item__level1, 1.5);
-$layout-beta__background-color__sidenav-item__level1__active: $layout-beta__background-color__sidenav-item__level1__hover;
-
-$layout-beta__background-color__sidenav-item__level2: darken($layout-beta__background-color__sidenav-item__level1, 2.5);
-$layout-beta__background-color__sidenav-item__level2__hover: darken($layout-beta__background-color__sidenav-item__level2, 1.5);
-$layout-beta__background-color__sidenav-item__level2__active: $layout-beta__background-color__sidenav-item__level2__hover;
-
-$layout-beta__background-color__sidenav-item__level3: darken($layout-beta__background-color__sidenav-item__level2, 2.5);
-$layout-beta__background-color__sidenav-item__level3__hover: darken($layout-beta__background-color__sidenav-item__level3, 1.5);
-$layout-beta__background-color__sidenav-item__level3__active: $layout-beta__background-color__sidenav-item__level3__hover;
-
-$layout-beta__background-color__sidenav-item__level4: darken($layout-beta__background-color__sidenav-item__level3, 2.5);
-$layout-beta__background-color__sidenav-item__level4__hover: darken($layout-beta__background-color__sidenav-item__level4, 1.5);
-$layout-beta__background-color__sidenav-item__level4__active: $layout-beta__background-color__sidenav-item__level4__hover;
-
-$layout-beta__background-color__sidenav-item__level5: darken($layout-beta__background-color__sidenav-item__level4, 2.5);
-$layout-beta__background-color__sidenav-item__level5__hover: darken($layout-beta__background-color__sidenav-item__level5, 1.5);
-$layout-beta__background-color__sidenav-item__level5__active: $layout-beta__background-color__sidenav-item__level5__hover;
-
-$layout-beta__background-color__sidenav-item__level6: darken($layout-beta__background-color__sidenav-item__level5, 2.5);
-$layout-beta__background-color__sidenav-item__level6__hover: darken($layout-beta__background-color__sidenav-item__level6, 1.5);
-$layout-beta__background-color__sidenav-item__level6__active: $layout-beta__background-color__sidenav-item__level6__hover;
+$layout__background-color__sidenav-item__level6: darken($layout__background-color__sidenav-item__level5, 2.5);
+$layout__background-color__sidenav-item__level6__hover: darken($layout__background-color__sidenav-item__level6, 1.5);
+$layout__background-color__sidenav-item__level6__active: $layout__background-color__sidenav-item__level6__hover;
 
 /*
   Sidenav-Item: Padding

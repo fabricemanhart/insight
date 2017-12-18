@@ -1,12 +1,12 @@
-.layout.alpha {
+.layout {
 
   /*
   Toolbar
    */
 
   .toolbar {
-    color: $layout-alpha__color__toolbar;
-    background: $layout-alpha__background__toolbar;
+    color: $layout__color__toolbar;
+    background: $layout__background__toolbar;
 
     .search-bar {
 
@@ -29,7 +29,7 @@
     }
 
     .icon-button .icon {
-      color: $layout-alpha__color__toolbar;
+      color: $layout__color__toolbar;
     }
   }
 
@@ -38,23 +38,23 @@
    */
 
   .sidenav {
-    background: $layout-alpha__background__sidenav;
+    background: $layout__background__sidenav;
 
     .header {
-      background: $layout-alpha__background__sidenav-header;
+      background: $layout__background__sidenav-header;
     }
 
     .menu {
 
       .heading {
-        color: $layout-alpha__color__sidenav-heading;
+        color: $layout__color__sidenav-heading;
       }
     }
 
   }
 
   .sidenav-item {
-    color: $layout-alpha__color__sidenav-item;
+    color: $layout__color__sidenav-item;
 
     &:hover {
       color: #FFFFFF;
@@ -65,113 +65,113 @@
     }
 
     .icon, .letter-icon {
-      background: $layout-alpha__background__sidenav-item__icon;
+      background: $layout__background__sidenav-item__icon;
     }
   }
 
   .sidenav-item-container {
     > .sidenav-item {
       &:hover {
-        background: $layout-alpha__background-color__sidenav-item__hover;
+        background: $layout__background-color__sidenav-item__hover;
       }
 
       &.active {
-        background: $layout-alpha__background-color__sidenav-item__active;
+        background: $layout__background-color__sidenav-item__active;
       }
     }
 
     > .sub-menu { // Level 1 aka 1st Dropdown
-      background: $layout-alpha__background-color__sidenav-item__level1;
+      background: $layout__background-color__sidenav-item__level1;
 
       .sidenav-item-container {
         > .sidenav-item {
           padding-left: $padding__sidenav-item__level1;
 
           &:hover {
-            background: $layout-alpha__background-color__sidenav-item__level1__hover;
+            background: $layout__background-color__sidenav-item__level1__hover;
           }
 
           &.active {
-            background: $layout-alpha__background-color__sidenav-item__level1__active;
+            background: $layout__background-color__sidenav-item__level1__active;
           }
         }
 
         > .sub-menu { // Level 2
-          background: $layout-alpha__background-color__sidenav-item__level2;
+          background: $layout__background-color__sidenav-item__level2;
 
           .sidenav-item-container {
             > .sidenav-item {
               padding-left: $padding__sidenav-item__level2;
 
               &:hover {
-                background: $layout-alpha__background-color__sidenav-item__level2__hover;
+                background: $layout__background-color__sidenav-item__level2__hover;
               }
 
               &.active {
-                background: $layout-alpha__background-color__sidenav-item__level2__active;
+                background: $layout__background-color__sidenav-item__level2__active;
               }
             }
 
             > .sub-menu { // Level 3
-              background: $layout-alpha__background-color__sidenav-item__level3;
+              background: $layout__background-color__sidenav-item__level3;
 
               .sidenav-item-container {
                 > .sidenav-item {
                   padding-left: $padding__sidenav-item__level3;
 
                   &:hover {
-                    background: $layout-alpha__background-color__sidenav-item__level3__hover;
+                    background: $layout__background-color__sidenav-item__level3__hover;
                   }
 
                   &.active {
-                    background: $layout-alpha__background-color__sidenav-item__level3__active;
+                    background: $layout__background-color__sidenav-item__level3__active;
                   }
                 }
 
                 > .sub-menu { // Level 4
-                  background: $layout-alpha__background-color__sidenav-item__level4;
+                  background: $layout__background-color__sidenav-item__level4;
 
                   .sidenav-item-container {
                     > .sidenav-item {
                       padding-left: $padding__sidenav-item__level4;
 
                       &:hover {
-                        background: $layout-alpha__background-color__sidenav-item__level4__hover;
+                        background: $layout__background-color__sidenav-item__level4__hover;
                       }
 
                       &.active {
-                        background: $layout-alpha__background-color__sidenav-item__level4__active;
+                        background: $layout__background-color__sidenav-item__level4__active;
                       }
                     }
 
                     > .sub-menu { // Level 5
-                      background: $layout-alpha__background-color__sidenav-item__level5;
+                      background: $layout__background-color__sidenav-item__level5;
 
                       .sidenav-item-container {
                         > .sidenav-item {
                           padding-left: $padding__sidenav-item__level5;
 
                           &:hover {
-                            background: $layout-alpha__background-color__sidenav-item__level5__hover;
+                            background: $layout__background-color__sidenav-item__level5__hover;
                           }
 
                           &.active {
-                            background: $layout-alpha__background-color__sidenav-item__level5__active;
+                            background: $layout__background-color__sidenav-item__level5__active;
                           }
                         }
 
                         .sub-menu { // Infinite Levels after
-                          background: $layout-alpha__background-color__sidenav-item__level6;
+                          background: $layout__background-color__sidenav-item__level6;
 
                           .sidenav-item-container > .sidenav-item {
                             padding-left: $padding__sidenav-item__level6;
 
                             &:hover {
-                              background: $layout-alpha__background-color__sidenav-item__level6__hover;
+                              background: $layout__background-color__sidenav-item__level6__hover;
                             }
 
                             &.active {
-                              background: $layout-alpha__background-color__sidenav-item__level6__active;
+                              background: $layout__background-color__sidenav-item__level6__active;
                             }
                           }
                         }
