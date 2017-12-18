@@ -6,11 +6,10 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrls: ['./page-header.component.scss']
 })
 export class PageHeaderComponent {
-
   @Input() height: string;
   @Input() background: string;
 
-  reverseDir: boolean[] = [ ];
+  reverseDir: boolean[] = [];
 
   get margin() {
     return '-' + this.height;
