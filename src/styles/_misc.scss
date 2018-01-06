@@ -1,8 +1,9 @@
-html, body {
+html,
+body {
   min-height: 100%;
   height: 100%;
   line-height: normal;
-  font-family: Roboto, 'Helvetica Neue', Arial, sans-serif;
+  font-family: Roboto, "Helvetica Neue", Arial, sans-serif;
   color: #111;
 
   -webkit-tap-highlight-color: transparent;
@@ -29,7 +30,7 @@ p {
 .divider {
   width: 100%;
   height: 1px;
-  background: #E0E0E0;
+  background: #e0e0e0;
 
   &.reverse {
     width: inherit;
@@ -80,7 +81,7 @@ code.hljs {
   animation-fill-mode: forwards;
   animation-duration: 0.3s;
   animation-delay: 0.3s;
-  background: #FFF;
+  background: #fff;
   z-index: 9999;
   pointer-events: none;
 }
@@ -137,11 +138,16 @@ code.hljs {
   }
 }
 
-
 @keyframes rainbow {
-  0%{background-position:0% 82%}
-  50%{background-position:100% 19%}
-  100%{background-position:0% 82%}
+  0% {
+    background-position: 0% 82%;
+  }
+  50% {
+    background-position: 100% 19%;
+  }
+  100% {
+    background-position: 0% 82%;
+  }
 }
 
 $height__buy-now-toolbar: 60px;
@@ -158,12 +164,23 @@ $height__buy-now-toolbar: 60px;
   .rainbow {
     height: 100%;
     width: 100%;
-    left:0;
+    left: 0;
     right: 0;
     top: 0;
     bottom: 0;
     position: absolute;
-    background: linear-gradient(124deg, #ff2400, #e81d1d, #e8b71d, #e3e81d, #1de840, #1ddde8, #2b1de8, #dd00f3, #dd00f3);
+    background: linear-gradient(
+      124deg,
+      #ff2400,
+      #e81d1d,
+      #e8b71d,
+      #e3e81d,
+      #1de840,
+      #1ddde8,
+      #2b1de8,
+      #dd00f3,
+      #dd00f3
+    );
     background-size: 1800% 1800%;
     animation: rainbow 18s ease infinite;
     padding: 0 24px;
@@ -191,5 +208,32 @@ $height__buy-now-toolbar: 60px;
       text-shadow: 0 0 10px rgba(0, 0, 0, 1);
     }
   }
+}
 
+.semi-bold {
+  font-weight: 500;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+.avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+
+a:link,
+a:hover,
+a:active,
+a:visited {
+  color: black;
+}
+
+.mat-chip {
+  margin: 0 3px 3px 0 !important;
+  padding: 4px 8px !important;
+  border-radius: 2px !important;
+  line-height: normal !important;
 }

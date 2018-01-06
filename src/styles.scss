@@ -4,20 +4,5 @@ $fa-font-path: "~font-awesome/fonts";
 
 @import "styles/var";
 @import "styles/misc";
-@import "styles/helpers";
 @import "styles/sidenav";
 @import "styles/layout";
-
-a:link,
-a:hover,
-a:active,
-a:visited {
-  color: black;
-}
-
-.mat-chip {
-  margin: 0 3px 3px 0 !important;
-  padding: 4px 8px !important;
-  border-radius: 2px !important;
-  line-height: normal !important;
-}
