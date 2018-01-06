@@ -2,9 +2,9 @@ import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
 
-import { EmployeeSkill } from '../../../core/models/employee-skill';
-import { EmployeeRole } from '../../../core/models/employee-role';
-import { ShortProfile } from '../../../core/models/shortProfile';
+import { EmployeeSkill } from '../../../shared/models/employee-skill';
+import { EmployeeRole } from '../../../shared/models/employee-role';
+import { ShortProfile } from '../../../shared/models/shortProfile';
 import { DataService } from '../../../core/services/data.service';
 
 @Component({

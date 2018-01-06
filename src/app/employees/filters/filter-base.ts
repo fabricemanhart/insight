@@ -1,6 +1,6 @@
 import { ReplaySubject } from 'rxjs/Rx';
 
-import { Option } from '../../core/models/option';
+import { Option } from '../../shared/models/option';
 
 export class FilterBase {
   protected initialOptions: string;

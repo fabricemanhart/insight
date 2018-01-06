@@ -7,7 +7,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { Observable } from 'rxjs/Observable';
 
-import { Option } from '../../core/models/option';
+import { Option } from '../models/option';
 
 @Component({
   selector: 'app-autocomplete-with-chips',

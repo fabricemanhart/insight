@@ -1,8 +1,8 @@
-import { Training } from '../../../core/models/training';
+import { Training } from '../../../shared/models/training';
 import { DataService } from '../../../core/services/data.service';
 import { ActivatedRoute } from '@angular/router';
-import { ShortProfile } from '../../../core/models/shortProfile';
-import { EmployeeSkill } from '../../../core/models/employee-skill';
+import { ShortProfile } from '../../../shared/models/shortProfile';
+import { EmployeeSkill } from '../../../shared/models/employee-skill';
 import { Component, OnInit } from '@angular/core';
 
 @Component({

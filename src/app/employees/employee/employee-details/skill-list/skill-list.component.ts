@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { selector } from 'rxjs/operator/publish';
 
-import { EmployeeSkill } from '../../../../core/models/employee-skill';
+import { EmployeeSkill } from '../../../../shared/models/employee-skill';
 
 @Component({
   selector: 'app-skill-list',

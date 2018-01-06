@@ -1,7 +1,7 @@
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs/Rx';
 
-import { Option } from '../../core/models/option';
+import { Option } from '../../shared/models/option';
 import { DataService } from '../../core/services/data.service';
 import { FilterBase } from './filter-base';
 

@@ -1,4 +1,4 @@
-import { ProjectParticipation } from '../../../core/models/project-participation';
+import { ProjectParticipation } from '../../../shared/models/project-participation';
 import { Component, Input } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 

@@ -1,7 +1,7 @@
-import { EmployeesRoutingModule } from './employee-routing-module';
 import { NgModule } from '@angular/core';
 
 import { SharedModule } from '../shared/shared.module';
+import { EmployeesRoutingModule } from './employee-routing-module';
 import { EmployeeDetailsComponent } from './employee/employee-details/employee-details.component';
 import {
     ProjectParticipationTableComponent,

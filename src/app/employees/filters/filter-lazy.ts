@@ -3,7 +3,7 @@ import { FilterBase } from './filter-base';
 import { ActivatedRoute } from '@angular/router';
 import { Subject, Observable } from 'rxjs/Rx';
 
-import { Option } from '../../core/models/option';
+import { Option } from '../../shared/models/option';
 
 export class FilterLazy<T extends {Id: number, Name: string }> extends FilterBase {
   constructor(

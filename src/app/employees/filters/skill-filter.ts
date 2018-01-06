@@ -1,6 +1,6 @@
 import { ActivatedRoute } from '@angular/router';
 
-import { Skill } from '../../core/models/skill';
+import { Skill } from '../../shared/models/skill';
 import { DataService } from '../../core/services/data.service';
 import { FilterLazy } from './filter-lazy';
 

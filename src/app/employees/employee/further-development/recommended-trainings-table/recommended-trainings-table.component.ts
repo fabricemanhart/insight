@@ -4,8 +4,8 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator, MatSort, MatTableDataSource } from '@angular/material';
 import { ActivatedRoute } from '@angular/router';
 
-import { Training } from '../../../../core/models/training';
-import { TrainingRow } from '../../../../core/models/training-row';
+import { Training } from '../../../../shared/models/training';
+import { TrainingRow } from '../../../../shared/models/training-row';
 import { DataService } from '../../../../core/services/data.service';
 
 @Component({

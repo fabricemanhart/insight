@@ -23,7 +23,6 @@ import {
     MatTableModule,
     MatTabsModule,
 } from '@angular/material';
-import { RouterModule } from '@angular/router';
 
 import { AutocompleteWithChipsComponent } from './autocomplete-with-chips/autocomplete-with-chips.component';
 

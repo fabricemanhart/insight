@@ -4,8 +4,8 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator, MatSort, MatTableDataSource } from '@angular/material';
 import { ActivatedRoute } from '@angular/router';
 
-import { ProjectParticipation } from '../../../../core/models/project-participation';
-import { ProjectRow } from '../../../../core/models/project-row';
+import { ProjectParticipation } from '../../../../shared/models/project-participation';
+import { ProjectRow } from '../../../../shared/models/project-row';
 import { DataService } from '../../../../core/services/data.service';
 
 @Component({

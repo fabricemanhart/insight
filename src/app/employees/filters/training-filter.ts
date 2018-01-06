@@ -1,6 +1,6 @@
 import { ActivatedRoute } from '@angular/router';
 
-import { Training } from '../../core/models/training';
+import { Training } from '../../shared/models/training';
 import { DataService } from '../../core/services/data.service';
 import { FilterLazy } from './filter-lazy';
 

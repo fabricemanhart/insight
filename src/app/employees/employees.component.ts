@@ -1,4 +1,4 @@
-import { EmployeeRow } from './../core/models/employee-row';
+import { EmployeeRow } from '../shared/models/employee-row';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/switchMap';
 import 'rxjs/add/operator/take';
