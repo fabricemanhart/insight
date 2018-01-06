@@ -1,24 +1,10 @@
-import { CommonModule } from '@angular/common';
-import { HTTP_INTERCEPTORS } from '@angular/common/http';
-import { NgModule } from '@angular/core';
-import { FlexLayoutModule } from '@angular/flex-layout';
-import { ReactiveFormsModule } from '@angular/forms';
-import {
-    MatAutocompleteModule,
-    MatButtonModule,
-    MatChipsModule,
-    MatIconModule,
-    MatInputModule,
-    MatOptionModule,
-    MatRippleModule,
-    MatSidenavModule
-} from '@angular/material';
 import { RouterModule } from '@angular/router';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { NgModule, Optional, SkipSelf } from '@angular/core';
 
-import { EmployeesComponent } from '../employees/employees.component';
-import { EmployeeComponent } from './../employees/employee/employee.component';
-import { AutocompleteWithChipsComponent } from './autocomplete-with-chips/autocomplete-with-chips.component';
+import { SharedModule } from '../shared/shared.module';
 import { LayoutComponent } from './layout/layout.component';
+import { throwIfAlreadyLoaded } from './module-import-guard';
 import { PageHeaderComponent } from './page-header/page-header.component';
 import { DataService } from './services/data.service';
 import { SidenavCollapseDirective } from './sidenav/sidenav-collapse.directive';
@@ -31,24 +17,8 @@ import { WinAuthInterceptor } from './WinAuthInterceptor';
 
 @NgModule({
   imports: [
-    CommonModule,
-    RouterModule.forRoot(
-      [
-        { path: '', component: LayoutComponent },
-        { path: 'employees/:code', component: EmployeeComponent },
-        { path: 'employees', component: EmployeesComponent }
-      ]
-    ),
-    FlexLayoutModule,
-    MatButtonModule,
-    MatIconModule,
-    MatRippleModule,
-    MatSidenavModule,
-    MatAutocompleteModule,
-    MatOptionModule,
-    MatInputModule,
-    MatChipsModule,
-    ReactiveFormsModule
+    SharedModule,
+    RouterModule,
   ],
   declarations: [
     LayoutComponent,
@@ -58,13 +28,11 @@ import { WinAuthInterceptor } from './WinAuthInterceptor';
     SidenavCollapseDirective,
     ClickOutsideDirective,
     ToolbarUserMenuComponent,
-    PageHeaderComponent,
-    AutocompleteWithChipsComponent
+    PageHeaderComponent
   ],
   exports: [
     LayoutComponent,
-    PageHeaderComponent,
-    AutocompleteWithChipsComponent
+    PageHeaderComponent
   ],
   providers: [
     {
@@ -75,4 +43,8 @@ import { WinAuthInterceptor } from './WinAuthInterceptor';
     DataService
   ]
 })
-export class CoreModule {}
+export class CoreModule {
+  constructor( @Optional() @SkipSelf() parentModule: CoreModule) {
+    throwIfAlreadyLoaded(parentModule, 'CoreModule');
+  }
+}

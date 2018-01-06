@@ -1,27 +1,7 @@
-import { CommonModule } from '@angular/common';
+import { EmployeesRoutingModule } from './employee-routing-module';
 import { NgModule } from '@angular/core';
-import { FlexLayoutModule } from '@angular/flex-layout';
-import { FormsModule } from '@angular/forms';
-import {
-    MatButtonModule,
-    MatCardModule,
-    MatCheckboxModule,
-    MatChipsModule,
-    MatDatepickerModule,
-    MatExpansionModule,
-    MatGridListModule,
-    MatIconModule,
-    MatInputModule,
-    MatNativeDateModule,
-    MatPaginatorModule,
-    MatSelectModule,
-    MatSortModule,
-    MatTableModule,
-    MatTabsModule,
-} from '@angular/material';
-import { RouterModule } from '@angular/router';
 
-import { CoreModule } from '../core/core.module';
+import { SharedModule } from '../shared/shared.module';
 import { EmployeeDetailsComponent } from './employee/employee-details/employee-details.component';
 import {
     ProjectParticipationTableComponent,
@@ -44,26 +24,8 @@ import { EmployeesComponent } from './employees.component';
 
 @NgModule({
   imports: [
-    CommonModule,
-    CoreModule,
-    FormsModule,
-    FlexLayoutModule,
-    MatButtonModule,
-    MatChipsModule,
-    MatIconModule,
-    MatTabsModule,
-    MatCheckboxModule,
-    MatCardModule,
-    MatSelectModule,
-    MatInputModule,
-    MatExpansionModule,
-    MatDatepickerModule,
-    MatNativeDateModule,
-    MatTableModule,
-    MatPaginatorModule,
-    MatSortModule,
-    RouterModule,
-    MatGridListModule
+    SharedModule,
+    EmployeesRoutingModule
   ],
   declarations: [
     EmployeesComponent,
@@ -77,7 +39,6 @@ import { EmployeesComponent } from './employees.component';
     ProjectHistoryComponent,
     RecommendedTrainingsTableComponent,
     StarRatingComponent
-  ],
-  providers: []
+  ]
 })
 export class EmployeesModule {}
