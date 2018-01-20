@@ -9,17 +9,17 @@ describe('insight App', () => {
     page = new AppPage();
   });
 
-  it('should filter employee by name', () => {
-    page.navigateTo('employees');
-    element(by.id('tableFilter')).sendKeys('christian moser');
-    const count = element.all(by.css('mat-row')).count();
-    expect(count).toEqual(1);
+  it('should filter employee by name', async() => {
+    await page.navigateTo('employees');
+    await element(by.id('tableFilter')).sendKeys('christian moser');
+    const count = await element.all(by.css('mat-row')).count();
+    await expect(count).toEqual(1);
   });
 
-  it('should show employee phone number', async () => {
-    await page.navigateTo('employees/moc');
-    expect(await element(by.id('phone-business')).getText()).toBe('+41 44 733 6617');
-    expect(await element(by.id('phone-private')).getText()).toBe('+41 79 261 6814');
+  it('should show employee phone number', () => {
+    page.navigateTo('employees/moc');
+    expect(element(by.id('phone-business')).getText()).toBe('+41 44 733 6617');
+    expect(element(by.id('phone-private')).getText()).toBe('+41 79 261 6814');
   });
 
   it('should show employee description in En and De', () => {
