@@ -63,5 +63,3 @@ export class ProjectParticipationTableComponent implements OnInit {
     this.dataSource.filter = filterValue;
   }
 }
-
-// example taken from angular docs [https://material.angular.io/components/table/examples]

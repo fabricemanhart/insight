@@ -1,6 +1,10 @@
 import { forEach } from '@angular/router/src/utils/collection';
 import { Component, Input, OnInit } from '@angular/core';
 
+export class Star {
+  isFilled: boolean;
+}
+
 @Component({
   selector: 'app-star-rating',
   templateUrl: './star-rating.component.html',
@@ -17,8 +21,4 @@ export class StarRatingComponent implements OnInit {
       this.stars[i].isFilled = true;
     }
   }
-}
-
-export class Star {
-  isFilled: boolean;
 }
