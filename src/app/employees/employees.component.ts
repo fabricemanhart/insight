@@ -1,4 +1,3 @@
-import { EmployeeRow } from '../shared/models/employee-row';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/switchMap';
 import 'rxjs/add/operator/take';
@@ -8,7 +7,9 @@ import { Component, ElementRef, ViewChild } from '@angular/core';
 import { MatPaginator, MatSort, MatTableDataSource } from '@angular/material';
 import { ParamMap, Router } from '@angular/router';
 
+import { routing } from '../constants/routing';
 import { DataService } from '../core/services/data.service';
+import { EmployeeRow } from '../shared/models/employee-row';
 
 @Component({
   selector: 'app-employees',
@@ -32,7 +33,7 @@ export class EmployeesComponent {
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 
-  url = 'http://localhost:41588/api/v1/employees';
+  url = `${routing.apiHost}api/v1/employees`;
   routerParams: ParamMap;
 
   constructor(
@@ -64,7 +65,15 @@ export class EmployeesComponent {
     this.dataSource.filter = filterValue;
   }
 
-  setAvatar(code: string) {
-    return  'http://localhost:41588/img/Employees/' + code + '.jpg';
+  getEmployeeSmallImageUrl(code: string) {
+    return `${routing.apiHost}img/Employees/${code}.jpg`;
+  }
+
+  getUtilizationImageUrl(code: string) {
+    return `${routing.apiHost}api/v1/employees/${code}/utilization/line`;
+  }
+
+  setDefaultEmployeeImage(event) {
+    event.target.src = `${routing.apiHost}img/user.jpg`;
   }
 }

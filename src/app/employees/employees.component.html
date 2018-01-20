@@ -37,8 +37,8 @@
                         <mat-cell *matCellDef="let row">
                             <img
                                 class="avatar"
-                                src="http://localhost:41588/img/Employees/{{row.code}}.jpg"
-                                onError="this.src='http://localhost:41588/img/user.jpg';"
+                                [src]="getEmployeeSmallImageUrl(row.code)"
+                                (error)="setDefaultEmployeeImage($event);"
                             >
                         </mat-cell>
                     </ng-container>
@@ -113,7 +113,7 @@
                             Availability
                         </mat-header-cell>
                         <mat-cell *matCellDef="let row">
-                            <img src="http://localhost:41588/api/v1/employees/{{row.code}}/utilization/line">
+                            <img [src]="getUtilizationImageUrl(row.code)">
                         </mat-cell>
                     </ng-container>
 

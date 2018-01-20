@@ -21,7 +21,7 @@
               mat-sort-header
           >
           </mat-header-cell>
-          <mat-cell *matCellDef="let row"><img src="http://localhost:41588/api/v1/trainings/{{ row.id }}/picture" class="thumb"/></mat-cell>
+          <mat-cell *matCellDef="let row"><img [src]="getRecommendedTrainingImageUrl(row.id)" class="thumb"/></mat-cell>
       </ng-container>
 
       <ng-container matColumnDef="description">

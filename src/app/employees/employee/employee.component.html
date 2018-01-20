@@ -27,7 +27,7 @@
                     <img
                         fxFlex="150px"
                         class="picture"
-                        src="http://localhost:41588/api/v1/employees/{{ employee.Code }}/picture?large=true"
+                        [src]="getEmployeeImageUrl(employee.Code)"
                     >
 
                     <h3 class="heading">{{ employee.Title }}</h3>

@@ -1,3 +1,4 @@
+import { routing } from '../../../../constants/routing';
 import 'rxjs/add/operator/switchMap';
 
 import { Component, OnInit, ViewChild } from '@angular/core';
@@ -44,10 +45,7 @@ export class ProjectParticipationTableComponent implements OnInit {
   ngOnInit() {
     this.route.paramMap
       .switchMap(p => {
-        const url =
-          'http://localhost:41588/api/v1/employees/' +
-          p.get('code') +
-          '/projects/current';
+        const url = `${routing.apiHost}api/v1/employees/${p.get('code')}/projects/current`;
         return this.dataService.getAll<Array<ProjectParticipation>>(url);
       })
       .subscribe(p => {

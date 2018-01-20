@@ -1,5 +1,6 @@
 import { ActivatedRoute } from '@angular/router';
 
+import { routing } from '../../constants/routing';
 import { DataService } from '../../core/services/data.service';
 import { FilterPreload } from './filter-preload';
 
@@ -8,7 +9,7 @@ export class CapabilityFilter extends FilterPreload<Capability> {
     super(
       dataService,
       route,
-      'http://localhost:41588/api/v1/capabilities',
+      `${routing.apiHost}api/v1/capabilities`,
       'assets',
       'Capabilities'
     );

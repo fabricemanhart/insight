@@ -68,7 +68,7 @@
                         <img
                             class="project-graph"
                             fxFlexAlign="center"
-                            src="http://localhost:41588/api/v1/employees/{{ code }}/utilization?width=1000&weeks=32&offset=0"
+                            [src]="getProjectChartImageUrl()"
                         >
                     </div>
                 </mat-expansion-panel>

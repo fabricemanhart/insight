@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Observable } from 'rxjs/Observable';
 
-import { EmployeeSkill } from '../../../shared/models/employee-skill';
-import { EmployeeRole } from '../../../shared/models/employee-role';
-import { ShortProfile } from '../../../shared/models/shortProfile';
+import { routing } from '../../../constants/routing';
 import { DataService } from '../../../core/services/data.service';
+import { EmployeeRole } from '../../../shared/models/employee-role';
+import { EmployeeSkill } from '../../../shared/models/employee-skill';
+import { ShortProfile } from '../../../shared/models/shortProfile';
 
 @Component({
   selector: 'app-employee-details',
@@ -22,7 +22,7 @@ export class EmployeeDetailsComponent {
   constructor(private dataService: DataService, route: ActivatedRoute) {
     route.paramMap.subscribe(p => {
       this.code = p.get('code');
-      this.url = 'http://localhost:41588/api/v1/employees/' + this.code;
+      this.url = `${routing.apiHost}api/v1/employees/${this.code}`;
 
       dataService
         .getAll<Array<ShortProfile>>(this.url + '/shortprofiles')
@@ -38,5 +38,9 @@ export class EmployeeDetailsComponent {
 
       return [];
     });
+  }
+
+  getProjectChartImageUrl() {
+    return `${routing.apiHost}api/v1/employees/${this.code}/utilization?width=1000&weeks=32&offset=0`;
   }
 }

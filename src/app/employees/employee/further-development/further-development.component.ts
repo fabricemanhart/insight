@@ -1,9 +1,9 @@
-import { Training } from '../../../shared/models/training';
-import { DataService } from '../../../core/services/data.service';
+import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { ShortProfile } from '../../../shared/models/shortProfile';
-import { EmployeeSkill } from '../../../shared/models/employee-skill';
-import { Component, OnInit } from '@angular/core';
+
+import { routing } from '../../../constants/routing';
+import { DataService } from '../../../core/services/data.service';
+import { Training } from '../../../shared/models/training';
 
 @Component({
   selector: 'app-further-development',
@@ -15,16 +15,10 @@ export class FurtherDevelopmentComponent {
   code: string;
   trainings: Array<Training>;
 
-
   constructor(private dataService: DataService, route: ActivatedRoute) {
     route.paramMap.subscribe(p => {
       this.code = p.get('code');
-      this.url = 'http://localhost:41588/api/v1/employees/' + this.code;
-
-      // dataService
-      //   .getAll<Array<Training>>(this.url + '/trainings/recommended')
-      //   .subscribe(res => (this.trainings = res));
-
+      this.url = `${routing.apiHost}api/v1/employees/${this.code}`;
       return [];
     });
   }

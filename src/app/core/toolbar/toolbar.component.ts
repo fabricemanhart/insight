@@ -2,6 +2,7 @@ import { DataService } from './../services/data.service';
 import { FormControl } from '@angular/forms';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
+import { routing } from '../../constants/routing';
 
 @Component({
   selector: 'app-toolbar',
@@ -14,7 +15,7 @@ export class ToolbarComponent implements OnInit {
   @Input() sidenavCollapsed: boolean;
   @Output() toggledSidenav = new EventEmitter();
   control: FormControl = new FormControl();
-  url = 'http://localhost:41588/api/v1/search?term=';
+  url = `${routing.apiHost}api/v1/search?term=`;
   searchResults$: Observable<Array<SearchResultGroup>>;
 
   ngOnInit() {

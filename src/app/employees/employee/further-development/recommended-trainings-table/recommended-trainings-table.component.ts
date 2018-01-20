@@ -4,9 +4,10 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator, MatSort, MatTableDataSource } from '@angular/material';
 import { ActivatedRoute } from '@angular/router';
 
+import { routing } from '../../../../constants/routing';
+import { DataService } from '../../../../core/services/data.service';
 import { Training } from '../../../../shared/models/training';
 import { TrainingRow } from '../../../../shared/models/training-row';
-import { DataService } from '../../../../core/services/data.service';
 
 @Component({
   selector: 'app-recommended-trainings-table',
@@ -28,10 +29,10 @@ export class RecommendedTrainingsTableComponent implements OnInit {
   ngOnInit() {
     this.route.paramMap
       .switchMap(p => {
-        const url =
-          'http://localhost:41588/api/v1/employees/' +
-          p.get('code') +
-          '/trainings/recommended';
+        const url = `${routing.apiHost}api/v1/employees/${p.get(
+          'code'
+        )}/trainings/recommended`;
+
         return this.dataService.getAll<Array<Training>>(url);
       })
       .subscribe(p => {
@@ -46,5 +47,9 @@ export class RecommendedTrainingsTableComponent implements OnInit {
     filterValue = filterValue.trim();
     filterValue = filterValue.toLowerCase();
     this.dataSource.filter = filterValue;
+  }
+
+  getRecommendedTrainingImageUrl(id: string) {
+    return `${routing.apiHost}api/v1/trainings/${id}/picture`;
   }
 }

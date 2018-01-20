@@ -1,7 +1,8 @@
 import { ActivatedRoute } from '@angular/router';
 
-import { Training } from '../../shared/models/training';
+import { routing } from '../../constants/routing';
 import { DataService } from '../../core/services/data.service';
+import { Training } from '../../shared/models/training';
 import { FilterLazy } from './filter-lazy';
 
 export class TrainingFilter extends FilterLazy<Training> {
@@ -9,8 +10,8 @@ export class TrainingFilter extends FilterLazy<Training> {
     super(
       dataService,
       route,
-      'http://localhost:41588/api/v1/trainings/search?term=',
-      'http://localhost:41588/api/v1/trainings/',
+      `${routing.apiHost}api/v1/trainings/search?term=`,
+      `${routing.apiHost}api/v1/trainings/`,
       'trainings',
       'Trainings'
     );
