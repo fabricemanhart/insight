@@ -1,28 +1,22 @@
-# Insight
+# CAS FEE Projekt Arbeit 2: Insight
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.4.1.
+## Umfang
+* Implementiert wurde das Mitarbeiter (Employees) Modul.
+* Es sollte auf eine gute Strukturierung mit Feature Moduls geachtet werden.
+* Fokus auf clean code (DRY, KISS, YAGI, SOLID)
+* User Tests / Evaluation von UX wurde nicht gewünscht (auch aus Zeitgründen seitens des Auftraggebers nicht). Der existierende Workflow wurde vom Auftraggeber als gut befunden.
+* Responsive Design war keine Anforderung. Jedoch wurden eine minimale Funktionalität an responsivness implementiert.
+* API existiert (asp.net web api), wurde aber zum Teil angepasst.
+* Die Authentisierung läuft über Kerberos (Windows). Ist aber in der Demo abgeschalten, da der Demo Server nicht mit dem Active Directory der Firma verbunden ist.
 
-## Development server
+# Funktion
+* Auf der Mitarbeiter Ansicht können Mitarbeiter über verschiedene Filter gesucht werden.
+* Es existiert auch eine globale Suche, die im Header verfügbar ist. Suchresultate werden nach Kategorie gruppiert. (z.b Java eingaben damit man die Gruppierung sieht).
+* Clickt man auf einen Mitarbeiter in der Table werden die Details zum Mitarbeiter angezeigt (Damit man was sieht am besten folgende Mitarbeiter wählen: Christian Moser oder Markus Leder)
+* In den Mitarbeiter Details kann man aus "Details", "Further Develompment" und "Project History" auswählen.
+* Die Filter Einstellungen können persistiert (gebookmarket) werden, da ihr state in der URL reflektiert ist.
+* Einige E2E sowie Unit Tests sind vorhanden.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
-
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-Before running the tests make sure you are serving the app via `ng serve`.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+# Sonstiges
+* rxjs wurde viel eingesetzt (debounceTime, forkJoin, combineLatest, mergeMap, ...).
+* Violett ist Company Identity Farbe. Logos werden noch geliefert.
