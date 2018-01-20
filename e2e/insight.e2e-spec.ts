@@ -1,4 +1,4 @@
-import { element, browser, by } from 'protractor';
+import { browser, by, element } from 'protractor';
 
 describe('insight application', () => {
   it('should filter employee by name', async () => {
